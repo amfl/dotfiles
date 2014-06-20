@@ -1,0 +1,35 @@
+xterm*termName: xterm-256color
+! xterm*faceName: Consolas
+! xterm*faceNameDoublesize: Droid Sans Fallback
+
+xterm*faceName: DejaVu Sans Mono
+xterm*faceSize: 11
+
+! Candy theme
+*xterm*background: #000000
+*xterm*foreground: #CCCCC6
+*xterm*cursorColor: #d0d0d0
+! black darkgrey
+*xterm*color0: #1B1D1E
+*xterm*color8: #505354
+! darkred red
+*xterm*color1: #F92672
+*xterm*color9: #FF5995
+! darkgreen green
+*xterm*color2: #82B414
+*xterm*color10: #B6E354
+! darkyellow yellow
+*xterm*color3: #FD971F
+*xterm*color11: #FEED6C
+! darkblue blue
+*xterm*color4: #56C2D6
+*xterm*color12: #8CEDFF
+! darkmagenta magenta
+*xterm*color5: #8C54FE
+*xterm*color13: #9E6FFE
+! darkcyan cyan
+*xterm*color6: #465457
+*xterm*color14: #899CA1
+! grey white
+*xterm*color7: #CCCCC6
+*xterm*color15: #F8F8F2
