@@ -1,0 +1,7 @@
+*.o
+*.dll
+*.zip
+*.out
+*.exe
+logs
+
