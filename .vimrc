@@ -8,6 +8,13 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'myint/indent-finder'
+" Color scheme stuff
+Plugin 'flazz/vim-colorschemes'
+Plugin 'felixhummel/setcolors.vim'
+" Some colorschemes I found on http://cocopon.me/app/vim-color-gallery/
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'tomasr/molokai'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -15,6 +22,7 @@ filetype plugin indent on    " required
 
 " Some stuff taken from http://danielmiessler.com/study/vim/
 inoremap jk <ESC>
+inoremap kj <ESC>
 let mapleader = ","
 
 syntax on
@@ -31,6 +39,9 @@ set number
 :set listchars=tab:▸\ ,eol:¬
 :set list
 
+" Highlight results as you search
+set incsearch
+
 " TAB STUFF
 " To be honest I think myint/indent-finder overrides some of these anyway
 " It's all a bit of a mystery.
@@ -44,3 +55,22 @@ let s:tabwidth=4                     " This is just a variable we make
 exec 'set tabstop='    .s:tabwidth
 exec 'set shiftwidth=' .s:tabwidth
 exec 'set softtabstop='.s:tabwidth
+
+" COLOR SCHEMES
+" Color listchar stuff from above
+"hi NonText ctermfg=7 guifg=gray
+"hi SpecialKey ctermfg=7 guifg=gray
+
+" let g:solarized_termcolors=256
+" set background=dark
+" colorscheme solarized
+
+let g:rehash256 = 1
+colorscheme molokai
+
+" colorscheme jellybeans
+
+" SPLITS
+
+set splitbelow  " Open new splits below and to the right
+set splitright
