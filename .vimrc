@@ -6,27 +6,79 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+" Workspace explorer
 Plugin 'scrooloose/nerdtree'
+" Sublime-like fuzzy search
+Plugin 'kien/ctrlp.vim'
+" Directory listing enhancer
+" tpope/vim-vinegar
+" Static code analysis
+Plugin 'scrooloose/syntastic'
+" Sets tab settings based on current file
 Plugin 'myint/indent-finder'
+" Powerline!
+" Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
+
 " Color scheme stuff
+" A big pack of color schemes
 Plugin 'flazz/vim-colorschemes'
-Plugin 'felixhummel/setcolors.vim'
-" Some colorschemes I found on http://cocopon.me/app/vim-color-gallery/
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'tomasr/molokai'
+" Automatically convert gvim true color themes into 256 color terminal approximations
+Plugin 'godlygeek/csapprox'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 "</vundle>
 
-" Some stuff taken from http://danielmiessler.com/study/vim/
+"==========================================
+" COLOR SCHEMES
+"==========================================
+" There is a nice visualiser at http://bytefluent.com/vivify/
+
+set t_Co=256                 " Make sure terminal is in 256 color mode
+colorscheme molokai
+" colorscheme darkZ
+
+" Color listchar stuff
+"hi NonText ctermfg=7 guifg=gray
+"hi SpecialKey ctermfg=7 guifg=gray
+
+let g:airline_theme='tomorrow'
+
+"==========================================
+" REMAPPINGS
+"==========================================
+" Some stuff taken from:
+" http://danielmiessler.com/study/vim/
+" http://statico.github.io/vim.html
+
+" Use jk/kj to exit insertion mode (Writing this line was fun!) 
 inoremap jk <ESC>
 inoremap kj <ESC>
+
+" Move up/down sensibly on wrapped lines
+nmap j gj
+nmap k gk
+
 let mapleader = ","
+
+" Open file browser
+nmap ge :NERDTreeToggle<CR>
+
+" Switching between buffers
+nmap gh <C-w>h
+nmap gj <C-w>j
+nmap gk <C-w>k
+nmap gl <C-w>l
 
 syntax on
 set encoding=utf-8
+
+" Always show the status bar. Suggested the powerline plugin.
+set laststatus=2
+
+" Disable showing which mode we're in, we have plugins for that.
+set noshowmode
 
 " Mouse support
 " http://vim.wikia.com/wiki/Using_the_mouse_for_Vim_in_an_xterm
@@ -56,19 +108,6 @@ exec 'set tabstop='    .s:tabwidth
 exec 'set shiftwidth=' .s:tabwidth
 exec 'set softtabstop='.s:tabwidth
 
-" COLOR SCHEMES
-" Color listchar stuff from above
-"hi NonText ctermfg=7 guifg=gray
-"hi SpecialKey ctermfg=7 guifg=gray
-
-" let g:solarized_termcolors=256
-" set background=dark
-" colorscheme solarized
-
-let g:rehash256 = 1
-colorscheme molokai
-
-" colorscheme jellybeans
 
 " SPLITS
 
