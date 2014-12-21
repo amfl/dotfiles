@@ -1,0 +1,11 @@
+#alias {loggedsession}
+{
+	#ses %1 %2 %3;
+	#format {logfile} {mushlogs/%t-%1.log} {%Y-%m-%d};
+	#showme Logging session %2:%3 to $logfile;
+	#log append $logfile;
+}
+#alias /me pose %0
+#config {VERBATIM} {ON}
+#macro {\e[11~} { #showme This will execute on F1!; }
+
