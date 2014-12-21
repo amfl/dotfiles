@@ -19,6 +19,10 @@ Plugin 'myint/indent-finder'
 " Powerline!
 " Plugin 'Lokaltog/vim-powerline'
 Plugin 'bling/vim-airline'
+" Allow commenting blocks of code
+Plugin 'tpope/vim-commentary'
+" Move around quickly
+Plugin 'Lokaltog/vim-easymotion'
 
 " Color scheme stuff
 " A big pack of color schemes
@@ -29,6 +33,13 @@ Plugin 'godlygeek/csapprox'
 call vundle#end()            " required
 filetype plugin indent on    " required
 "</vundle>
+
+"==========================================
+" SYNTASTIC CONFIG
+"==========================================
+
+let g:syntastic_python_checkers=['pylint']
+let g:syntastic_javascript_checkers=['jshint']
 
 "==========================================
 " COLOR SCHEMES
@@ -57,8 +68,8 @@ inoremap jk <ESC>
 inoremap kj <ESC>
 
 " Move up/down sensibly on wrapped lines
-nmap j gj
-nmap k gk
+noremap j gj
+noremap k gk
 
 let mapleader = ","
 
@@ -72,6 +83,8 @@ nmap gk <C-w>k
 nmap gl <C-w>l
 
 syntax on
+" Do autocomplete
+set omnifunc=syntaxcomplete#Complete
 set encoding=utf-8
 
 " Always show the status bar. Suggested the powerline plugin.
