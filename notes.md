@@ -26,3 +26,20 @@ Changed from
 to
 
     ['top-panel-0']
+
+## Installing node/npm
+
+Because I always forget how, and the ones on apt are crap.
+
+Detailed here: https://github.com/joyent/node/wiki/installing-node.js-via-package-manager
+
+Ubuntu tl;dr
+
+	curl -sL https://deb.nodesource.com/setup | sudo bash -
+	sudo apt-get install -y nodejs
+
+## Install vundle
+
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+I should really build this into the bootstrap script, along with making and installing stderred
