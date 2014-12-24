@@ -68,5 +68,5 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-export LD_PRELOAD="/usr/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
+export LD_PRELOAD="~/.stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 export LS_COLORS='ow=01;30;42'
