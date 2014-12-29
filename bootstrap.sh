@@ -25,7 +25,7 @@ function doIt() {
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
 		--exclude "README.md" --exclude "notes.md" -av --no-perms . ~
 
-	git-update https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins
+	git-update https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	git-update https://github.com/gmarik/Vundle.vim.git                 ~/.vim/bundle/Vundle.vim
 	git-update https://github.com/sickill/stderred.git                  ~/.stderred
 	# Setup stderred
