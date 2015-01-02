@@ -23,6 +23,8 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-commentary'
 " Move around quickly
 Plugin 'Lokaltog/vim-easymotion'
+" Git integration
+Plugin 'tpope/vim-fugitive'
 
 " Color scheme stuff
 " A big pack of color schemes
@@ -55,6 +57,10 @@ colorscheme molokai
 "hi SpecialKey ctermfg=7 guifg=gray
 
 let g:airline_theme='tomorrow'
+
+" Don't show seperators
+" let g:airline_left_sep=''
+" let g:airline_right_sep=''
 
 "==========================================
 " REMAPPINGS
@@ -126,3 +132,4 @@ exec 'set softtabstop='.s:tabwidth
 
 set splitbelow  " Open new splits below and to the right
 set splitright
+
