@@ -49,6 +49,7 @@ let g:syntastic_javascript_checkers=['jshint']
 " There is a nice visualiser at http://bytefluent.com/vivify/
 
 set t_Co=256                 " Make sure terminal is in 256 color mode
+" colorscheme paintbox
 colorscheme molokai
 " colorscheme darkZ
 
@@ -59,8 +60,8 @@ colorscheme molokai
 let g:airline_theme='tomorrow'
 
 " Don't show seperators
-" let g:airline_left_sep=''
-" let g:airline_right_sep=''
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 "==========================================
 " REMAPPINGS
@@ -127,6 +128,8 @@ exec 'set tabstop='    .s:tabwidth
 exec 'set shiftwidth=' .s:tabwidth
 exec 'set softtabstop='.s:tabwidth
 
+" Have a hotkey we can use if we want to paste data in without it auto-indenting
+set pastetoggle=<F10>
 
 " SPLITS
 
