@@ -111,8 +111,15 @@ set number
 :set listchars=tab:▸\ ,eol:¬
 :set list
 
+"==========================================
+" SEARCHING
+"==========================================
 " Highlight results as you search
 set incsearch
+" Highlight all search results
+set hlsearch
+" Remove highlighting if we're done with it
+nmap <C-n> :nohlsearch<CR>
 
 " TAB STUFF
 " To be honest I think myint/indent-finder overrides some of these anyway
