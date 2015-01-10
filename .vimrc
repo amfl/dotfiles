@@ -143,3 +143,5 @@ set pastetoggle=<F10>
 set splitbelow  " Open new splits below and to the right
 set splitright
 
+" Clipboard integration
+vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
