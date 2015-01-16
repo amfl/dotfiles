@@ -120,6 +120,12 @@ set incsearch
 set hlsearch
 " Remove highlighting if we're done with it
 nmap <C-n> :nohlsearch<CR>
+" Do a case sensitive search only if we search for something which features
+" uppercase letter
+set ignorecase  " Need this for smartcase to work
+set smartcase
+" Remember you can force case sensitivity by suffixing your search with \C
+" (Or force insensitivity with \c)
 
 " TAB STUFF
 " To be honest I think myint/indent-finder overrides some of these anyway
