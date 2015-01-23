@@ -122,6 +122,14 @@ let g:airline_right_sep=''
 " let g:airline_right_sep='◀'
 
 "==========================================
+" PROSE
+"==========================================
+" Spell check in files where it's appropriate
+autocmd BufNewFile,BufRead *.markdown,*.md,*.txt setlocal spell spelllang=en_us
+" .md files are markdown instead of Modula-2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+"==========================================
 " SEARCHING
 "==========================================
 " Highlight results as you search
@@ -187,3 +195,4 @@ set splitright
 
 " Clipboard integration
 vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
+
