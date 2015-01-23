@@ -69,6 +69,11 @@ nmap gj <C-w>j
 nmap gk <C-w>k
 nmap gl <C-w>l
 
+" Tabs
+noremap <C-\> gt
+noremap <C-]> gT
+noremap <C-t> :tabnew<CR>
+
 " PLUGIN REMAPS
 
 " Toggle hardmode
