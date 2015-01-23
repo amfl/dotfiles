@@ -28,6 +28,13 @@ Plugin 'tpope/vim-fugitive'
 " Disable basic navigation commands to become familiar with more advanced ones
 Plugin 'wikitopian/hardmode'
 
+" Code completion! Note that this has a compiled component.
+Plugin 'Valloric/YouCompleteMe'
+" Snippets - Engine
+Plugin 'SirVer/ultisnips'
+" Snippets - Actual snippits
+Plugin 'honza/vim-snippets'
+
 " Color scheme stuff
 " A big pack of color schemes
 Plugin 'flazz/vim-colorschemes'
@@ -76,6 +83,14 @@ nmap ge :NERDTreeToggle<CR>
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_javascript_checkers=['jshint']
 
+" SNIPPITS AND AUTOCOMPLETE CONFIG
+"==========================================
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 "==========================================
 " COLORS AND THEMES
 "==========================================
@@ -97,6 +112,9 @@ let g:airline_theme='tomorrow'
 " Don't show seperators
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+" Show seperators with standard left/right arrow chars
+" let g:airline_left_sep='▶'
+" let g:airline_right_sep='◀'
 
 "==========================================
 " SEARCHING
