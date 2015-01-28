@@ -1,3 +1,5 @@
+#NOP A better command you can use to connect to a MU* which will automatically
+#NOP log to a sensibly named file
 #alias {loggedsession}
 {
 	#ses %1 %2 %3;
@@ -5,7 +7,14 @@
 	#showme Logging session %2:%3 to $logfile;
 	#log append $logfile;
 }
-#alias /me pose %0
-#config {VERBATIM} {ON}
-#macro {\e[11~} { #showme This will execute on F1!; }
 
+#NOP IRC style poses
+#alias /me pose %0
+
+#NOP Stops semicolons from being interpreted as new commands in tintin++
+#config {VERBATIM} {ON}
+
+#NOP Example hotkey config
+##macro {\e[11~} { #showme This will execute on F1!; }
+
+#read .tin-private
