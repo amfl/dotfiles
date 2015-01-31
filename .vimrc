@@ -21,6 +21,8 @@ Plugin 'myint/indent-finder'
 Plugin 'bling/vim-airline'
 " Allow commenting blocks of code
 Plugin 'tpope/vim-commentary'
+" For manipulating surrounding text
+Plugin 'tpope/vim-surround'
 " Move around quickly
 Plugin 'Lokaltog/vim-easymotion'
 " Git integration
