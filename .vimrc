@@ -1,4 +1,3 @@
-"<vundle>
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -10,6 +9,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 " Sublime-like fuzzy search
 Plugin 'kien/ctrlp.vim'
+" Toggle between source and headers
+Plugin 'vim-scripts/a.vim'
 " Directory listing enhancer
 " tpope/vim-vinegar
 " Static code analysis
@@ -56,6 +57,7 @@ filetype plugin indent on    " required
 
 " Remap leader to something easier to press
 let mapleader = ","
+map <space> <leader>
 
 " Use jk/kj to exit insertion mode (Writing this line was fun!) 
 inoremap jk <ESC>
@@ -78,8 +80,10 @@ noremap <C-t> :tabnew<CR>
 
 " PLUGIN REMAPS
 
+" Switch between source and header
+noremap <leader>h :A!<CR>
 " Toggle hardmode
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
 " Open file browser
 nmap ge :NERDTreeToggle<CR>
 
@@ -90,6 +94,7 @@ nmap ge :NERDTreeToggle<CR>
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_javascript_checkers=['jshint']
 
+"==========================================
 " SNIPPITS AND AUTOCOMPLETE CONFIG
 "==========================================
 
@@ -127,7 +132,7 @@ let g:airline_right_sep=''
 " PROSE
 "==========================================
 " Spell check in files where it's appropriate
-autocmd BufNewFile,BufRead *.markdown,*.md,*.txt setlocal spell spelllang=en_us
+autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell spelllang=en_us
 " .md files are markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -198,3 +203,5 @@ set splitright
 " Clipboard integration
 vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
 
+" Show the commands which are going on right now so we don't get lost
+set showcmd
