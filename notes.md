@@ -38,8 +38,14 @@ Ubuntu tl;dr
 	curl -sL https://deb.nodesource.com/setup | sudo bash -
 	sudo apt-get install -y nodejs
 
+Note that this CAN BREAK THINGS! Only do this is the defaults in apt don't work. I have had issues with nodejs not loading libraries properly.
+
 ## Install vundle
 
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-I should really build this into the bootstrap script, along with making and installing stderred
+(This is now in bootstrap.sh)
+
+## vsftpd
+
+vsftpd is happier when users have a valid shell. Adding `/bin/false` to `/etc/shells` will prevent login via ssh, but allow vsftpd to work.
