@@ -29,8 +29,8 @@ noremap k 10k
 noremap j 10j
 noremap h gT
 noremap l gt
-noremap H h
-noremap L l
+noremap H 10h
+noremap L 10l
 noremap v F
 
 " BMarks {{{1
