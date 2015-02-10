@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# Usage: runhack delay_time command
+#
+# For example
+#    runhack 5 echo hi
+# Will echo hi every 5 seconds forever.
+
+echo Repeat every $1 seconds: ${*:2}
+
+while true; do
+	${*:2}
+	sleep $1
+done
+
