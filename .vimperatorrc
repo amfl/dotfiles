@@ -46,7 +46,7 @@ bmark('Google'       , 'https://www.google.com/search?q=%s',              'g');
 bmark('Youtube'      , 'https://www.youtube.com/results?search_query=%s', 'y');
 bmark('DuckDuckGo'   , 'https://duckduckgo.com/%s',                       'd');
 bmark('Promo Bay'    , 'https://thepiratebay.se/search/%s/0/0/0',         't');
-bmark('Kickass'      , 'https://kickass.so/usearch/?q=%s',                'k');
+bmark('Kickass'      , 'https://kickass.to/usearch/?q=%s',                'k');
 EOM
 
 "source! "C:\\Users\\User\\_vimperatorrc.local"
