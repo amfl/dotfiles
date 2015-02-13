@@ -78,6 +78,11 @@ noremap <C-\> gt
 noremap <C-]> gT
 noremap <C-t> :tabnew<CR>
 
+" Remap some commonly used commands to leader key for speed
+nnoremap <leader>w :w<CR>
+nnoremap <leader>e :e 
+nnoremap <leader>q :q<CR>
+
 " PLUGIN REMAPS
 
 " Switch between source and header
