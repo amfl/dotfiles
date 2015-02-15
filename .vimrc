@@ -71,7 +71,7 @@ filetype plugin indent on    " required
 let mapleader = ","
 map <space> <leader>
 
-" Use jk/kj to exit insertion mode (Writing this line was fun!) 
+" Use jk/kj to exit insertion mode (Writing this line was fun!)
 inoremap jk <ESC>
 inoremap kj <ESC>
 
@@ -161,7 +161,7 @@ set incsearch
 " Highlight all search results
 set hlsearch
 " Remove highlighting if we're done with it
-nmap <C-n> :nohlsearch<CR>
+nmap <C-n> :nohl<CR>
 " Do a case sensitive search only if we search for something which features
 " uppercase letter
 set ignorecase  " Need this for smartcase to work
