@@ -71,3 +71,9 @@ export EDITOR='vim'
 
 export LD_PRELOAD="~/.stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 export LS_COLORS='ow=01;30;42'
+
+# Enable mass, easy renaming... Why isn't this a default
+# http://www.mfasold.net/blog/2008/11/moving-or-renaming-multiple-files/
+autoload -U zmv
+alias mmv='noglob zmv -W'
+
