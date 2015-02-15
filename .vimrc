@@ -1,6 +1,14 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" Include local configs
+if filereadable(glob("~/.vimrc.local"))
+	source ~/.vimrc.local
+endif
+
+"==========================================
+" VUNDLE SETUP
+"==========================================
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -13,8 +21,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
 " Directory listing enhancer
 " tpope/vim-vinegar
-" Static code analysis
-Plugin 'scrooloose/syntastic'
 " Sets tab settings based on current file
 Plugin 'myint/indent-finder'
 " Powerline!
@@ -30,9 +36,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-fugitive'
 " Disable basic navigation commands to become familiar with more advanced ones
 Plugin 'wikitopian/hardmode'
-
-" Code completion! Note that this has a compiled component.
-Plugin 'Valloric/YouCompleteMe'
 " Snippets - Engine
 Plugin 'SirVer/ultisnips'
 " Snippets - Actual snippits
@@ -44,9 +47,18 @@ Plugin 'flazz/vim-colorschemes'
 " Automatically convert gvim true color themes into 256 color terminal approximations
 Plugin 'godlygeek/csapprox'
 
+" Additional plugins which are only for big crunchy machines.
+" The g:heavyweight variable can be set in .vimrc.local to enable.
+" (See the top of this file)
+if exists("g:heavyweight")
+	" Code completion! Note that this has a compiled component.
+	Plugin 'Valloric/YouCompleteMe'
+	" Static code analysis
+	Plugin 'scrooloose/syntastic'
+endif
+
 call vundle#end()            " required
 filetype plugin indent on    " required
-"</vundle>
 
 "==========================================
 " REMAPPINGS
