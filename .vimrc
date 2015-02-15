@@ -152,6 +152,10 @@ let g:airline_right_sep=''
 autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell spelllang=en_us
 " .md files are markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" Toggle spellcheck
+map <leader>ss :setlocal spell!<cr>
+" Add dictionary words to the autocomplete
+" set complete +=kspell
 
 "==========================================
 " SEARCHING
