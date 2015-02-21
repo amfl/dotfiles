@@ -122,7 +122,7 @@ let g:syntastic_javascript_checkers=['jshint']
 " SNIPPITS AND AUTOCOMPLETE CONFIG
 "==========================================
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. Do not use <tab> if you use Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -134,22 +134,15 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 set t_Co=256                 " Make sure terminal is in 256 color mode
 set background=dark
-" colorscheme paintbox
-" colorscheme muon         " This is nice for markdown
+
 " colorscheme molokai
-" colorscheme darkZ
 colorscheme gruvbox
 let g:gruvbox_guisp_as_guifg=1
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=0
 
 syntax on                    " Enable syntax highlighting
-
-hi Normal ctermbg=0
-hi SpellBad    ctermfg=167
-hi SpellLocal  ctermfg=109
-hi SpellRare   ctermfg=175
-hi SpellCap    ctermfg=142
+hi Normal ctermbg=0          " Nice dark background
 
 " Color listchar stuff
 " hi NonText ctermfg=7 guifg=gray        " ¬ character at EOL
@@ -172,36 +165,47 @@ au Syntax * RainbowParenthesesLoadBraces
 "==========================================
 " PROSE
 "==========================================
+
+function ProseEnable()
+	setlocal spell spelllang=en_us
+	colorscheme last256
+	syntax on
+	" hi Normal ctermfg=lightgrey
+endfunction
+
 " .md files are markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" Spell check in files where it's appropriate
-autocmd FileType markdown setlocal spell spelllang=en_us
-autocmd FileType markdown hi Normal ctermfg=lightgrey
+" These filetypes will be treated as prose
+autocmd FileType markdown call ProseEnable()
 
-" Toggle spellcheck
-map <leader>ss :setlocal spell!<cr>
+map <leader>ss :setlocal spell!<cr>   " Toggle spellcheck
+" Custom spellcheck colors
+" hi SpellBad    ctermfg=167
+" hi SpellLocal  ctermfg=109
+" hi SpellRare   ctermfg=175
+" hi SpellCap    ctermfg=142
+
 " Add dictionary words to the autocomplete
 " set complete +=kspell
 
 "==========================================
 " SEARCHING
 "==========================================
-" Highlight results as you search
-set incsearch
-" Highlight all search results
-set hlsearch
-" Remove highlighting if we're done with it
-nmap <C-n> :nohl<CR>
-" Do a case sensitive search only if we search for something which features
-" uppercase letter
+
+set incsearch            " Highlight results as we search
+set hlsearch             " Highlight all search results
+
+nmap <C-n> :nohl<CR>     " Remove highlighting when we're done
+
+" Case insensitive unless we type caps
+" (Force sensitivity by suffixing with \C if neccesary)
 set ignorecase  " Need this for smartcase to work
 set smartcase
-" Remember you can force case sensitivity by suffixing your search with \C
-" (Or force insensitivity with \c)
 
 "==========================================
 " TAB STUFF
 "==========================================
+
 " To be honest I think myint/indent-finder overrides some of these anyway
 " It's all a bit of a mystery.
 " Nice explanation: http://vimcasts.org/episodes/tabs-and-spaces/
@@ -219,36 +223,24 @@ exec 'set softtabstop='.s:tabwidth
 " MISC
 "==========================================
 
-" Do autocomplete
-set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete   " Do autocomplete
 set encoding=utf-8
-
-" Always show the status bar. Suggested the powerline plugin.
-set laststatus=2
-
-" Disable showing which mode we're in, we have plugins for that.
-set noshowmode
-
-" Mouse support
+set laststatus=2    " Always show the status bar (airline!)
+set noshowmode      " airline shows mode so vim doesn't need to
+set number          " Show line numbers
+set mouse=a         " Mouse support
 " http://vim.wikia.com/wiki/Using_the_mouse_for_Vim_in_an_xterm
-set mouse=a
 
-" Show line numbers
-set number
+:set listchars=tab:▸\ ,eol:¬  " These chars are for tab/newline...
+:set list                     " ...Please show them
 
-" Explicitly show indents and newlines
-:set listchars=tab:▸\ ,eol:¬
-:set list
+set pastetoggle=<F10>         " Hotkey to paste without auto-indent problems
 
-" Have a hotkey we can use if we want to paste data in without it auto-indenting
-set pastetoggle=<F10>
-
-" Open new splits below and to the right
-set splitbelow
+set splitbelow      " Open new splits below and to the right
 set splitright
 
-" Clipboard integration
+" Remote system clipboard integration
 vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
 
-" Show the commands which are going on right now so we don't get lost
-set showcmd
+set showcmd         " Show currently happening commands so we don't get lost
+
