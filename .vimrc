@@ -51,8 +51,6 @@ Plugin 'godlygeek/csapprox'
 Plugin 'vim-scripts/ScrollColors'
 " RAINBOW PARENS!
 Plugin 'kien/rainbow_parentheses.vim'
-" My custom gruvbox
-Plugin 'amfl/gruvbox-edits'
 
 " Additional plugins which are only for big crunchy machines.
 " The g:heavyweight variable can be set in .vimrc.local to enable.
@@ -140,7 +138,7 @@ set background=dark
 " colorscheme muon         " This is nice for markdown
 " colorscheme molokai
 " colorscheme darkZ
-colorscheme gruvbox-edits
+colorscheme gruvbox
 let g:gruvbox_guisp_as_guifg=1
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=0
