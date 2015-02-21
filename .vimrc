@@ -145,6 +145,12 @@ let g:gruvbox_italicize_comments=0
 
 syntax on                    " Enable syntax highlighting
 
+hi Normal ctermbg=0
+hi SpellBad    ctermfg=167
+hi SpellLocal  ctermfg=109
+hi SpellRare   ctermfg=175
+hi SpellCap    ctermfg=142
+
 " Color listchar stuff
 " hi NonText ctermfg=7 guifg=gray        " ¬ character at EOL
 " hi SpecialKey ctermfg=7 guifg=gray     " ▸ character at indent
@@ -166,10 +172,12 @@ au Syntax * RainbowParenthesesLoadBraces
 "==========================================
 " PROSE
 "==========================================
-" Spell check in files where it's appropriate
-autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell spelllang=en_us
 " .md files are markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" Spell check in files where it's appropriate
+autocmd FileType markdown setlocal spell spelllang=en_us
+autocmd FileType markdown hi Normal ctermfg=lightgrey
+
 " Toggle spellcheck
 map <leader>ss :setlocal spell!<cr>
 " Add dictionary words to the autocomplete
