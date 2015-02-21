@@ -46,6 +46,11 @@ Plugin 'honza/vim-snippets'
 Plugin 'flazz/vim-colorschemes'
 " Automatically convert gvim true color themes into 256 color terminal approximations
 Plugin 'godlygeek/csapprox'
+" Colorscheme explorer so we can see what we have available
+" Type :SCROLL to scroll through colorschemes with left/right arrows.
+Plugin 'vim-scripts/ScrollColors'
+" My custom gruvbox
+Plugin 'amfl/gruvbox-edits'
 
 " Additional plugins which are only for big crunchy machines.
 " The g:heavyweight variable can be set in .vimrc.local to enable.
@@ -126,15 +131,21 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " There is a nice visualiser at http://bytefluent.com/vivify/
 
 set t_Co=256                 " Make sure terminal is in 256 color mode
+set background=dark
 " colorscheme paintbox
-colorscheme molokai
+" colorscheme muon         " This is nice for markdown
+" colorscheme molokai
 " colorscheme darkZ
+colorscheme gruvbox-edits
+let g:gruvbox_guisp_as_guifg=1
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_comments=0
 
 syntax on                    " Enable syntax highlighting
 
 " Color listchar stuff
-"hi NonText ctermfg=7 guifg=gray
-"hi SpecialKey ctermfg=7 guifg=gray
+" hi NonText ctermfg=7 guifg=gray        " ¬ character at EOL
+" hi SpecialKey ctermfg=7 guifg=gray     " ▸ character at indent
 
 let g:airline_theme='tomorrow'
 
