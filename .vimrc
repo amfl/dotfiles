@@ -49,6 +49,8 @@ Plugin 'godlygeek/csapprox'
 " Colorscheme explorer so we can see what we have available
 " Type :SCROLL to scroll through colorschemes with left/right arrows.
 Plugin 'vim-scripts/ScrollColors'
+" RAINBOW PARENS!
+Plugin 'kien/rainbow_parentheses.vim'
 " My custom gruvbox
 Plugin 'amfl/gruvbox-edits'
 
@@ -109,6 +111,8 @@ nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
 " Open file browser
 nmap ge :NERDTreeToggle<CR>
 
+nnoremap <leader>r ::RainbowParenthesesToggle<CR>
+
 "==========================================
 " SYNTASTIC CONFIG
 "==========================================
@@ -155,6 +159,11 @@ let g:airline_right_sep=''
 " Show seperators with standard left/right arrow chars
 " let g:airline_left_sep='▶'
 " let g:airline_right_sep='◀'
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 "==========================================
 " PROSE
