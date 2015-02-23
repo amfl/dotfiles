@@ -133,8 +133,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " .md files are markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" " These filetypes will be treated as prose
-" autocmd FileType markdown call ProseEnable()
 
 map <leader>ss :setlocal spell!<cr>   " Toggle spellcheck
 " Custom spellcheck colors
@@ -154,29 +152,41 @@ map <leader>ss :setlocal spell!<cr>   " Toggle spellcheck
 set t_Co=256                 " Make sure terminal is in 256 color mode
 set background=dark
 
-function EnableThemeProse()
-	setlocal spell spelllang=en_us
-	colorscheme last256
-	syntax on
-	" hi Normal ctermfg=lightgrey
+let g:current_theme = "none"
+function SetTheme(theme)
+	if (a:theme == g:current_theme)
+		" No action needs to be taken.
+		return
+	endif
+
+	if (a:theme == "default")
+		" colorscheme molokai
+		colorscheme gruvbox
+		let g:gruvbox_guisp_as_guifg=1
+		let g:gruvbox_italic=1
+		let g:gruvbox_italicize_comments=0
+
+		syntax on                    " Enable syntax highlighting
+		hi Normal ctermbg=0          " Nice dark background
+
+		RainbowParenthesesActivate
+		RainbowParenthesesLoadRound
+		RainbowParenthesesLoadSquare
+		RainbowParenthesesLoadBraces
+	elseif (a:theme == "prose")
+		setlocal spell spelllang=en_us
+		colorscheme last256
+		syntax on
+		" hi Normal ctermfg=lightgrey
+	endif
+
+	let g:current_theme = a:theme
 endfunction
 
-function EnableThemeDefault()
-	" colorscheme molokai
-	colorscheme gruvbox
-	let g:gruvbox_guisp_as_guifg=1
-	let g:gruvbox_italic=1
-	let g:gruvbox_italicize_comments=0
-
-	syntax on                    " Enable syntax highlighting
-	hi Normal ctermbg=0          " Nice dark background
-endfunction
-
-" :autocmd BufEnter,FileType *
-" 	\   if &ft ==# 'markdown' | call EnableThemeProse() |
-" 	\   else | call EnableThemeDefault() |
-" 	\   endif
-call EnableThemeDefault()
+:autocmd BufEnter,FileType *
+	\   if &ft ==# 'markdown' | call SetTheme("prose") |
+	\   else | call SetTheme("default") |
+	\   endif
 
 " Color listchar stuff
 " hi NonText ctermfg=7 guifg=gray        " ¬ character at EOL
@@ -190,12 +200,6 @@ let g:airline_right_sep=''
 " Show seperators with standard left/right arrow chars
 " let g:airline_left_sep='▶'
 " let g:airline_right_sep='◀'
-
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
 
 "==========================================
 " SEARCHING
