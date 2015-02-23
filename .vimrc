@@ -40,6 +40,8 @@ Plugin 'wikitopian/hardmode'
 Plugin 'SirVer/ultisnips'
 " Snippets - Actual snippits
 Plugin 'honza/vim-snippets'
+" Grammar check.
+Plugin 'vim-scripts/LanguageTool'
 
 " Color scheme stuff
 " A big pack of color schemes
@@ -134,7 +136,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " .md files are markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-map <leader>ss :setlocal spell!<cr>   " Toggle spellcheck
+map <leader>ss :setlocal spell!<CR>   " Toggle spellcheck
+
+" Grammar checking
+map <leader>g :LanguageToolCheck<CR>
+let g:languagetool_jar = "~/bin/languagetool-commandline.jar"
+
 " Custom spellcheck colors
 " hi SpellBad    ctermfg=167
 " hi SpellLocal  ctermfg=109
