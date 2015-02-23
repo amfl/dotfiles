@@ -128,6 +128,25 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "==========================================
+" PROSE
+"==========================================
+
+" .md files are markdown instead of Modula-2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" " These filetypes will be treated as prose
+" autocmd FileType markdown call ProseEnable()
+
+map <leader>ss :setlocal spell!<cr>   " Toggle spellcheck
+" Custom spellcheck colors
+" hi SpellBad    ctermfg=167
+" hi SpellLocal  ctermfg=109
+" hi SpellRare   ctermfg=175
+" hi SpellCap    ctermfg=142
+
+" Add dictionary words to the autocomplete
+" set complete +=kspell
+
+"==========================================
 " COLORS AND THEMES
 "==========================================
 " There is a nice visualiser at http://bytefluent.com/vivify/
@@ -135,14 +154,29 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 set t_Co=256                 " Make sure terminal is in 256 color mode
 set background=dark
 
-" colorscheme molokai
-colorscheme gruvbox
-let g:gruvbox_guisp_as_guifg=1
-let g:gruvbox_italic=1
-let g:gruvbox_italicize_comments=0
+function EnableThemeProse()
+	setlocal spell spelllang=en_us
+	colorscheme last256
+	syntax on
+	" hi Normal ctermfg=lightgrey
+endfunction
 
-syntax on                    " Enable syntax highlighting
-hi Normal ctermbg=0          " Nice dark background
+function EnableThemeDefault()
+	" colorscheme molokai
+	colorscheme gruvbox
+	let g:gruvbox_guisp_as_guifg=1
+	let g:gruvbox_italic=1
+	let g:gruvbox_italicize_comments=0
+
+	syntax on                    " Enable syntax highlighting
+	hi Normal ctermbg=0          " Nice dark background
+endfunction
+
+" :autocmd BufEnter,FileType *
+" 	\   if &ft ==# 'markdown' | call EnableThemeProse() |
+" 	\   else | call EnableThemeDefault() |
+" 	\   endif
+call EnableThemeDefault()
 
 " Color listchar stuff
 " hi NonText ctermfg=7 guifg=gray        " ¬ character at EOL
@@ -162,31 +196,6 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-"==========================================
-" PROSE
-"==========================================
-
-function ProseEnable()
-	setlocal spell spelllang=en_us
-	colorscheme last256
-	syntax on
-	" hi Normal ctermfg=lightgrey
-endfunction
-
-" .md files are markdown instead of Modula-2
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" These filetypes will be treated as prose
-autocmd FileType markdown call ProseEnable()
-
-map <leader>ss :setlocal spell!<cr>   " Toggle spellcheck
-" Custom spellcheck colors
-" hi SpellBad    ctermfg=167
-" hi SpellLocal  ctermfg=109
-" hi SpellRare   ctermfg=175
-" hi SpellCap    ctermfg=142
-
-" Add dictionary words to the autocomplete
-" set complete +=kspell
 
 "==========================================
 " SEARCHING
