@@ -42,6 +42,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 " Grammar check.
 Plugin 'vim-scripts/LanguageTool'
+" CamelCase movements
+Plugin 'bkad/CamelCaseMotion'
 
 " Color scheme stuff
 " A big pack of color schemes
@@ -102,6 +104,10 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>e :e 
 nnoremap <leader>q :q<CR>
 
+" Quicksave sessions
+map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
+map <F3> :source ~/.vim_session <cr>     " And load session with F3
+
 " PLUGIN REMAPS
 
 " Switch between source and header
@@ -110,6 +116,14 @@ noremap <leader>h :A!<CR>
 nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
 " Open file browser
 nmap ge :NERDTreeToggle<CR>
+
+" CamelCase by default
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+sunmap w
+sunmap b
+sunmap e
 
 nnoremap <leader>r ::RainbowParenthesesToggle<CR>
 
