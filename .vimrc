@@ -13,6 +13,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+" Sensible defaults
+Plugin 'tpope/vim-sensible'
 " Workspace explorer
 Plugin 'scrooloose/nerdtree'
 " Sublime-like fuzzy search
@@ -234,10 +236,7 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 " SEARCHING
 "==========================================
 
-set incsearch            " Highlight results as we search
 set hlsearch             " Highlight all search results
-
-nmap <C-n> :nohl<CR>     " Remove highlighting when we're done
 
 " Case insensitive unless we type caps
 " (Force sensitivity by suffixing with \C if neccesary)
@@ -254,7 +253,6 @@ set smartcase
 set noexpandtab " Always use real tabs
 set shiftround  " Round indent to multiple of 'shiftwidth'
 set smartindent " Do smart indenting when starting a new line
-set autoindent  " Copy indent from current line, over to the new line
 " Set the tab width
 let s:tabwidth=4                     " This is just a variable we make
 exec 'set tabstop='    .s:tabwidth
@@ -270,12 +268,11 @@ set encoding=utf-8
 set laststatus=2       " Always show the status bar (airline!)
 set noshowmode         " airline shows mode so vim doesn't need to
 set number             " Show line numbers
-set showcmd            " Show currently happening commands so we don't get lost
 set foldmethod=marker  " Fold on markers in source
 set mouse=a            " Mouse support
 " http://vim.wikia.com/wiki/Using_the_mouse_for_Vim_in_an_xterm
 
-:set listchars=tab:▸\ ,eol:¬  " These chars are for tab/newline...
+:set listchars=tab:▸\ ,eol:¬,trail:-,extends:>,precedes:<,nbsp:+  " Special characters...
 :set list                     " ...Please show them
 
 set splitbelow         " Open new splits below and to the right
