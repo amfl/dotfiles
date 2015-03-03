@@ -40,6 +40,9 @@ Plugin 'wikitopian/hardmode'
 Plugin 'SirVer/ultisnips'
 " Snippets - Actual snippits
 Plugin 'honza/vim-snippets'
+" Swap two open windows without dorking up the layout
+" (<leader>ww in one window, then <leader>ww in another and they will swap)
+Plugin 'wesQ3/vim-windowswap'
 " Grammar check.
 Plugin 'vim-scripts/LanguageTool'
 " CamelCase movements
@@ -124,6 +127,8 @@ nmap ge :NERDTreeToggle<CR>
 
 nnoremap <leader>r ::RainbowParentheses!!<CR>
 
+set pastetoggle=<F10>  " Hotkey to paste without auto-indent problems
+
 "==========================================
 " SYNTASTIC CONFIG
 "==========================================
@@ -188,7 +193,10 @@ function SetTheme(theme)
 		
 		" Copy RainbowParentheses config from previous forks
 		if exists('g:rbpt_colorpairs')
-			let g:rainbow#colors = { 'dark': g:rbpt_colorpairs, 'light': g:rbpt_colorpairs }
+			let g:rainbow#colors = {
+			\ 'dark': g:rbpt_colorpairs,
+			\ 'light': g:rbpt_colorpairs
+			\ }
 		endif
 		RainbowParentheses
 	elseif (a:theme == "prose")
@@ -259,22 +267,20 @@ exec 'set softtabstop='.s:tabwidth
 
 set omnifunc=syntaxcomplete#Complete   " Do autocomplete
 set encoding=utf-8
-set laststatus=2    " Always show the status bar (airline!)
-set noshowmode      " airline shows mode so vim doesn't need to
-set number          " Show line numbers
-set mouse=a         " Mouse support
+set laststatus=2       " Always show the status bar (airline!)
+set noshowmode         " airline shows mode so vim doesn't need to
+set number             " Show line numbers
+set showcmd            " Show currently happening commands so we don't get lost
+set foldmethod=marker  " Fold on markers in source
+set mouse=a            " Mouse support
 " http://vim.wikia.com/wiki/Using_the_mouse_for_Vim_in_an_xterm
 
 :set listchars=tab:▸\ ,eol:¬  " These chars are for tab/newline...
 :set list                     " ...Please show them
 
-set pastetoggle=<F10>         " Hotkey to paste without auto-indent problems
-
-set splitbelow      " Open new splits below and to the right
+set splitbelow         " Open new splits below and to the right
 set splitright
 
 " Remote system clipboard integration
 vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
-
-set showcmd         " Show currently happening commands so we don't get lost
 
