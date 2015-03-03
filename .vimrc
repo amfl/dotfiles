@@ -43,7 +43,7 @@ Plugin 'honza/vim-snippets'
 " Grammar check.
 Plugin 'vim-scripts/LanguageTool'
 " CamelCase movements
-Plugin 'bkad/CamelCaseMotion'
+" Plugin 'bkad/CamelCaseMotion'
 
 " Color scheme stuff
 " A big pack of color schemes
@@ -54,7 +54,7 @@ Plugin 'godlygeek/csapprox'
 " Type :SCROLL to scroll through colorschemes with left/right arrows.
 Plugin 'vim-scripts/ScrollColors'
 " RAINBOW PARENS!
-Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'junegunn/rainbow_parentheses.vim'
 
 " Additional plugins which are only for big crunchy machines.
 " The g:heavyweight variable can be set in .vimrc.local to enable.
@@ -117,15 +117,12 @@ nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
 " Open file browser
 nmap ge :NERDTreeToggle<CR>
 
-" CamelCase by default
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-sunmap w
-sunmap b
-sunmap e
+" CamelCase mappings
+" nmap <leader>cw <Plug>CamelCaseMotion_w
+" nmap <leader>cb <Plug>CamelCaseMotion_b
+" nmap <leader>ce <Plug>CamelCaseMotion_e
 
-nnoremap <leader>r ::RainbowParenthesesToggle<CR>
+nnoremap <leader>r ::RainbowParentheses!!<CR>
 
 "==========================================
 " SYNTASTIC CONFIG
@@ -179,7 +176,6 @@ function SetTheme(theme)
 		" No action needs to be taken.
 		return
 	endif
-
 	if (a:theme == "default")
 		" colorscheme molokai
 		colorscheme gruvbox
@@ -189,11 +185,12 @@ function SetTheme(theme)
 
 		syntax on                    " Enable syntax highlighting
 		hi Normal ctermbg=0          " Nice dark background
-
-		RainbowParenthesesActivate
-		RainbowParenthesesLoadRound
-		RainbowParenthesesLoadSquare
-		RainbowParenthesesLoadBraces
+		
+		" Copy RainbowParentheses config from previous forks
+		if exists('g:rbpt_colorpairs')
+			let g:rainbow#colors = { 'dark': g:rbpt_colorpairs, 'light': g:rbpt_colorpairs }
+		endif
+		RainbowParentheses
 	elseif (a:theme == "prose")
 		setlocal spell spelllang=en_us
 		colorscheme last256
@@ -213,7 +210,7 @@ endfunction
 " hi NonText ctermfg=7 guifg=gray        " ¬ character at EOL
 " hi SpecialKey ctermfg=7 guifg=gray     " ▸ character at indent
 
-let g:airline_theme='tomorrow'
+" let g:airline_theme='tomorrow'
 
 " Don't show seperators
 let g:airline_left_sep=''
@@ -221,6 +218,9 @@ let g:airline_right_sep=''
 " Show seperators with standard left/right arrow chars
 " let g:airline_left_sep='▶'
 " let g:airline_right_sep='◀'
+
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 "==========================================
 " SEARCHING
