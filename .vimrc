@@ -47,6 +47,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'wesQ3/vim-windowswap'
 " Grammar check.
 Plugin 'vim-scripts/LanguageTool'
+" LaTeX stuff.
+Plugin 'gerw/vim-latex-suite'
 " CamelCase movements
 " Plugin 'bkad/CamelCaseMotion'
 
