@@ -49,3 +49,27 @@ Note that this CAN BREAK THINGS! Only do this is the defaults in apt don't work.
 ## vsftpd
 
 vsftpd is happier when users have a valid shell. Adding `/bin/false` to `/etc/shells` will prevent login via ssh, but allow vsftpd to work.
+
+## Git
+
+### Push huge commits
+
+https sometimes has issues with massive commits. Use ssh protocol instead. First make a key
+
+    ssh-keygen -t rsa -C "$your_email"
+
+Then upload the public key at `~/.ssh/id_rsa.pub` to remote repo.
+
+Works over ssh
+
+    git@git.domain.com:group/project.git
+
+To use a non-standard port, we need to explicitly specify ssh protocol:
+
+    ssh://git@git.domain.com:766/group/project.git
+
+If absolutely hugenormous, we can use `trickle` to limit bandwidth so we don't choke the rest of the system
+
+    trickle -s -u 20 git push -u origin master
+
+Will run trickle in standalone mode and limit to 20KB/s.
