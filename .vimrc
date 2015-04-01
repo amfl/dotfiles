@@ -51,6 +51,10 @@ Plugin 'vim-scripts/LanguageTool'
 Plugin 'gerw/vim-latex-suite'
 " CamelCase movements
 " Plugin 'bkad/CamelCaseMotion'
+" Shift code around easily. Also required for vim-markdown.
+Plugin 'godlygeek/tabular'
+" Syntax highlighting, matching rules and mappings for Markdown.
+Plugin 'plasticboy/vim-markdown'
 
 " Color scheme stuff
 " A big pack of color schemes
@@ -123,6 +127,8 @@ noremap <leader>h :A!<CR>
 nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
 " Open file browser
 nmap ge :NERDTreeToggle<CR>
+" Tabularize
+nmap <leader>t :Tabularize /
 
 " CamelCase mappings
 " nmap <leader>cw <Plug>CamelCaseMotion_w
