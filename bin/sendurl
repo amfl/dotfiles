@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Need to add delay with -q when reverse tunneling due to MYSTERY REASONS
+echo "{ \"action\": \"link\", \"args\": \"$1\" }" | nc -q 2 -w 2 localhost 50517
