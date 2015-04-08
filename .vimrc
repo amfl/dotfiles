@@ -137,7 +137,8 @@ nmap <leader>t :Tabularize /
 
 nnoremap <leader>r ::RainbowParentheses!!<CR>
 
-set pastetoggle=<F10>  " Hotkey to paste without auto-indent problems
+" Paste without auto-indent problems
+nnoremap <leader>p :set invpaste paste?<CR>
 
 "==========================================
 " SYNTASTIC CONFIG
