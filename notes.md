@@ -29,18 +29,13 @@ to
 
 ## Installing node/npm
 
-Because I always forget how, and the ones on apt are crap.
+Install nvm! Detailed here: https://github.com/creationix/nvm
 
-Detailed here: https://github.com/joyent/node/wiki/installing-node.js-via-package-manager
+	wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
+	nvm install 0.10
+	nvm use 0.10
 
-Ubuntu tl;dr
-
-	curl -sL https://deb.nodesource.com/setup | sudo bash -
-	sudo apt-get install -y nodejs
-
-Note that this CAN BREAK THINGS! Only do this is the defaults in apt don't work. I have had issues with nodejs not loading libraries properly.
-
-## Install vundle
+## Installing vundle
 
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
