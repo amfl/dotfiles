@@ -119,6 +119,11 @@ nnoremap <leader>q :q<CR>
 map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
 map <F3> :source ~/.vim_session <cr>     " And load session with F3
 
+" Dump timestamp
+let tzformat = "%Y.%m.%d"
+:nnoremap <F5> "=strftime(g:tzformat)<CR>P
+:inoremap <F5> <C-R>=strftime(g:tzformat)<CR>
+
 " PLUGIN REMAPS
 
 " Switch between source and header
