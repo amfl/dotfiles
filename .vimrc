@@ -273,6 +273,11 @@ exec 'set tabstop='    .s:tabwidth
 exec 'set shiftwidth=' .s:tabwidth
 exec 'set softtabstop='.s:tabwidth
 
+if exists("&breakindent")
+	" Keep correct indent on wrapped lines
+	set breakindent
+endif
+
 "==========================================
 " MISC
 "==========================================
