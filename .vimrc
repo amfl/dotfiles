@@ -4,7 +4,8 @@
 
 " Preamble ---------------------------------------------------------------- {{{
 
-" Much of this file has been inspired by the following sources:
+" Much of this file has been inspired by (Read: Outright stolen from)
+" the following sources:
 "   http://danielmiessler.com/study/vim/
 "   http://statico.github.io/vim.html
 "   http://bitbucket.org/sjl/dotfiles/src/tip/vim/
@@ -15,6 +16,36 @@ set nocompatible
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
+
+" }}}
+" General Settings -------------------------------------------------------- {{{
+
+set omnifunc=syntaxcomplete#Complete   " Do autocomplete
+set encoding=utf-8
+set laststatus=2       " Always show the status bar (airline!)
+set noshowmode         " airline shows mode so vim doesn't need to
+set number             " Show line numbers
+set cursorline         " Highlight the line the cursor is on.
+
+set mouse=a            " Mouse support in all modes
+if &term =~ '^screen'
+	" tmux knows the extended mouse mode
+	set ttymouse=xterm2
+endif
+
+" Special characters
+set showbreak=»
+set listchars=tab:▸\ ,eol:¬,trail:-,extends:>,precedes:<,nbsp:+  " Special characters...
+set list                     " ...Please show them
+
+set splitbelow         " Open new splits below and to the right
+set splitright
+
+" Resize splits when the window is resized
+au VimResized * :wincmd =
+
+" Remote system clipboard integration
+vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
 
 " }}}
 " Plugin Setup ------------------------------------------------------------ {{{
@@ -42,9 +73,9 @@ Plug 'gerw/vim-latex-suite'     " LaTeX stuff.
 " Plug 'bkad/CamelCaseMotion'   " CamelCase movements
 Plug 'godlygeek/tabular'        " Shift code around easily. Also required for vim-markdown.
 Plug 'plasticboy/vim-markdown'  " Syntax highlighting, matching rules and mappings for Markdown.
+Plug 'vasconcelloslf/vim-interestingwords' " <leader>k to highlight words, <leader>K to clear.
 
 " COLORS AND THEMES
-
 Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
 Plug 'godlygeek/csapprox'               " Automatically convert gvim true color themes into 256 color terminal approximations
 Plug 'vim-scripts/ScrollColors'         " Colorscheme explorer so we can see what we have available
@@ -54,7 +85,6 @@ Plug 'junegunn/rainbow_parentheses.vim' " RAINBOW PARENS!
 " Additional plugins which are only for big crunchy machines.
 " The g:heavyweight variable can be set in .vimrc.local to enable.
 " (See the top of this file)
-
 if exists("g:heavyweight")
 	Plug 'Valloric/YouCompleteMe' " Code completion! Note that this has a compiled component.
 	Plug 'scrooloose/syntastic'   " Static code analysis
@@ -87,6 +117,21 @@ nmap gl <C-w>l
 noremap <C-\> gt
 noremap <C-]> gT
 noremap <C-t> :tabnew<CR>
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Easier to type, and I never use the default behavior.
+noremap H ^
+noremap L $
+vnoremap L g_
+
+" Bind c-a and c-e to behave as in shell in insert mode
+inoremap <c-a> <esc>I
+inoremap <c-e> <esc>A
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
 
 " Remap some commonly used commands to leader key for speed
 nnoremap <leader>w :w<CR>
@@ -257,24 +302,28 @@ if exists("&breakindent")
 endif
 
 " }}}
-" Miscellaneous ----------------------------------------------------------- {{{
+" Folding ----------------------------------------------------------------- {{{
 
-set omnifunc=syntaxcomplete#Complete   " Do autocomplete
-set encoding=utf-8
-set laststatus=2       " Always show the status bar (airline!)
-set noshowmode         " airline shows mode so vim doesn't need to
-set number             " Show line numbers
 set foldmethod=marker  " Fold on markers in source
-set mouse=a            " Mouse support
-" http://vim.wikia.com/wiki/Using_the_mouse_for_Vim_in_an_xterm
 
-set listchars=tab:▸\ ,eol:¬,trail:-,extends:>,precedes:<,nbsp:+  " Special characters...
-set list                     " ...Please show them
+" "Focus" the current line.
+nnoremap <leader>z zMzvzz
 
-set splitbelow         " Open new splits below and to the right
-set splitright
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
 
-" Remote system clipboard integration
-vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
 
 " }}}
