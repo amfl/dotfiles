@@ -1,91 +1,69 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" .vimrc
+" Author: amfl
+" Source: https://github.com/amfl/dotfiles/blob/master/.vimrc
 
-" Include local configs
+" Preamble ---------------------------------------------------------------- {{{
+
+" Much of this file has been inspired by the following sources:
+"   http://danielmiessler.com/study/vim/
+"   http://statico.github.io/vim.html
+"   http://bitbucket.org/sjl/dotfiles/src/tip/vim/
+
+set nocompatible
+
+" Each machine can have their own custom config.
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
 
-"==========================================
-" VUNDLE SETUP
-"==========================================
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" }}}
+" Plugin Setup ------------------------------------------------------------ {{{
 
-Plugin 'gmarik/Vundle.vim'
-" Sensible defaults
-Plugin 'tpope/vim-sensible'
-" Workspace explorer
-Plugin 'scrooloose/nerdtree'
-" Sublime-like fuzzy search
-Plugin 'kien/ctrlp.vim'
-" Toggle between source and headers
-Plugin 'vim-scripts/a.vim'
-" Directory listing enhancer
-" tpope/vim-vinegar
-" Sets tab settings based on current file
-Plugin 'myint/indent-finder'
-" Powerline!
-" Plugin 'Lokaltog/vim-powerline'
-Plugin 'bling/vim-airline'
-" Allow commenting blocks of code
-Plugin 'tpope/vim-commentary'
-" For manipulating surrounding text
-Plugin 'tpope/vim-surround'
-" Move around quickly
-Plugin 'Lokaltog/vim-easymotion'
-" Git integration
-Plugin 'tpope/vim-fugitive'
-" Disable basic navigation commands to become familiar with more advanced ones
-Plugin 'wikitopian/hardmode'
-" Snippets - Engine
-Plugin 'SirVer/ultisnips'
-" Snippets - Actual snippits
-Plugin 'honza/vim-snippets'
-" Swap two open windows without dorking up the layout
-" (<leader>ww in one window, then <leader>ww in another and they will swap)
-Plugin 'wesQ3/vim-windowswap'
-" Grammar check.
-Plugin 'vim-scripts/LanguageTool'
-" LaTeX stuff.
-Plugin 'gerw/vim-latex-suite'
-" CamelCase movements
-" Plugin 'bkad/CamelCaseMotion'
-" Shift code around easily. Also required for vim-markdown.
-Plugin 'godlygeek/tabular'
-" Syntax highlighting, matching rules and mappings for Markdown.
-Plugin 'plasticboy/vim-markdown'
+call plug#begin()
 
-" Color scheme stuff
-" A big pack of color schemes
-Plugin 'flazz/vim-colorschemes'
-" Automatically convert gvim true color themes into 256 color terminal approximations
-Plugin 'godlygeek/csapprox'
-" Colorscheme explorer so we can see what we have available
-" Type :SCROLL to scroll through colorschemes with left/right arrows.
-Plugin 'vim-scripts/ScrollColors'
-" RAINBOW PARENS!
-Plugin 'junegunn/rainbow_parentheses.vim'
+Plug 'tpope/vim-sensible'       " Sensible defaults.
+Plug 'scrooloose/nerdtree'      " Workspace explorer
+Plug 'kien/ctrlp.vim'           " Sublime-like fuzzy search
+Plug 'vim-scripts/a.vim'        " Toggle between source and headers
+" tpope/vim-vinegar             " Directory listing enhancer
+Plug 'myint/indent-finder'      " Sets tab settings based on current file
+Plug 'bling/vim-airline'        " Powerline!
+Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
+Plug 'tpope/vim-surround'       " For manipulating surrounding text
+Plug 'Lokaltog/vim-easymotion'  " Move around quickly
+Plug 'tpope/vim-fugitive'       " Git integration
+Plug 'wikitopian/hardmode'      " Disable basic navigation commands to become familiar with more advanced ones
+Plug 'SirVer/ultisnips'         " Snippets - Engine
+Plug 'honza/vim-snippets'       " Snippets - Actual snippits
+Plug 'wesQ3/vim-windowswap'     " Swap two open windows without dorking up the layout
+                                " (<leader>ww in one window, then <leader>ww in another and they will swap)
+Plug 'vim-scripts/LanguageTool' " Grammar check.
+Plug 'gerw/vim-latex-suite'     " LaTeX stuff.
+" Plug 'bkad/CamelCaseMotion'   " CamelCase movements
+Plug 'godlygeek/tabular'        " Shift code around easily. Also required for vim-markdown.
+Plug 'plasticboy/vim-markdown'  " Syntax highlighting, matching rules and mappings for Markdown.
+
+" COLORS AND THEMES
+
+Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
+Plug 'godlygeek/csapprox'               " Automatically convert gvim true color themes into 256 color terminal approximations
+Plug 'vim-scripts/ScrollColors'         " Colorscheme explorer so we can see what we have available
+                                        " Type :SCROLL to scroll through colorschemes with left/right arrows.
+Plug 'junegunn/rainbow_parentheses.vim' " RAINBOW PARENS!
 
 " Additional plugins which are only for big crunchy machines.
 " The g:heavyweight variable can be set in .vimrc.local to enable.
 " (See the top of this file)
+
 if exists("g:heavyweight")
-	" Code completion! Note that this has a compiled component.
-	Plugin 'Valloric/YouCompleteMe'
-	" Static code analysis
-	Plugin 'scrooloose/syntastic'
+	Plug 'Valloric/YouCompleteMe' " Code completion! Note that this has a compiled component.
+	Plug 'scrooloose/syntastic'   " Static code analysis
 endif
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
-"==========================================
-" REMAPPINGS
-"==========================================
-" Some stuff taken from:
-" http://danielmiessler.com/study/vim/
-" http://statico.github.io/vim.html
+" }}}
+" Remappings -------------------------------------------------------------- {{{
 
 " Remap leader to something easier to press
 let mapleader = ","
@@ -124,7 +102,10 @@ let tzformat = "%Y.%m.%d"
 :nnoremap <F5> "=strftime(g:tzformat)<CR>P
 :inoremap <F5> <C-R>=strftime(g:tzformat)<CR>
 
-" PLUGIN REMAPS
+" Paste without auto-indent problems
+nnoremap <leader>p :set invpaste paste?<CR>
+
+" Plugin Remaps ----------------------------------------------------------- {{{
 
 " Switch between source and header
 noremap <leader>h :A!<CR>
@@ -142,28 +123,24 @@ nmap <leader>t :Tabularize /
 
 nnoremap <leader>r ::RainbowParentheses!!<CR>
 
-" Paste without auto-indent problems
-nnoremap <leader>p :set invpaste paste?<CR>
+" }}}
+" }}}
+" Plugin Config ----------------------------------------------------------- {{{
 
-"==========================================
 " SYNTASTIC CONFIG
-"==========================================
 
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_javascript_checkers=['jshint']
 
-"==========================================
 " SNIPPITS AND AUTOCOMPLETE CONFIG
-"==========================================
 
 " Trigger configuration. Do not use <tab> if you use Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-"==========================================
-" PROSE
-"==========================================
+" }}}
+" Prose ------------------------------------------------------------------- {{{
 
 " .md files are markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -183,9 +160,9 @@ let g:languagetool_jar = "~/bin/languagetool-commandline.jar"
 " Add dictionary words to the autocomplete
 " set complete +=kspell
 
-"==========================================
-" COLORS AND THEMES
-"==========================================
+" }}}
+" Colors and Themes ------------------------------------------------------- {{{
+
 " There is a nice visualiser at http://bytefluent.com/vivify/
 
 set t_Co=256                 " Make sure terminal is in 256 color mode
@@ -225,6 +202,7 @@ function SetTheme(theme)
 	let g:current_theme = a:theme
 endfunction
 
+" Automatically switch themes based on the currently open filetype.
 :autocmd BufEnter,FileType *
 	\   if &ft ==# 'markdown' | call SetTheme("prose") |
 	\   else | call SetTheme("default") |
@@ -246,9 +224,8 @@ let g:airline_right_sep=''
 let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
-"==========================================
-" SEARCHING
-"==========================================
+" }}}
+" Searching --------------------------------------------------------------- {{{
 
 set hlsearch             " Highlight all search results
 
@@ -257,16 +234,17 @@ set hlsearch             " Highlight all search results
 set ignorecase  " Need this for smartcase to work
 set smartcase
 
-"==========================================
-" TAB STUFF
-"==========================================
+" }}}
+" Tabs and Indentation ---------------------------------------------------- {{{
 
 " To be honest I think myint/indent-finder overrides some of these anyway
 " It's all a bit of a mystery.
 " Nice explanation: http://vimcasts.org/episodes/tabs-and-spaces/
+
 set noexpandtab " Always use real tabs
 set shiftround  " Round indent to multiple of 'shiftwidth'
 set smartindent " Do smart indenting when starting a new line
+
 " Set the tab width
 let s:tabwidth=4                     " This is just a variable we make
 exec 'set tabstop='    .s:tabwidth
@@ -278,9 +256,8 @@ if exists("&breakindent")
 	set breakindent
 endif
 
-"==========================================
-" MISC
-"==========================================
+" }}}
+" Miscellaneous ----------------------------------------------------------- {{{
 
 set omnifunc=syntaxcomplete#Complete   " Do autocomplete
 set encoding=utf-8
@@ -291,8 +268,8 @@ set foldmethod=marker  " Fold on markers in source
 set mouse=a            " Mouse support
 " http://vim.wikia.com/wiki/Using_the_mouse_for_Vim_in_an_xterm
 
-:set listchars=tab:▸\ ,eol:¬,trail:-,extends:>,precedes:<,nbsp:+  " Special characters...
-:set list                     " ...Please show them
+set listchars=tab:▸\ ,eol:¬,trail:-,extends:>,precedes:<,nbsp:+  " Special characters...
+set list                     " ...Please show them
 
 set splitbelow         " Open new splits below and to the right
 set splitright
@@ -300,3 +277,4 @@ set splitright
 " Remote system clipboard integration
 vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
 
+" }}}
