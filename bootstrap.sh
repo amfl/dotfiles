@@ -28,8 +28,12 @@ function doIt() {
 	git config --global core.excludesfile ~/.gitignore_global
 
 	git-update https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-	git-update https://github.com/gmarik/Vundle.vim.git                 ~/.vim/bundle/Vundle.vim
 	git-update https://github.com/sickill/stderred.git                  ~/.stderred
+	
+	# Install vim-plug
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 	# Setup stderred
 	cd ~/.stderred
 	if [[ "$OSTYPE" == "linux-gnu" ]]; then

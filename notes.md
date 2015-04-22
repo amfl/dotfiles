@@ -35,12 +35,6 @@ Install nvm! Detailed here: https://github.com/creationix/nvm
 	nvm install 0.10
 	nvm use 0.10
 
-## Installing vundle
-
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-(This is now in bootstrap.sh)
-
 ## vsftpd
 
 vsftpd is happier when users have a valid shell. Adding `/bin/false` to `/etc/shells` will prevent login via ssh, but allow vsftpd to work.
