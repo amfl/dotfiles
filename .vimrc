@@ -50,6 +50,8 @@ vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
 " }}}
 " Plugin Setup ------------------------------------------------------------ {{{
 
+let g:plug_timeout = 9999
+
 call plug#begin()
 
 Plug 'tpope/vim-sensible'       " Sensible defaults.
