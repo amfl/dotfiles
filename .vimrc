@@ -92,6 +92,10 @@ if exists("g:heavyweight")
 	Plug 'scrooloose/syntastic'   " Static code analysis
 endif
 
+if has('gui_running')
+	Plug 'vim-scripts/zoom.vim'
+endif
+
 call plug#end()
 
 " }}}
@@ -271,6 +275,17 @@ let g:airline_right_sep=''
 let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
+" }}}
+" gVim -------------------------------------------------------------------- {{{
+if has('gui_running')
+	set guioptions-=T  " no toolbar
+	" set guioptions-=m  " no menubar
+	if has('gui_win32')
+		set guifont=Consolas:h12:cANSI
+	endif
+
+	nmap _ :ZoomOut<CR>
+endif
 " }}}
 " Searching --------------------------------------------------------------- {{{
 
