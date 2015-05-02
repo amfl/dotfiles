@@ -76,6 +76,7 @@ Plug 'gerw/vim-latex-suite'     " LaTeX stuff.
 Plug 'godlygeek/tabular'        " Shift code around easily. Also required for vim-markdown.
 Plug 'plasticboy/vim-markdown'  " Syntax highlighting, matching rules and mappings for Markdown.
 Plug 'vasconcelloslf/vim-interestingwords' " <leader>k to highlight words, <leader>K to clear.
+Plug 'amfl/mrc.vim'             " mIRC script syntax highlighting
 
 " COLORS AND THEMES
 Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
