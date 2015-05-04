@@ -59,15 +59,12 @@ Plug 'scrooloose/nerdtree'      " Workspace explorer
 Plug 'kien/ctrlp.vim'           " Sublime-like fuzzy search
 Plug 'vim-scripts/a.vim'        " Toggle between source and headers
 " tpope/vim-vinegar             " Directory listing enhancer
-Plug 'myint/indent-finder'      " Sets tab settings based on current file
 Plug 'bling/vim-airline'        " Powerline!
 Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
 Plug 'tpope/vim-surround'       " For manipulating surrounding text
 Plug 'Lokaltog/vim-easymotion'  " Move around quickly
 Plug 'tpope/vim-fugitive'       " Git integration
 Plug 'wikitopian/hardmode'      " Disable basic navigation commands to become familiar with more advanced ones
-Plug 'SirVer/ultisnips'         " Snippets - Engine
-Plug 'honza/vim-snippets'       " Snippets - Actual snippits
 Plug 'wesQ3/vim-windowswap'     " Swap two open windows without dorking up the layout
                                 " (<leader>ww in one window, then <leader>ww in another and they will swap)
 Plug 'vim-scripts/LanguageTool' " Grammar check.
@@ -77,6 +74,12 @@ Plug 'godlygeek/tabular'        " Shift code around easily. Also required for vi
 Plug 'plasticboy/vim-markdown'  " Syntax highlighting, matching rules and mappings for Markdown.
 Plug 'vasconcelloslf/vim-interestingwords' " <leader>k to highlight words, <leader>K to clear.
 Plug 'amfl/mrc.vim'             " mIRC script syntax highlighting
+
+if has("python")
+	Plug 'myint/indent-finder'      " Sets tab settings based on current file
+	Plug 'SirVer/ultisnips'         " Snippets - Engine
+	Plug 'honza/vim-snippets'       " Snippets - Actual snippits
+endif
 
 " COLORS AND THEMES
 Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
