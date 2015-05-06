@@ -191,6 +191,11 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" VIM-COMMENTARY CONFIG
+
+" Always use line-style comments because they hurt my soul less
+autocmd FileType cpp set commentstring=//\ %s
+
 " }}}
 " Prose ------------------------------------------------------------------- {{{
 
