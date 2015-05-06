@@ -55,10 +55,9 @@ let g:plug_timeout = 9999
 call plug#begin()
 
 Plug 'tpope/vim-sensible'       " Sensible defaults.
-Plug 'scrooloose/nerdtree'      " Workspace explorer
 Plug 'kien/ctrlp.vim'           " Sublime-like fuzzy search
 Plug 'vim-scripts/a.vim'        " Toggle between source and headers
-" tpope/vim-vinegar             " Directory listing enhancer
+Plug 'tpope/vim-vinegar'        " Enhance the built-in directory explorer, netrw.
 Plug 'bling/vim-airline'        " Powerline!
 Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
 Plug 'tpope/vim-surround'       " For manipulating surrounding text
@@ -166,8 +165,6 @@ nnoremap <leader>p :set invpaste paste?<CR>
 noremap <leader>h :A!<CR>
 " Toggle hardmode
 nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
-" Open file browser
-nmap ge :NERDTreeToggle<CR>
 " Tabularize
 nmap <leader>t :Tabularize /
 
