@@ -126,8 +126,11 @@ nmap gl <C-w>l
 
 " Tabs
 noremap <C-\> gt
+inoremap <C-\> <ESC>gti
 noremap <C-]> gT
+inoremap <C-]> <ESC>gTi
 noremap <C-t> :tabnew<CR>
+inoremap <C-t> <ESC>:tabnew<CR>i
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
