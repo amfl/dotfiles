@@ -66,35 +66,37 @@ Plug 'tpope/vim-fugitive'       " Git integration
 Plug 'wikitopian/hardmode'      " Disable basic navigation commands to become familiar with more advanced ones
 Plug 'wesQ3/vim-windowswap'     " Swap two open windows without dorking up the layout
                                 " (<leader>ww in one window, then <leader>ww in another and they will swap)
-Plug 'vim-scripts/LanguageTool' " Grammar check.
-Plug 'gerw/vim-latex-suite'     " LaTeX stuff.
 " Plug 'bkad/CamelCaseMotion'   " CamelCase movements
 Plug 'godlygeek/tabular'        " Shift code around easily. Also required for vim-markdown.
-Plug 'plasticboy/vim-markdown'  " Syntax highlighting, matching rules and mappings for Markdown.
 Plug 'vasconcelloslf/vim-interestingwords' " <leader>k to highlight words, <leader>K to clear.
 Plug 'amfl/mrc.vim'             " mIRC script syntax highlighting
 
+" PROSE RELATED
+Plug 'plasticboy/vim-markdown'  " Syntax highlighting, matching rules and mappings for Markdown.
+Plug 'vim-scripts/LanguageTool' " Grammar check.
+Plug 'gerw/vim-latex-suite'     " LaTeX stuff.
+
+" COLORS AND THEMES
+Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
+Plug 'godlygeek/csapprox'               " Automatically convert gvim true color themes into 256 color terminal approximations
+Plug 'vim-scripts/ScrollColors'         " Colorscheme explorer. Type :SCROLL and use left/right arrows.
+Plug 'junegunn/rainbow_parentheses.vim' " RAINBOW PARENS!
+
+" REQUIRES PYTHON
 if has("python")
 	Plug 'myint/indent-finder'      " Sets tab settings based on current file
 	Plug 'SirVer/ultisnips'         " Snippets - Engine
 	Plug 'honza/vim-snippets'       " Snippets - Actual snippits
 endif
 
-" COLORS AND THEMES
-Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
-Plug 'godlygeek/csapprox'               " Automatically convert gvim true color themes into 256 color terminal approximations
-Plug 'vim-scripts/ScrollColors'         " Colorscheme explorer so we can see what we have available
-                                        " Type :SCROLL to scroll through colorschemes with left/right arrows.
-Plug 'junegunn/rainbow_parentheses.vim' " RAINBOW PARENS!
-
-" Additional plugins which are only for big crunchy machines.
-" The g:heavyweight variable can be set in .vimrc.local to enable.
-" (See the top of this file)
+" HEAVYWEIGHT
+" Only for powerful machines! Set g:heavyweight in .vimrc.local to enable.
 if exists("g:heavyweight")
 	Plug 'Valloric/YouCompleteMe' " Code completion! Note that this has a compiled component.
 	Plug 'scrooloose/syntastic'   " Static code analysis
 endif
 
+" GVIM
 if has('gui_running')
 	Plug 'vim-scripts/zoom.vim'
 endif
@@ -146,6 +148,8 @@ cnoremap <c-e> <end>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>e :e 
 nnoremap <leader>q :q<CR>
+" Edit the alt-file - Ie, the file we were just in
+nnoremap <leader>a :e#<CR>
 
 " Quicksave sessions
 map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
@@ -348,5 +352,13 @@ function! MyFoldText() " {{{
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
+
+" }}}
+" Autocorrect ------------------------------------------------------------- {{{
+
+" Every time god damn it
+iab ednl endl
+iab ednkl endl;
+iab nedl endl
 
 " }}}
