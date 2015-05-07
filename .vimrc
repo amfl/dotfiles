@@ -61,7 +61,7 @@ Plug 'tpope/vim-vinegar'        " Enhance the built-in directory explorer, netrw
 Plug 'bling/vim-airline'        " Powerline!
 Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
 Plug 'tpope/vim-surround'       " For manipulating surrounding text
-Plug 'Lokaltog/vim-easymotion'  " Move around quickly
+" Plug 'Lokaltog/vim-easymotion'  " Move around quickly
 Plug 'tpope/vim-fugitive'       " Git integration
 Plug 'wikitopian/hardmode'      " Disable basic navigation commands to become familiar with more advanced ones
 Plug 'wesQ3/vim-windowswap'     " Swap two open windows without dorking up the layout
@@ -78,7 +78,7 @@ Plug 'gerw/vim-latex-suite'     " LaTeX stuff.
 
 " COLORS AND THEMES
 Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
-Plug 'godlygeek/csapprox'               " Automatically convert gvim true color themes into 256 color terminal approximations
+" Plug 'godlygeek/csapprox'               " Automatically convert gvim true color themes into 256 color terminal approximations
 Plug 'vim-scripts/ScrollColors'         " Colorscheme explorer. Type :SCROLL and use left/right arrows.
 Plug 'junegunn/rainbow_parentheses.vim' " RAINBOW PARENS!
 
@@ -228,6 +228,7 @@ let g:languagetool_jar = "~/bin/languagetool-commandline.jar"
 
 set t_Co=256                 " Make sure terminal is in 256 color mode
 set background=dark
+syntax on                    " Enable syntax highlighting
 
 let g:current_theme = "none"
 function SetTheme(theme)
@@ -236,13 +237,11 @@ function SetTheme(theme)
 		return
 	endif
 	if (a:theme == "default")
-		" colorscheme molokai
-		colorscheme gruvbox
 		let g:gruvbox_guisp_as_guifg=1
 		let g:gruvbox_italic=1
 		let g:gruvbox_italicize_comments=0
+		colorscheme gruvbox
 
-		syntax on                    " Enable syntax highlighting
 		hi Normal ctermbg=0          " Nice dark background
 		
 		" Copy RainbowParentheses config from previous forks
@@ -256,7 +255,6 @@ function SetTheme(theme)
 	elseif (a:theme == "prose")
 		setlocal spell spelllang=en_us
 		colorscheme last256
-		syntax on
 		" hi Normal ctermfg=lightgrey
 	endif
 
