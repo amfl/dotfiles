@@ -56,7 +56,7 @@ call plug#begin()
 
 Plug 'tpope/vim-sensible'       " Sensible defaults.
 Plug 'kien/ctrlp.vim'           " Sublime-like fuzzy search
-Plug 'vim-scripts/a.vim'        " Toggle between source and headers
+Plug 'derekwyatt/vim-fswitch'   " Toggle between source and headers
 Plug 'tpope/vim-vinegar'        " Enhance the built-in directory explorer, netrw.
 Plug 'bling/vim-airline'        " Powerline!
 Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
@@ -124,6 +124,9 @@ nmap gj <C-w>j
 nmap gk <C-w>k
 nmap gl <C-w>l
 
+" Open file explorer
+nmap ge :e.<CR>
+
 " Tabs
 noremap <C-\> gt
 inoremap <C-\> <ESC>gti
@@ -169,7 +172,7 @@ nnoremap <leader>p :set invpaste paste?<CR>
 " Plugin Remaps ----------------------------------------------------------- {{{
 
 " Switch between source and header
-noremap <leader>h :A!<CR>
+noremap <leader>h :FSHere<CR>
 " Toggle hardmode
 nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
 " Tabularize
