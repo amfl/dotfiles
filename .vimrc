@@ -47,6 +47,24 @@ au VimResized * :wincmd =
 " Remote system clipboard integration
 vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
 
+" ----- The Silver Searcher / ag ----- {{{
+" http://codeinthehole.com/writing/using-the-silver-searcher-with-vim/
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+if executable('ag')
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+
+	" Ctrl+P plugin
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+	" ag is fast enough that CtrlP doesn't need to cache
+	" let g:ctrlp_use_caching = 0
+endif
+
+" Search for stuff in a quickfix window
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+" }}}
 " }}}
 " Plugin Setup ------------------------------------------------------------ {{{
 
