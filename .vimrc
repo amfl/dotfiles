@@ -41,6 +41,8 @@ set list                     " ...Please show them
 set splitbelow         " Open new splits below and to the right
 set splitright
 
+set scrolloff=3        " Keep cursor from very top or bottom of screen
+
 " Resize splits when the window is resized
 au VimResized * :wincmd =
 
@@ -122,6 +124,31 @@ endif
 call plug#end()
 
 " }}}
+" Backups ----------------------------------------------------------------- {{{
+
+set backup                        " Enable backups
+set noswapfile
+
+set undodir=~/.vim/tmp/undo//     " Undo files
+set backupdir=~/.vim/tmp/backup// " Backups
+set directory=~/.vim/tmp/swap//   " Swap files
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+" Make sure crontab doesn't explode
+" http://vim.wikia.com/wiki/Editing_crontab
+set backupskip=/tmp/*,/private/tmp/*
+
+" }}}
 " Remappings -------------------------------------------------------------- {{{
 
 " Remap leader to something easier to press
@@ -167,6 +194,13 @@ inoremap <c-a> <esc>I
 inoremap <c-e> <esc>A
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
+
+" Speed up window scrolling commands
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+" ...And make them available in insert mode
+inoremap <C-e> <Esc>3<C-e>i
+inoremap <C-y> <Esc>3<C-y>i
 
 " Remap some commonly used commands to leader key for speed
 nnoremap <leader>w :w<CR>
