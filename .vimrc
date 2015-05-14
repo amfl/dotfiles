@@ -185,9 +185,11 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Easier to type, and I never use the default behavior.
-noremap H ^
-noremap L $
-vnoremap L g_
+" noremap H ^
+" noremap L $
+" vnoremap L g_
+noremap H gT
+noremap L gt
 
 " Bind c-a and c-e to behave as in shell in insert mode
 inoremap <c-a> <esc>I
