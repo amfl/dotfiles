@@ -89,10 +89,16 @@ Plug 'wesQ3/vim-windowswap'     " Swap two open windows without dorking up the l
 " Plug 'bkad/CamelCaseMotion'   " CamelCase movements
 Plug 'godlygeek/tabular'        " Shift code around easily. Also required for vim-markdown.
 Plug 'vasconcelloslf/vim-interestingwords' " <leader>k to highlight words, <leader>K to clear.
+
+" SYNTAX/LANGUAGES
 Plug 'amfl/mrc.vim'             " mIRC script syntax highlighting
+Plug 'amfl/vim-evennia'         " Evennia batch file support
+
+" UNIT TESTING
+Plug 'junegunn/vader.vim'
 
 " PROSE RELATED
-Plug 'plasticboy/vim-markdown'  " Syntax highlighting, matching rules and mappings for Markdown.
+Plug 'amfl/vim-markdown'        " Syntax highlighting, matching rules and mappings for Markdown.
 Plug 'vim-scripts/LanguageTool' " Grammar check.
 Plug 'gerw/vim-latex-suite'     " LaTeX stuff.
 
@@ -220,6 +226,12 @@ let tzformat = "%Y.%m.%d"
 :nnoremap <F5> "=strftime(g:tzformat)<CR>P
 :inoremap <F5> <C-R>=strftime(g:tzformat)<CR>
 
+command ShowSyntaxUnderCursor :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+
+map <F10> :ShowSyntaxUnderCursor<CR>
+
 " Paste without auto-indent problems
 nnoremap <leader>p :set invpaste paste?<CR>
 
@@ -259,6 +271,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Always use line-style comments because they hurt my soul less
 autocmd FileType cpp set commentstring=//\ %s
+
+let g:vim_markdown_fold_on_headings=1
 
 " }}}
 " Prose ------------------------------------------------------------------- {{{
