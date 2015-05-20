@@ -1,0 +1,90 @@
+"hg7191
+
+" Prelude ---------------------------------------------------------------- {{{
+
+" Some cool stuff stolen from:
+" https://github.com/claytron/dotfiles/blob/master/.pentadactylrc
+
+loadplugins '\.(js|penta)$'
+group user
+set cdpath=''
+
+colorscheme solarized-dark
+
+" }}}
+" General Settings ------------------------------------------------------- {{{
+
+set incfind
+set hlfind
+set findcase=smart
+set guioptions=bCrsT
+set showtabline=always
+
+" disable smoothscroll
+set scrollsteps=1
+set scrolltime=0
+
+set hintkeys=hjklasdfguivbcn
+
+" Sensible suggestions for opening new tabs
+" ( Don't shove a bunch of search engine suggestions in my face! )
+set complete=location,file
+set maxitems=35
+
+" }}}
+" Remaps ----------------------------------------------------------------- {{{
+
+let mapleader = ","
+
+" TABS                                {{{2
+" ----------------------------------------
+" Lazily switch tabs
+nmap -builtin h gT
+nmap -builtin l gt
+" Move the current tab
+map -builtin H <Esc>:tabmove! -1<CR>
+map -builtin L <Esc>:tabmove! +1<CR>
+
+" SCROLLING                           {{{2
+" ----------------------------------------
+" Horizontal scroll
+map -builtin w 10h
+map -builtin e 10l
+" Standard j/k doesn't move enough
+nmap -builtin j 10j
+nmap -builtin k 10k
+
+" MISC                                {{{2
+" ----------------------------------------
+" Open links in new tab without pressing shift
+nmap -builtin v F
+
+" Remove search highlighting
+nmap -builtin <C-l> :nohlfind<CR>
+
+" Quickly exit insert mode.
+imap -builtin jk <Esc>
+imap -builtin kj <Esc>
+
+" Make ctrl+a work to select all again
+imap -builtin <C-a> <C-Home><C-S-End>
+
+" }}}
+" CSS -------------------------------------------------------------------- {{{
+
+hi -a Hint text-transform: uppercase; padding-right: 1px;
+
+" }}}
+" Bookmarks -------------------------------------------------------------- {{{
+
+bmark -k "irc" -t "Search IRC"     "http://irc.netsplit.de/channels/?chat=%s"
+bmark -k "gg"  -t "Google Images"  "https://www.google.com/search?q=%s&tbm=isch"
+bmark -k "g"   -t 'Google'         'https://www.google.com/search?q=%s'
+bmark -k "y"   -t 'Youtube'        'https://www.youtube.com/results?search_query=%s'
+bmark -k "d"   -t 'DuckDuckGo'     'https://duckduckgo.com/%s'
+bmark -k "t"   -t 'Promo Bay'      'https://thepiratebay.se/search/%s/0/0/0'
+bmark -k "k"   -t 'Kickass'        'https://kickass.to/usearch/?q=%s'
+
+" }}}
+
+" vim: set ft=pentadactyl:

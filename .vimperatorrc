@@ -29,8 +29,8 @@ noremap k 10k
 noremap j 10j
 noremap h gT
 noremap l gt
-noremap H 10h
-noremap L 10l
+noremap H h
+noremap L l
 noremap v F
 
 " BMarks {{{1
@@ -48,6 +48,9 @@ bmark('DuckDuckGo'   , 'https://duckduckgo.com/%s',                       'd');
 bmark('Promo Bay'    , 'https://thepiratebay.se/search/%s/0/0/0',         't');
 bmark('Kickass'      , 'https://kickass.to/usearch/?q=%s',                'k');
 EOM
+
+" Stella.js for youtube. I shouldn't have to do this, but it seems glitchy.
+" noremap p :stplay<CR>
 
 "source! "C:\\Users\\User\\_vimperatorrc.local"
 
