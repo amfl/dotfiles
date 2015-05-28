@@ -93,6 +93,7 @@ Plug 'vasconcelloslf/vim-interestingwords' " <leader>k to highlight words, <lead
 " SYNTAX/LANGUAGES
 Plug 'amfl/mrc.vim'             " mIRC script syntax highlighting
 Plug 'amfl/vim-evennia'         " Evennia batch file support
+Plug 'tikhomirov/vim-glsl'      " OpenGL Shading Language
 
 " UNIT TESTING
 Plug 'junegunn/vader.vim'
