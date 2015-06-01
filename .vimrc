@@ -22,12 +22,13 @@ endif
 
 set omnifunc=syntaxcomplete#Complete   " Do autocomplete
 set encoding=utf-8
-set laststatus=2       " Always show the status bar (airline!)
-set noshowmode         " airline shows mode so vim doesn't need to
-set number             " Show line numbers
-set cursorline         " Highlight the line the cursor is on.
+set laststatus=2    " Always show the status bar (airline!)
+set noshowmode      " airline shows mode so vim doesn't need to
+set number          " Show line numbers
+set cursorline      " Highlight the line the cursor is on.
+set hidden          " Switch buffers without abandoning changes or writing out
 
-set mouse=a            " Mouse support in all modes
+set mouse=a         " Mouse support in all modes
 if &term =~ '^screen'
 	" tmux knows the extended mouse mode
 	set ttymouse=xterm2
