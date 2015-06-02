@@ -46,7 +46,10 @@ set splitright
 set scrolloff=3        " Keep cursor from very top or bottom of screen
 
 " Resize splits when the window is resized
-au VimResized * :wincmd =
+augroup vimrc_general
+	autocmd!
+	autocmd VimResized * :wincmd =
+augroup END
 
 " Remote system clipboard integration
 vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
@@ -292,7 +295,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " VIM-COMMENTARY CONFIG
 
 " Always use line-style comments because they hurt my soul less
-autocmd FileType cpp set commentstring=//\ %s
+augroup vimrc_cpp_comment
+	autocmd!
+	autocmd FileType cpp set commentstring=//\ %s
+augroup END
 
 let g:vim_markdown_fold_on_headings=1
 
@@ -300,7 +306,10 @@ let g:vim_markdown_fold_on_headings=1
 " Prose ------------------------------------------------------------------- {{{
 
 " .md files are markdown instead of Modula-2
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+augroup vimrc_prose
+	autocmd!
+	autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+augroup END
 
 map <leader>ss :setlocal spell!<CR>   " Toggle spellcheck
 
@@ -358,10 +367,13 @@ function SetTheme(theme)
 endfunction
 
 " Automatically switch themes based on the currently open filetype.
-:autocmd BufEnter,FileType *
-	\   if &ft ==# 'markdown' | call SetTheme("prose") |
-	\   else | call SetTheme("default") |
-	\   endif
+augroup vimrc_themes
+	autocmd!
+	autocmd BufEnter,FileType *
+		\   if &ft ==# 'markdown' | call SetTheme("prose") |
+		\   else | call SetTheme("default") |
+		\   endif
+augroup END
 
 " Color listchar stuff
 " hi NonText ctermfg=7 guifg=gray        " ¬ character at EOL
