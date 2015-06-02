@@ -27,6 +27,7 @@ set noshowmode      " airline shows mode so vim doesn't need to
 set number          " Show line numbers
 set cursorline      " Highlight the line the cursor is on.
 set hidden          " Switch buffers without abandoning changes or writing out
+set lazyredraw      " Don't redraw the screen when executing macros
 
 set mouse=a         " Mouse support in all modes
 if &term =~ '^screen'
@@ -222,11 +223,18 @@ nnoremap <leader>a :e#<CR>
 " Quicksave sessions
 map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
 map <F3> :source ~/.vim_session <cr>     " And load session with F3
+"
+" Paste without auto-indent problems
+nnoremap <leader>p :set invpaste paste?<CR>
 
-" Dump timestamp
+" Dump timestamp {{{
+
 let tzformat = "%Y.%m.%d"
 :nnoremap <F5> "=strftime(g:tzformat)<CR>P
 :inoremap <F5> <C-R>=strftime(g:tzformat)<CR>
+
+" }}}
+" Show Syntax group under cursor {{{
 
 command ShowSyntaxUnderCursor :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -234,8 +242,20 @@ command ShowSyntaxUnderCursor :echo "hi<" . synIDattr(synID(line("."),col("."),1
 
 map <F10> :ShowSyntaxUnderCursor<CR>
 
-" Paste without auto-indent problems
-nnoremap <leader>p :set invpaste paste?<CR>
+" }}}
+" DiffSaved {{{
+
+" http://vim.wikia.com/wiki/Diff_current_buffer_and_the_original_file
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
+" }}}
 
 " Plugin Remaps ----------------------------------------------------------- {{{
 
