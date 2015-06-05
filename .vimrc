@@ -37,8 +37,9 @@ endif
 
 " Special characters
 set showbreak=»
-" set listchars=tab:▸\ ,eol:¬,trail:-,extends:>,precedes:<,nbsp:+  " Special characters...
-set list                     " ...Please show them
+" eol:¬¶, trail:•¤
+set listchars=nbsp:¬,tab:→\ ,extends:»,precedes:«,trail:-       " Special characters...
+set list                                         " ...Please show them
 
 set splitbelow         " Open new splits below and to the right
 set splitright
@@ -99,27 +100,27 @@ Plug 'vasconcelloslf/vim-interestingwords' " <leader>k to highlight words, <lead
 Plug 'amfl/mrc.vim'             " mIRC script syntax highlighting
 Plug 'amfl/vim-evennia'         " Evennia batch file support
 Plug 'tikhomirov/vim-glsl'      " OpenGL Shading Language
+Plug 'amfl/vim-markdown'        " Syntax highlighting, matching rules and mappings for Markdown.
 
 " UNIT TESTING
-Plug 'junegunn/vader.vim'
+Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
 " PROSE RELATED
-Plug 'amfl/vim-markdown'        " Syntax highlighting, matching rules and mappings for Markdown.
-Plug 'vim-scripts/LanguageTool' " Grammar check.
-Plug 'gerw/vim-latex-suite'     " LaTeX stuff.
+Plug 'vim-scripts/LanguageTool'                 " Grammar check.
+Plug 'gerw/vim-latex-suite', { 'for': 'tex' }   " LaTeX stuff.
 
 " COLORS AND THEMES
 " Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
 " Plug 'godlygeek/csapprox'               " Automatically convert gvim true color themes into 256 color terminal approximations
 Plug 'amfl/gruvbox-edits'
 Plug 'vim-scripts/ScrollColors'         " Colorscheme explorer. Type :SCROLL and use left/right arrows.
-Plug 'junegunn/rainbow_parentheses.vim' " RAINBOW PARENS!
+Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' } " RAINBOW PARENS!
 
 " REQUIRES PYTHON
 if has("python")
 	Plug 'myint/indent-finder'      " Sets tab settings based on current file
-	Plug 'SirVer/ultisnips'         " Snippets - Engine
-	Plug 'honza/vim-snippets'       " Snippets - Actual snippits
+	" Snippets:      Engine |       Actual snippits
+	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 endif
 
 " HEAVYWEIGHT
