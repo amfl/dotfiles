@@ -37,7 +37,7 @@ endif
 
 " Special characters
 set showbreak=»
-set listchars=tab:▸\ ,eol:¬,trail:-,extends:>,precedes:<,nbsp:+  " Special characters...
+" set listchars=tab:▸\ ,eol:¬,trail:-,extends:>,precedes:<,nbsp:+  " Special characters...
 set list                     " ...Please show them
 
 set splitbelow         " Open new splits below and to the right
@@ -109,8 +109,9 @@ Plug 'vim-scripts/LanguageTool' " Grammar check.
 Plug 'gerw/vim-latex-suite'     " LaTeX stuff.
 
 " COLORS AND THEMES
-Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
+" Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
 " Plug 'godlygeek/csapprox'               " Automatically convert gvim true color themes into 256 color terminal approximations
+Plug 'amfl/gruvbox-edits'
 Plug 'vim-scripts/ScrollColors'         " Colorscheme explorer. Type :SCROLL and use left/right arrows.
 Plug 'junegunn/rainbow_parentheses.vim' " RAINBOW PARENS!
 
@@ -313,6 +314,8 @@ augroup END
 
 map <leader>ss :setlocal spell!<CR>   " Toggle spellcheck
 
+set spelllang=en_us
+
 " Grammar checking
 map <leader>g :LanguageToolCheck<CR>
 let g:languagetool_jar = "~/bin/languagetool-commandline.jar"
@@ -335,6 +338,23 @@ set t_Co=256                 " Make sure terminal is in 256 color mode
 set background=dark
 syntax on                    " Enable syntax highlighting
 
+" Copy RainbowParentheses config from previous forks
+if exists('g:rbpt_colorpairs')
+	let g:rainbow#colors = {
+	\ 'dark': g:rbpt_colorpairs,
+	\ 'light': g:rbpt_colorpairs
+	\ }
+endif
+
+if !has("gui_running")
+	let g:gruvbox_foreground_guisp=1
+endif
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_comments=0
+colorscheme gruvbox
+hi Normal ctermbg=0          " Nice dark background
+
+" Dynamic Theme Changer {{{
 let g:current_theme = "none"
 function SetTheme(theme)
 	if (a:theme == g:current_theme)
@@ -342,29 +362,16 @@ function SetTheme(theme)
 		return
 	endif
 	if (a:theme == "default")
-		let g:gruvbox_guisp_as_guifg=1
-		let g:gruvbox_italic=1
-		let g:gruvbox_italicize_comments=0
-		colorscheme gruvbox
-
-		hi Normal ctermbg=0          " Nice dark background
-		
-		" Copy RainbowParentheses config from previous forks
-		if exists('g:rbpt_colorpairs')
-			let g:rainbow#colors = {
-			\ 'dark': g:rbpt_colorpairs,
-			\ 'light': g:rbpt_colorpairs
-			\ }
-		endif
+		set nospell
 		RainbowParentheses
 	elseif (a:theme == "prose")
-		setlocal spell spelllang=en_us
-		colorscheme last256
-		" hi Normal ctermfg=lightgrey
+		set spell
+		RainbowParentheses!
 	endif
 
 	let g:current_theme = a:theme
 endfunction
+" }}}
 
 " Automatically switch themes based on the currently open filetype.
 augroup vimrc_themes
@@ -380,6 +387,7 @@ augroup END
 " hi SpecialKey ctermfg=7 guifg=gray     " ▸ character at indent
 
 " let g:airline_theme='tomorrow'
+let g:airline_theme='powerlineish'
 
 " Don't show seperators
 let g:airline_left_sep=''
