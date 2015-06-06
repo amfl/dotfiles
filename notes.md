@@ -73,3 +73,15 @@ Will run trickle in standalone mode and limit to 20KB/s.
 	login=USERNAMEHERE
 	password='PASSWORDHERE'
 	full.domain.name.here
+	daemon=1800
+
+To test:
+
+	sudo ddclient -daemon=0 -debug -verbose -noquiet
+
+## AWS
+
+To change the hostname of ubuntu instance without weird messages:
+
+* Update in /etc/hostname
+* Add next to localhost in /etc/hosts
