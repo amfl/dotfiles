@@ -85,3 +85,7 @@ To change the hostname of ubuntu instance without weird messages:
 
 * Update in /etc/hostname
 * Add next to localhost in /etc/hosts
+
+## Profiling Code
+
+Can use Valgrind/Callgrind. kcachegrind is a visualizer.
