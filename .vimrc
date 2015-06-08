@@ -467,4 +467,7 @@ iab ednl endl
 iab ednkl endl;
 iab nedl endl
 
+iab inculde include
+iab prgama pragma
+
 " }}}
