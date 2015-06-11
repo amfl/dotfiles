@@ -94,6 +94,9 @@ Plug 'wesQ3/vim-windowswap'     " Swap two open windows without dorking up the l
 " Plug 'bkad/CamelCaseMotion'   " CamelCase movements
 Plug 'godlygeek/tabular'        " Shift code around easily. Also required for vim-markdown.
 Plug 'vasconcelloslf/vim-interestingwords' " <leader>k to highlight words, <leader>K to clear.
+if has('signs')
+	Plug 'airblade/vim-gitgutter'   " Compare lines to last git commit, stage chunks from in vim
+endif
 
 " SYNTAX/LANGUAGES
 Plug 'amfl/mrc.vim'             " mIRC script syntax highlighting
@@ -268,6 +271,8 @@ noremap <leader>h :FSHere<CR>
 nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
 " Tabularize
 nmap <leader>t :Tabularize /
+" GitGutter
+map <leader>g :GitGutterToggle<CR>
 
 " CamelCase mappings
 " nmap <leader>cw <Plug>CamelCaseMotion_w
@@ -314,7 +319,7 @@ augroup END
 map <leader>ss :setlocal spell!<CR>   " Toggle spellcheck
 
 " Grammar checking
-map <leader>g :LanguageToolCheck<CR>
+map <leader>l :LanguageToolCheck<CR>
 let g:languagetool_jar = "~/bin/languagetool-commandline.jar"
 
 " Custom spellcheck colors
