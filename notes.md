@@ -62,3 +62,30 @@ If absolutely hugenormous, we can use `trickle` to limit bandwidth so we don't c
     trickle -s -u 20 git push -u origin master
 
 Will run trickle in standalone mode and limit to 20KB/s.
+
+## ddclient
+
+`/etc/ddclient.conf`:
+
+	protocol=dyndns1
+	use=web, web=http://ipinfo.io/json, web-skip='ip" : "'
+	server=freedns.afraid.org
+	login=USERNAMEHERE
+	password='PASSWORDHERE'
+	full.domain.name.here
+	daemon=1800
+
+To test:
+
+	sudo ddclient -daemon=0 -debug -verbose -noquiet
+
+## AWS
+
+To change the hostname of ubuntu instance without weird messages:
+
+* Update in /etc/hostname
+* Add next to localhost in /etc/hosts
+
+## Profiling Code
+
+Can use Valgrind/Callgrind. kcachegrind is a visualizer.

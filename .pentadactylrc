@@ -66,8 +66,11 @@ nmap -builtin <C-l> :nohlfind<CR>
 imap -builtin jk <Esc>
 imap -builtin kj <Esc>
 
-" Make ctrl+a work to select all again
+" ORIGINAL                            {{{2
+" ----------------------------------------
+
 imap -builtin <C-a> <C-Home><C-S-End>
+map -builtin <C-c> <C-v><C-c>
 
 " }}}
 " CSS -------------------------------------------------------------------- {{{
