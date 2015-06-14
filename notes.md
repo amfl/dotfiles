@@ -67,13 +67,13 @@ Will run trickle in standalone mode and limit to 20KB/s.
 
 `/etc/ddclient.conf`:
 
-	protocol=dyndns1
+	daemon=1800
+	protocol=freedns
 	use=web, web=http://ipinfo.io/json, web-skip='ip" : "'
 	server=freedns.afraid.org
 	login=USERNAMEHERE
 	password='PASSWORDHERE'
 	full.domain.name.here
-	daemon=1800
 
 To test:
 
