@@ -52,6 +52,12 @@ augroup vimrc_general
 	autocmd VimResized * :wincmd =
 augroup END
 
+" Always use line-style comments because they hurt my soul less
+augroup vimrc_cpp_comment
+	autocmd!
+	autocmd FileType cpp set commentstring=//\ %s
+augroup END
+
 " Remote system clipboard integration
 vmap <C-c> y:call system("~/bin/sendclipboard", getreg("\""))<CR>
 
@@ -288,25 +294,20 @@ nnoremap <leader>r ::RainbowParentheses!!<CR>
 " Plugin Config ----------------------------------------------------------- {{{
 
 " SYNTASTIC CONFIG
-
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_javascript_checkers=['jshint']
 
 " SNIPPITS AND AUTOCOMPLETE CONFIG
-
 " Trigger configuration. Do not use <tab> if you use Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" VIM-COMMENTARY CONFIG
+" CTRLP CONFIG
+" Stop ctrlp from changing directory in git submodules
+let g:ctrlp_working_path_mode = 'rw'
 
-" Always use line-style comments because they hurt my soul less
-augroup vimrc_cpp_comment
-	autocmd!
-	autocmd FileType cpp set commentstring=//\ %s
-augroup END
-
+" VIM-MARKDOWN CONFIG
 let g:vim_markdown_fold_on_headings=1
 
 " }}}
