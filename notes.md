@@ -85,6 +85,7 @@ To change the hostname of ubuntu instance without weird messages:
 
 * Update in /etc/hostname
 * Add next to localhost in /etc/hosts
+* sudo service hostname restart
 
 ## Profiling Code
 

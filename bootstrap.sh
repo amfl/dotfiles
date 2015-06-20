@@ -22,10 +22,16 @@ function git-update() {
 	popd > /dev/null
 }
 function doIt() {
+	echo Installing a bunch of software...
+	sudo apt-get install build-essential cmake zsh tig silversearcher-ag
+
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
 		--exclude "README.md" --exclude "notes.md" -av --no-perms . ~
 
 	git config --global core.excludesfile ~/.gitignore_global
+
+	# Install oh-my-zsh before cloning plugins for it
+	sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 	git-update https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	git-update https://github.com/sickill/stderred.git                  ~/.stderred
