@@ -354,7 +354,7 @@ if exists('g:rbpt_colorpairs')
 endif
 
 if !has("gui_running")
-	let g:gruvbox_foreground_guisp=1
+	let g:gruvbox_guisp_fallback='fg'
 endif
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=0
