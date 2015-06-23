@@ -484,5 +484,7 @@ iab nedl endl
 
 iab inculde include
 iab prgama pragma
+iab gloval global
+iab lsit list
 
 " }}}
