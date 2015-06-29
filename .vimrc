@@ -486,5 +486,6 @@ iab inculde include
 iab prgama pragma
 iab gloval global
 iab lsit list
+iab cosnt const
 
 " }}}
