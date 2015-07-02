@@ -271,10 +271,10 @@ com! DiffSaved call s:DiffWithSaved()
 
 " }}}
 
-" Plugin Remaps ----------------------------------------------------------- {{{
+" Plugin Remaps 
 
 " Switch between source and header
-noremap <leader>h :FSHere<CR>
+noremap <leader>s :FSHere<CR>
 " Toggle hardmode
 nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
 " Tabularize
