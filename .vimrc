@@ -121,7 +121,7 @@ Plug 'gerw/vim-latex-suite', { 'for': 'tex' }   " LaTeX stuff.
 " COLORS AND THEMES
 " Plug 'flazz/vim-colorschemes'           " A big pack of color schemes
 " Plug 'godlygeek/csapprox'               " Automatically convert gvim true color themes into 256 color terminal approximations
-Plug 'amfl/gruvbox-edits'
+Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/ScrollColors'         " Colorscheme explorer. Type :SCROLL and use left/right arrows.
 Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' } " RAINBOW PARENS!
 
