@@ -310,6 +310,12 @@ let g:ctrlp_working_path_mode = 'rw'
 " VIM-MARKDOWN CONFIG
 let g:vim_markdown_fold_on_headings=1
 
+" WINDOWSWAP CONFIG
+let g:windowswap_map_keys = 0 "prevent default bindings
+" nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+" nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
+
 " }}}
 " Prose ------------------------------------------------------------------- {{{
 
@@ -319,7 +325,7 @@ augroup vimrc_prose
 	autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 augroup END
 
-map <leader>ss :setlocal spell!<CR>   " Toggle spellcheck
+map <leader>S :setlocal spell!<CR>   " Toggle spellcheck
 
 set spelllang=en_us
 
