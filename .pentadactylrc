@@ -24,7 +24,7 @@ set showtabline=always
 set scrollsteps=1
 set scrolltime=0
 
-set hintkeys=hjklasdfguivbcn
+set hintkeys=jklfds;aghioewvncm
 
 " Sensible suggestions for opening new tabs
 " ( Don't shove a bunch of search engine suggestions in my face! )
@@ -70,12 +70,21 @@ imap -builtin kj <Esc>
 " ----------------------------------------
 
 imap -builtin <C-a> <C-Home><C-S-End>
-map -builtin <C-c> <C-v><C-c>
+
+" 'normal' copying and pasting
+nmap -b <C-c> <C-v><C-c>
+nmap -b <C-v> <C-v><C-v>
+nmap -b <C-x> <C-v><C-x>
+
+" Insert Mode Mappings
+imap -b <C-c> <C-v><C-c>
+imap -b <C-v> <C-v><C-v>
+imap -b <C-x> <C-v><C-x>
 
 " }}}
 " CSS -------------------------------------------------------------------- {{{
 
-hi -a Hint text-transform: uppercase; padding-right: 1px;
+hi -a Hint text-transform: uppercase; padding-right: 1px; font-size: 9pt !important;
 
 " }}}
 " Bookmarks -------------------------------------------------------------- {{{
