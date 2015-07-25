@@ -1,0 +1,19 @@
+# This file contains hotkey definitions and mouse remaps.  it uses `xte` from
+# the `xautomation` package to send x events in response to keypresses/mouse
+# events determined from `xev`.
+#
+# Remember you can get a default config to use as examples with:
+#   xbindkeys --default
+#
+# More information:
+# http://askubuntu.com/questions/152297/how-to-configure-extra-buttons-in-logitech-mouse
+
+# Logitech G700s {{{
+
+# Mumble PTT uses scroll lock (Because nothing else does...)
+"xte 'keydown Scroll_Lock'"
+  b:11
+"xte 'keyup Scroll_Lock'"
+  b:11 + release
+
+# }}
