@@ -1,35 +1,89 @@
-xterm*termName: xterm-256color
+! Xterm {{{1
+
+! xterm.termName: xterm-256color
 ! xterm*faceName: Consolas
 ! xterm*faceNameDoublesize: Droid Sans Fallback
-
 xterm*faceName: DejaVu Sans Mono
 xterm*faceSize: 11
 
-! Candy theme
-*xterm*background: #000000
-*xterm*foreground: #CCCCC6
-*xterm*cursorColor: #d0d0d0
-! black darkgrey
-*xterm*color0: #1B1D1E
-*xterm*color8: #505354
-! darkred red
-*xterm*color1: #F92672
-*xterm*color9: #FF5995
-! darkgreen green
-*xterm*color2: #82B414
-*xterm*color10: #B6E354
-! darkyellow yellow
-*xterm*color3: #FD971F
-*xterm*color11: #FEED6C
-! darkblue blue
-*xterm*color4: #56C2D6
-*xterm*color12: #8CEDFF
-! darkmagenta magenta
-*xterm*color5: #8C54FE
-*xterm*color13: #9E6FFE
-! darkcyan cyan
-*xterm*color6: #465457
-*xterm*color14: #899CA1
-! grey white
-*xterm*color7: #CCCCC6
-*xterm*color15: #F8F8F2
+! UXTerm {{{1
+
+UXTerm*eightBitInput: false
+! UXTerm*VT100*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
+
+! URxvt {{{1
+
+URxvt.font: xft:DejaVu Sans Mono:size=11:hinting=true
+! URxvt*italicFont::              xft:Monospace:pixelsize=11:antialias=true:italic:autohint=true:hinting=true
+URxvt.scrollBar: false
+URxvt.urgentOnBell: true
+
+! No weird stuff on ctrl+shift
+URxvt*iso14755: false
+
+! Theme {{{1
+
+! Tomorrow Night Bright {{{2
+! #define blk  #000000
+! #define red  #912226
+! #define grn  #778900
+! #define ylw  #ae7b00
+! #define blu  #1d2594
+! #define mag  #682a9b
+! #define cyn  #2b6651
+! #define wht  #929593
+! #define bblk #666666
+! #define bred #cc6666
+! #define bgrn #b5bd68
+! #define bylw #f0c674
+! #define bblu #81a2be
+! #define bmag #b294bb
+! #define bcyn #8abeb7
+! #define bwht #ecebec
+! #define fg   #eaeaea
+! #define bg   #000000
+! #define crsr #aeafad
+
+! Candy {{{2
+#define blk  #1B1D1E
+#define red  #F92672
+#define grn  #82B414
+#define ylw  #FD971F
+#define blu  #56C2D6
+#define mag  #8C54FE
+#define cyn  #465457
+#define wht  #CCCCC6
+#define bblk #505354
+#define bred #FF5995
+#define bgrn #B6E354
+#define bylw #FEED6C
+#define bblu #8CEDFF
+#define bmag #9E6FFE
+#define bcyn #899CA1
+#define bwht #F8F8F2
+#define fg   bwht
+#define bg   #000000
+#define crsr #D0D0D0
+
+! Template {{{2
+*.foreground:   fg
+*.background:   bg
+*.cursorColor:  crsr
+
+*.color0:       blk
+*.color1:       red
+*.color2:       grn
+*.color3:       ylw
+*.color4:       blu
+*.color5:       mag
+*.color6:       cyn
+*.color7:       wht
+
+*.color8:       bblk
+*.color9:       bred
+*.color10:      bgrn
+*.color11:      bylw
+*.color12:      bblu
+*.color13:      bmag
+*.color14:      bcyn
+*.color15:      bwht
