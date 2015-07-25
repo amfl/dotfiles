@@ -174,6 +174,8 @@ set backupskip=/tmp/*,/private/tmp/*
 " }}}
 " Remappings -------------------------------------------------------------- {{{
 
+" Default {{{
+
 " Remap leader to something easier to press
 let mapleader = ","
 map <space> <leader>
@@ -185,6 +187,10 @@ inoremap kj <ESC>
 " Move up/down sensibly on wrapped lines
 noremap j gj
 noremap k gk
+
+" Turbo mode!
+nnoremap <C-j> 4j
+nnoremap <C-k> 4k
 
 " Switching between buffers
 nmap gh <C-w>h
@@ -241,6 +247,9 @@ map <F3> :source ~/.vim_session <cr>     " And load session with F3
 " Paste without auto-indent problems
 nnoremap <leader>p :set invpaste paste?<CR>
 
+" }}}
+
+" MINI-FUNCTIONS
 " Dump timestamp {{{
 
 let tzformat = "%Y.%m.%d"
@@ -271,23 +280,34 @@ com! DiffSaved call s:DiffWithSaved()
 
 " }}}
 
-" Plugin Remaps 
+" Plugin Remaps {{{
 
+" VIM-FSWITCH REMAPS
 " Switch between source and header
 noremap <leader>s :FSHere<CR>
-" Toggle hardmode
+
+" HARDMODE REMAPS
 nnoremap <leader>/ <Esc>:call ToggleHardMode()<CR>
-" Tabularize
+
+" TABULARIZE REMAPS
 nmap <leader>t :Tabularize /
-" GitGutter
+
+" GITGUTTER REMAPS
 map <leader>g :GitGutterToggle<CR>
 
-" CamelCase mappings
+" CAMELCASE REMAPS
 " nmap <leader>cw <Plug>CamelCaseMotion_w
 " nmap <leader>cb <Plug>CamelCaseMotion_b
 " nmap <leader>ce <Plug>CamelCaseMotion_e
 
+" RAINBOWPARENS REMAPS
 nnoremap <leader>r ::RainbowParentheses!!<CR>
+
+" WINDOWSWAP REMAPS
+let g:windowswap_map_keys = 0 "prevent default bindings
+" nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+" nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 
 " }}}
 " }}}
@@ -309,12 +329,6 @@ let g:ctrlp_working_path_mode = 'rw'
 
 " VIM-MARKDOWN CONFIG
 let g:vim_markdown_fold_on_headings=1
-
-" WINDOWSWAP CONFIG
-let g:windowswap_map_keys = 0 "prevent default bindings
-" nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
-" nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
-nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 
 " }}}
 " Prose ------------------------------------------------------------------- {{{
@@ -366,6 +380,11 @@ let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=0
 colorscheme gruvbox
 hi Normal ctermbg=0          " Nice dark background
+
+" Make italics work properly when TERM=screen-256 (As it is in tmux)
+" This should continue to work in xterm
+set t_ZH=[3m
+set t_ZR=[23m
 
 " Dynamic Theme Changer {{{
 let g:current_theme = "none"
