@@ -502,6 +502,8 @@ set foldtext=MyFoldText()
 " }}}
 " Autocorrect ------------------------------------------------------------- {{{
 
+" C/C++ {{{
+
 " Every time god damn it
 iab ednl endl
 iab ednkl endl;
@@ -512,5 +514,8 @@ iab prgama pragma
 iab gloval global
 iab lsit list
 iab cosnt const
+iab nulltpr nullptr
+
+" }}}
 
 " }}}
