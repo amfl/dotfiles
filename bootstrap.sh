@@ -24,7 +24,7 @@ function git-update() {
 function doIt() {
 	echo Installing a bunch of software...
 	sudo apt-get update
-	sudo apt-get install build-essential cmake zsh tig silversearcher-ag ncdu htop
+	sudo apt-get install build-essential cmake zsh tig silversearcher-ag ncdu htop tree
 
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
 		--exclude "README.md" --exclude "notes.md" -av --no-perms . ~
