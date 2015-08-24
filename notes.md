@@ -90,3 +90,9 @@ To change the hostname of ubuntu instance without weird messages:
 ## Profiling Code
 
 Can use Valgrind/Callgrind. kcachegrind is a visualizer.
+
+## Pip
+
+If you get messages about out of date packages when installing something via pip, you might need to upgrade the environment.
+
+	sudo pip install whatever-you-are-trying-to-install-here --upgrade
