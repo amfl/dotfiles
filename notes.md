@@ -39,6 +39,21 @@ Install nvm! Detailed here: https://github.com/creationix/nvm
 
 vsftpd is happier when users have a valid shell. Adding `/bin/false` to `/etc/shells` will prevent login via ssh, but allow vsftpd to work.
 
+If running behind a dynamic IP, it is not enough to set `pasv_addr_resolve`, because this will try to resolve the domain once at startup. This should be done manually.
+
+Put this in cron. Inspired from [this post](http://www.imovedtolinux.com/2009/07/configure-vsftpd-for-passive.html) but modified to more accurately get output from `host` with `ack`:
+
+	#!/bin/sh
+	vsftpd_conf=/etc/vsftpd.conf
+	# change to your domain name in next line
+	my_ip=$(host your_host.dyndns.org | ack-grep "has address (.*)" --output "\$1")
+	vsftpd_ip=`grep pasv_address $vsftpd_conf | cut -f2 -d=`
+
+	if [ "$my_ip" != "$vsftpd_ip" ] ; then
+	( echo ",s/$vsftpd_ip/$my_ip/g" && echo w ) | ed - $vsftpd_conf
+	service vsftpd restart
+	fi
+
 ## Git
 
 ### Push huge commits
