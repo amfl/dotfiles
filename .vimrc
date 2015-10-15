@@ -336,7 +336,7 @@ let g:vim_markdown_fold_on_headings=1
 " .md files are markdown instead of Modula-2
 augroup vimrc_prose
 	autocmd!
-	autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+	autocmd BufNewFile,BufReadPost *.md set filetype=markdown | setlocal foldlevel=1
 augroup END
 
 map <leader>S :setlocal spell!<CR>   " Toggle spellcheck
