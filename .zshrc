@@ -63,6 +63,9 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # fi
 export EDITOR='vim'
 
+# Emacs
+alias ec="emacsclient"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
