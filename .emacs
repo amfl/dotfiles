@@ -1,3 +1,5 @@
+;; Package Management ----------------------------------------------------- {{{1
+
 ;; Built-in package manager
 (require 'package)
 
@@ -28,28 +30,72 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; List of packages
 (ensure-package-installed
- 'evil
- 'key-chord
- 'gruvbox-theme
- 'rainbow-delimiters)
+ 'evil                ; Make emacs behave like vim
+ 'powerline-evil      ; Powerline
+ 'evil-visualstar     ; Let vim's * command work with visual selections
+;; 'vimish-fold         ; Folding as in vim
+ 'key-chord           ; Allow key chords (Notably 'jk' to exit insert)
+ 'gruvbox-theme       ; Theme
+ 'rainbow-delimiters  ; Color parens based on nesting
+ 'markdown-mode       ; Edit markdown
+ 'nlinum              ; Line numbers
+ 'rudel               ; Collaborative editing
+)
 
 (setq package-enable-at-startup nil)
 
 (add-to-list 'load-path "~/.emacs.d")
 
-;; ----------------------------------------------------
+;; Package Config --------------------------------------------------------- {{{1
 
-;; (require 'evennia-mode)
+;; Custom stuff
+;; These are for files bundled with my dotfiles.
 
+(require 'cl)               ; Common lisp (?) A requirement for colorful-points.
+(require 'colorful-points)  ; For collaborative editing.
+
+(require 'evennia-mode)
+
+;; Package manager stuff
+
+(require 'evil)
+(evil-mode t) ; Evil mode by default
+
+(require 'powerline-evil)
+(powerline-center-evil-theme)
+
+(require 'evil-visualstar)
+(global-evil-visualstar-mode)
+
+(require 'rudel)
+(global-rudel-minor-mode 1)
+
+;; (require 'vimish-fold)
+
+(require 'key-chord)
+;; Note that this can make the cursor appear sluggish.
+(key-chord-mode 1)
+(key-chord-define-global "jk" 'evil-normal-state)
+
+(require 'gruvbox-theme)
 (load-theme 'gruvbox t)
 
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-;; Evil mode by default
-(require 'evil)
-(evil-mode t)
+(require 'nlinum)
+(setq nlinum-format "%d ")  ; Show space between line numbers and text
+(global-nlinum-mode t)      ; Always show line numbers
 
-(require 'key-chord)
-(key-chord-mode 1)
-(key-chord-define-global "jk" 'evil-normal-state)
+(require 'markdown-mode)
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; Remaps ----------------------------------------------------------------- {{{1
+
+;; Menu bar off by default, toggled with F9
+(menu-bar-mode -1)
+(global-set-key [f9] 'toggle-menu-bar-mode-from-frame)
