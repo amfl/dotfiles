@@ -33,6 +33,7 @@ Return a list of installed packages or nil for every skipped package."
  'evil                ; Make emacs behave like vim
  'powerline-evil      ; Powerline
  'evil-visualstar     ; Let vim's * command work with visual selections
+ 'evil-leader         ; <leader> key as in vim
 ;; 'vimish-fold         ; Folding as in vim
  'key-chord           ; Allow key chords (Notably 'jk' to exit insert)
  'gruvbox-theme       ; Theme
@@ -40,6 +41,7 @@ Return a list of installed packages or nil for every skipped package."
  'markdown-mode       ; Edit markdown
  'nlinum              ; Line numbers
  'rudel               ; Collaborative editing
+ 'cider               ; Interactive clojure package
 )
 
 (setq package-enable-at-startup nil)
@@ -67,6 +69,13 @@ Return a list of installed packages or nil for every skipped package."
 (require 'evil-visualstar)
 (global-evil-visualstar-mode)
 
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key
+ "w" 'save-buffer
+ "q" 'save-buffers-kill-terminal)
+
 (require 'rudel)
 (global-rudel-minor-mode 1)
 
@@ -93,6 +102,9 @@ Return a list of installed packages or nil for every skipped package."
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(require 'cider)
+(add-hook 'cider-mode-hook #'eldoc-mode)
 
 ;; Remaps ----------------------------------------------------------------- {{{1
 
