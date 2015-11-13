@@ -1,3 +1,5 @@
+(require `cl)
+
 (defvar colorful-points nil
   "Alist mapping window -> overlay to color its point.")
 (make-variable-buffer-local 'colorful-points)
