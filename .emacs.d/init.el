@@ -1,3 +1,9 @@
+;; Notes ------------------------------------------------------------------ {{{1
+
+;; M-x describe-function  Function -> Key
+;; M-x describe-key       Key -> Function
+;; M-x describe-bindings  Shows all bound keys
+
 ;; Prelude ---------------------------------------------------------------- {{{1
 
 (add-to-list 'load-path "~/.emacs.d")
@@ -94,6 +100,12 @@
 ;; (when (require 'evil-leader nil 'noerror)
 ;;   (evil-leader/set-key
 ;;     "g" 'magit-status))
+
+(require-package 'expand-region) ; Expand regions by semantic units {{{2
+;; <leader>x to begin, x to expand, z to contract
+(eval-after-load "evil" '(setq expand-region-contract-fast-key "z"))
+(evil-leader/set-key "xx" 'er/expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region) ; Clashes with evil-mode, not sure why.
 
 ;; Remaps, General Config ------------------------------------------------- {{{1
 
