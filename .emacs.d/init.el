@@ -16,7 +16,7 @@
 
 ;; Package Config --------------------------------------------------------- {{{1
 
-;; (require 'amfl-evil) ;  Enable evil stuff {{{2
+(require 'amfl-evil) ;  Enable evil stuff {{{2
 
 (require-package 'paredit) ; Crazy lispy editing! {{{2
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -28,10 +28,10 @@
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
 
-(require-package 'rudel) ; Collaborative editing  {{{2
-(global-rudel-minor-mode 1)
+;; (require-package 'rudel) ; Collaborative editing  {{{2
+;; (global-rudel-minor-mode 1)
 
-;; (require 'vimish-fold)
+;; (require-package 'vimish-fold)
 
 ; Color scheme
 (require-package 'gruvbox-theme)
@@ -54,8 +54,59 @@
 (require-package 'cider) ; Live clojure editing {{{2
 (add-hook 'cider-mode-hook #'eldoc-mode)
 
-;; Remaps ----------------------------------------------------------------- {{{1
+(ensure-package-installed 'helm) ; incremental completion and selection narrowing framework {{{2
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(helm-mode 1)
+
+; Not perfect, but will do for now...
+; See also: https://github.com/bbatsov/projectile
+(global-set-key (kbd "C-p") 'helm-buffers-list)
+
+(require-package 'evil-nerd-commenter) ;; Comment code - Can be used without evil mode {{{2
+
+;; Emacs key bindings
+(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+(global-set-key (kbd "C-c l") 'evilnc-quick-comment-or-uncomment-to-the-line)
+(global-set-key (kbd "C-c c") 'evilnc-copy-and-comment-lines)
+(global-set-key (kbd "C-c p") 'evilnc-comment-or-uncomment-paragraphs)
+
+;; Vim key bindings - Only active if evil-leader is present
+(when (require 'evil-leader nil 'noerror)
+    (evil-leader/set-key
+    "ci" 'evilnc-comment-or-uncomment-lines
+    "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
+    "ll" 'evilnc-quick-comment-or-uncomment-to-the-line
+    "cc" 'evilnc-copy-and-comment-lines
+    "cp" 'evilnc-comment-or-uncomment-paragraphs
+    "cr" 'comment-or-uncomment-region
+    "cv" 'evilnc-toggle-invert-comment-line-by-line
+    "\\" 'evilnc-comment-operator ; if you prefer backslash key
+))
+
+(require-package 'yasnippet) ; Snippets  {{{2
+(yas-global-mode 1)
+; (yas-load-directory "~/.emacs.d/snippets")  ; Custom directory
+(add-hook 'term-mode-hook (lambda ()
+    (setq yas-dont-activate t)))
+
+;; (require-package 'magit) ; Git integration {{{2
+;; (when (require 'evil-leader nil 'noerror)
+;;   (evil-leader/set-key
+;;     "g" 'magit-status))
+
+;; Remaps, General Config ------------------------------------------------- {{{1
 
 ;; Menu bar off by default, toggled with F9
 (menu-bar-mode -1)
 (global-set-key [f9] 'toggle-menu-bar-mode-from-frame)
+
+;; Always allow the mouse
+(xterm-mouse-mode 1)
+;; Bind some scroll wheel commands
+(defun up-slightly () (interactive) (scroll-up 5))
+(defun down-slightly () (interactive) (scroll-down 5))
+(global-set-key (kbd "<mouse-4>") 'down-slightly)
+(global-set-key (kbd "<mouse-5>") 'up-slightly)
+(global-set-key (kbd "<C-mouse-4>") 'text-scale-decrease)
+(global-set-key (kbd "<C-mouse-5>") 'text-scale-increase)

@@ -10,8 +10,8 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
- "w" 'save-buffer
- "q" 'save-buffers-kill-terminal)
+ "w" 'evil-write
+ "q" 'evil-quit)
 
 (require-package 'evil-paredit)
 (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
