@@ -4,6 +4,9 @@
 ;; M-x describe-key       Key -> Function
 ;; M-x describe-bindings  Shows all bound keys
 
+;; Interesting resources
+;;   https://github.com/purcell/emacs.d
+
 ;; Prelude ---------------------------------------------------------------- {{{1
 
 (add-to-list 'load-path "~/.emacs.d")
@@ -18,8 +21,16 @@
 (menu-bar-mode -1)
 (global-set-key [f9] 'toggle-menu-bar-mode-from-frame)
 
-;; Always allow the mouse
-(xterm-mouse-mode 1)
+;; Simplified from http://stackoverflow.com/questions/6462167/emacsclient-does-not-respond-to-mouse-clicks
+(defun amfl-terminal-config (&optional frame)
+    "Establish settings for the current terminal."
+    ;; Always allow the mouse
+    (xterm-mouse-mode 1))
+;; Evaluate both now (for non-daemon emacs) and upon frame creation
+;; (for new terminals via emacsclient).
+(amfl-terminal-config)
+(add-hook 'after-make-frame-functions 'amfl-terminal-config)
+
 ;; Bind some scroll wheel commands
 (defun up-slightly () (interactive) (scroll-up 5))
 (defun down-slightly () (interactive) (scroll-down 5))
@@ -27,6 +38,9 @@
 (global-set-key (kbd "<mouse-5>") 'up-slightly)
 (global-set-key (kbd "<C-mouse-4>") 'text-scale-decrease)
 (global-set-key (kbd "<C-mouse-5>") 'text-scale-increase)
+
+;;; Newline behaviour
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; Local Package Config --------------------------------------------------- {{{1
 ;; This section is for files bundled with my dotfiles.
@@ -79,6 +93,9 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(require-package 'auto-complete)       ; Autocomplete --------------------- {{{2
+(ac-config-default)
 
 (require-package 'cider)               ; Live clojure editing ------------- {{{2
 (add-hook 'cider-mode-hook #'eldoc-mode)

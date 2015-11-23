@@ -1,0 +1,14 @@
+# Basic emacs clutter
+\#*
+*~
+.cache
+ac-comphist.dat
+auto-save-list
+
+# Elpa packages dir
+# This will be redownloaded automatically, no reason to bloat up git
+# (Please don't make me eat those words)
+elpa
+
+# Package-specific files
+projectile-bookmarks.eld
