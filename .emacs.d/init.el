@@ -6,10 +6,25 @@
 
 ;; Interesting resources
 ;;   https://github.com/purcell/emacs.d
+;;   http://juanjoalvarez.net/es/detail/2014/sep/19/vim-emacsevil-chaotic-migration-guide/
+
+;; TODO:
+;; https://github.com/abo-abo/hydra
+;; Map - key to something like dired
+;; What is the relationship between autocomplete and company?
+;; Flycheck for on the fly code checking
+;; Change font size in gui
+;; GNUglobal? Like ctags?
 
 ;; Prelude ---------------------------------------------------------------- {{{1
 
-(add-to-list 'load-path "~/.emacs.d")
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; Define a minor mode to contain all my custom keymaps.
 ;; This mode can simply be disabled to remove the customization.
@@ -19,7 +34,11 @@
 
 ;; Menu bar off by default, toggled with F9
 (menu-bar-mode -1)
+(tool-bar-mode -1)
 (global-set-key [f9] 'toggle-menu-bar-mode-from-frame)
+
+;; Show matching parens
+(show-paren-mode t)
 
 ;; Simplified from http://stackoverflow.com/questions/6462167/emacsclient-does-not-respond-to-mouse-clicks
 (defun amfl-terminal-config (&optional frame)
@@ -39,8 +58,12 @@
 (global-set-key (kbd "<C-mouse-4>") 'text-scale-decrease)
 (global-set-key (kbd "<C-mouse-5>") 'text-scale-increase)
 
-;;; Newline behaviour
+;; Newline behaviour
 (global-set-key (kbd "RET") 'newline-and-indent)
+
+;; Don't need backups
+;; TODO They should really be enabled, but restricted to their own directrory...
+(setq make-backup-files nil)
 
 ;; Local Package Config --------------------------------------------------- {{{1
 ;; This section is for files bundled with my dotfiles.
@@ -55,6 +78,18 @@
 (require 'evennia-mode)     ; Mode for writing scripts for the mu* framework, evennia.
 
 ;; Third-Party Package Config --------------------------------------------- {{{1
+
+(require-package 'diminish)            ; Don't spam the modeline ---------- {{{2
+; (eval-after-load "undo-tree" (diminish 'undo-tree-mode))
+;; (eval-after-load 'auto-complete (diminish 'auto-complete-mode))
+; (eval-after-load 'projectile (diminish 'projectile-mode))
+; (eval-after-load 'yasnippet (diminish 'yas-minor-mode))
+; (eval-after-load 'helm-mode (diminish 'helm-mode))
+; ;; (eval-after-load 'smartparens (diminish 'smartparens-mode))
+; ;; (eval-after-load 'company (diminish 'company-mode))
+; (eval-after-load 'magit (diminish 'magit-auto-revert-mode))
+; ;; (eval-after-load 'hs-minor-mode (diminish 'hs-minor-mode))
+; ;; (eval-after-load 'color-identifiers-mode (diminish 'color-identifiers-mode))
 
 (require 'amfl-evil)                   ; Enable evil stuff ---------------- {{{2
 ;; Evil stuff is configured in a seperate file
@@ -75,7 +110,7 @@
 ;; NOTE: This freaks out with evil-mode!
 ;;       If your collaborator enters insert mode, so will you!
 
-;; (require-package 'vimish-fold)
+(require-package 'vimish-fold)
 
 (require-package 'gruvbox-theme)       ; Color scheme --------------------- {{{2
 (load-theme 'gruvbox t)
@@ -104,6 +139,7 @@
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (helm-mode 1)
+(diminish 'helm-mode)
 
 ;; Use ag for fast searching
 (ensure-package-installed 'ag)
@@ -113,6 +149,7 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+(diminish 'projectile-mode)
 
 (define-key amfl-keys-minor-mode-map (kbd "C-p") 'helm-projectile)
 
@@ -130,10 +167,11 @@
     "ci" 'evilnc-comment-or-uncomment-lines
     "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
     "ll" 'evilnc-quick-comment-or-uncomment-to-the-line
-    "cc" 'evilnc-copy-and-comment-lines
+    "cy" 'evilnc-copy-and-comment-lines
     "cp" 'evilnc-comment-or-uncomment-paragraphs
     "cr" 'comment-or-uncomment-region
     "cv" 'evilnc-toggle-invert-comment-line-by-line
+    "cc" 'evilnc-comment-or-uncomment-lines
     "\\" 'evilnc-comment-operator ; if you prefer backslash key
 ))
 
@@ -142,17 +180,28 @@
 ; (yas-load-directory "~/.emacs.d/snippets")  ; Custom directory
 (add-hook 'term-mode-hook (lambda ()
     (setq yas-dont-activate t)))
+(diminish 'yas-minor-mode)
 
-;; (require-package 'magit)              ; Git integration ------------------ {{{2
-;; (when (require 'evil-leader nil 'noerror)
-;;   (evil-leader/set-key
-;;     "g" 'magit-status))
+(require-package 'magit)               ; Git integration ------------------ {{{2
+(when (require 'evil-leader nil 'noerror)
+  (evil-leader/set-key
+    "g" 'magit-status))
+
+(require-package 'diff-hl)             ; Highlight source control changes - {{{2
+(unless (window-system)
+  (setq diff-hl-side 'right)
+  (diff-hl-margin-mode))
+(global-diff-hl-mode 1)
 
 (require-package 'expand-region)       ; Expand regions by semantic units - {{{2
 ;; <leader>x to begin, x to expand, z to contract
 (eval-after-load "evil" '(setq expand-region-contract-fast-key "z"))
 (evil-leader/set-key "xx" 'er/expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region) ; Clashes with evil-mode, not sure why.
+
+(require-package 'saveplace)           ; Save place when opening files ---- {{{2
+(setq save-place-file "~/.emacs.d/saveplace")
+(setq-default save-place t)
 
 ;; Postlude --------------------------------------------------------------- {{{1
 ;; TODO This section is a mess...
@@ -163,6 +212,7 @@
 (define-minor-mode amfl-keys-minor-mode
   "A minor mode so my key settings override annoying major modes."
   t " amfl" 'amfl-keys-minor-mode-map)
+(diminish 'amfl-keys-minor-mode)
 
 (when(require 'evil-leader nil 'noerror)
     (evil-make-overriding-map amfl-keys-minor-mode-map 'normal) ; Make our keymaps override evil.

@@ -12,3 +12,6 @@ elpa
 
 # Package-specific files
 projectile-bookmarks.eld
+
+# The file containing the last cursor position in files
+saveplace
