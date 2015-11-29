@@ -26,12 +26,18 @@
 
 ;; ------------------------------------------------------
 
-(require-package 'powerline-evil) (powerline-center-evil-theme)
+(require-package 'powerline-evil)
+(powerline-center-evil-theme)
 
-(require-package 'evil-visualstar) ; Let vim's * command work with visual selections
+;; Org mode keybinding changes for evil
+(require-package 'evil-org)
+
+;; Let vim's * command work with visual selections
+(require-package 'evil-visualstar)
 (global-evil-visualstar-mode)
 
-(require-package 'evil-leader) ; <leader> key as in vim
+;; <leader> key as in vim
+(require-package 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
