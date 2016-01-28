@@ -33,8 +33,9 @@
 ;; Remaps, General Config ------------------------------------------------- {{{1
 
 ;; Menu bar off by default, toggled with F9
+(if window-system
+    (tool-bar-mode -1))
 (menu-bar-mode -1)
-(tool-bar-mode -1)
 (global-set-key [f9] 'toggle-menu-bar-mode-from-frame)
 
 ;; Show matching parens
