@@ -27,7 +27,17 @@
 ;; ------------------------------------------------------
 
 (require-package 'powerline-evil)
-(powerline-center-evil-theme)
+;; (powerline-center-evil-theme)
+;; (powerline-evil-vim-color-theme)
+
+;; (powerline-evil-center-color-theme)
+;; (setq powerline-evil-tag-style 'visual-expanded)
+
+;; (require-package 'smart-mode-line-powerline-theme)
+;; (sml/setup)
+
+;; TODO
+;; https://github.com/AnthonyDiGirolamo/airline-themes
 
 ;; Org mode keybinding changes for evil
 (require-package 'evil-org)
@@ -42,7 +52,14 @@
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
  "w" 'evil-write
- "q" 'evil-quit)
+ "q" 'evil-quit
+ "f" 'helm-find-files
+ "d" 'kill-this-buffer
+ "D" 'kill-buffer
+ "<tab>" 'switch-to-buffer  ; GUI
+ "TAB" 'switch-to-buffer    ; Terminal (This is also C-i)
+ "a" 'switch-to-previous-buffer
+ )
 
 ;; Allows key chords to ditch out of almost any menu
 ;; https://github.com/syl20bnr/evil-escape

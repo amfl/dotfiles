@@ -15,6 +15,9 @@
 ;; Flycheck for on the fly code checking
 ;; Change font size in gui
 ;; GNUglobal? Like ctags?
+;; https://github.com/Malabarba/rich-minority to replace diminish
+;; https://github.com/tom-tan/hlinum-mode
+;; Spelling
 
 ;; Prelude ---------------------------------------------------------------- {{{1
 
@@ -32,9 +35,18 @@
 
 ;; Remaps, General Config ------------------------------------------------- {{{1
 
-;; Menu bar off by default, toggled with F9
+;; http://emacsredux.com/blog/2013/04/28/switch-to-previous-buffer/
+(defun switch-to-previous-buffer ()
+    "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+    (interactive)
+    (switch-to-buffer (other-buffer (current-buffer) 1)))
+
+;; GUI cruft off by default
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
+;; Toggle the menu bar back with F9
 (global-set-key [f9] 'toggle-menu-bar-mode-from-frame)
 
 ;; Show matching parens
@@ -112,15 +124,67 @@
 
 (require-package 'vimish-fold)
 
-(require-package 'gruvbox-theme)       ; Color scheme --------------------- {{{2
-(load-theme 'gruvbox t)
+;; (require-package 'gruvbox-theme)       ; Theme ---------------------------- {{{2
+;; (load-theme 'gruvbox t)
+
+;; https://www.reddit.com/r/emacs/comments/308ibs/2015_emacs_theme_thread/
+
+;; (require-package 'cyberpunk-theme)
+;; ;; (color-theme-cyberpunk)
+;; (load-theme 'cyberpunk t)
+
+(require-package 'moe-theme)
+(powerline-moe-theme)
+(moe-dark)
+
+(defun moe-theme-set-color-custom ()
+    (set-face-attribute 'mode-line-buffer-id nil :background nil :foreground "#4b4b4b")
+    (set-face-attribute 'minibuffer-prompt nil :foreground "#ff0000" :background "#080808")
+
+    (set-face-attribute 'mode-line-inactive nil :background "#4e4e4e" :foreground "#9e9e9e")
+    (set-face-attribute 'powerline-active2 nil :background "#3a3a3a" :foreground "#ffffff")
+    (set-face-attribute 'powerline-inactive1 nil :background "#626262" :foreground "#eeeeee")
+    (set-face-attribute 'powerline-inactive2 nil :background "#767676" :foreground "#e4e4e4")
+
+    (set-face-attribute 'mode-line nil :background "#080808" :foreground "#ffffff")
+    (set-face-attribute 'powerline-active1 nil :background "#4e4e4e" :foreground "#bbbbbb"))
+(moe-theme-set-color-custom)
+;; Update powerline based on evil state
+(add-hook 'evil-normal-state-entry-hook (lambda () (moe-theme-set-color 'w/b)))
+(add-hook 'evil-insert-state-entry-hook (lambda () (moe-theme-set-color 'red)))
+(add-hook 'evil-visual-state-entry-hook (lambda () (moe-theme-set-color 'green)))
+(add-hook 'evil-replace-state-entry-hook (lambda () (moe-theme-set-color 'red)))
+(add-hook 'evil-operator-state-entry-hook (lambda () (moe-theme-set-color 'yellow)))
+(add-hook 'evil-motion-state-entry-hook (lambda () (moe-theme-set-color 'yellow)))
+
+;; (defun my-evil-modeline-change (default-color)
+;;  "changes the modeline color when the evil mode changes"
+;;  (let ((color (cond ((evil-insert-state-p) 'red)
+;; 		      ((evil-visual-state-p) 'green)
+;; 		      ((evil-normal-state-p) 'w/b)
+;; 		      (t default-color))))
+;;    (moe-theme-set-color color)))
+
+;; ;; (lexical-let ((default-color (cons (face-background 'mode-line)
+;; ;;                                   (face-foreground 'mode-line))))
+;; ;;     (add-hook 'post-command-hook (lambda () (my-evil-modeline-change default-color))))
+;; (add-hook 'post-command-hook (lambda () (my-evil-modeline-change 'yellow)))
+
+;; (defadvice evil-insert-state (before emacs-state-instead-of-insert-state activate)
+;;     (moe-theme-set-color 'red))
+;; (defadvice evil-normal-state (before emacs-state-instead-of-normal-state activate)
+;;     (moe-theme-set-color 'green))
 
 (require-package 'rainbow-delimiters)  ; Color parens based on nesting ---- {{{2
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-(require-package 'nlinum)              ; Show line numbers on the side ---- {{{2
-(setq nlinum-format "%d ")  ; Show space between line numbers and text
-(global-nlinum-mode t)      ; Always show line numbers
+;; (require-package 'nlinum)              ; Show line numbers on the side ---- {{{2
+;; (setq nlinum-format "%d ")  ; Show space between line numbers and text
+;; (global-nlinum-mode t)      ; Always show line numbers
+(global-linum-mode t)
+(setq linum-format "%d ")
+(require-package 'hlinum)
+(hlinum-activate)
 
 (require-package 'markdown-mode)       ; Edit markdown -------------------- {{{2
 (autoload 'markdown-mode "markdown-mode"
@@ -140,6 +204,10 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (helm-mode 1)
 (diminish 'helm-mode)
+
+; rebind tab to run persistent action
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)  ; GUI
+(define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)    ; Terminal
 
 ;; Use ag for fast searching
 (ensure-package-installed 'ag)
