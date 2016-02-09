@@ -43,10 +43,11 @@ Repeated invocations toggle between the two most recently open buffers."
     (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 ;; GUI cruft off by default
+(if window-system
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1))
+;; Menu bar off by default, toggled with F9
 (menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-;; Toggle the menu bar back with F9
 (global-set-key [f9] 'toggle-menu-bar-mode-from-frame)
 
 ;; Show matching parens
@@ -73,9 +74,10 @@ Repeated invocations toggle between the two most recently open buffers."
 ;; Newline behaviour
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-;; Don't need backups
+;; Don't need backups or autosaves
 ;; TODO They should really be enabled, but restricted to their own directrory...
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 
 ;; Local Package Config --------------------------------------------------- {{{1
 ;; This section is for files bundled with my dotfiles.
