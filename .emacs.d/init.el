@@ -43,9 +43,10 @@ Repeated invocations toggle between the two most recently open buffers."
     (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 ;; GUI cruft off by default
-(if window-system
+(if (display-graphic-p)
+  (progn
     (tool-bar-mode -1)
-    (scroll-bar-mode -1))
+    (scroll-bar-mode -1)))
 ;; Menu bar off by default, toggled with F9
 (menu-bar-mode -1)
 (global-set-key [f9] 'toggle-menu-bar-mode-from-frame)
