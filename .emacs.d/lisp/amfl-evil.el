@@ -13,6 +13,10 @@
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
 
+;; Move up and down based on visual lines rather than actual lines
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
 ;; Use C-j and C-k to scroll up/down (Because C-u is busted in evil)
 (define-key evil-normal-state-map (kbd "C-k") (lambda ()
 						(interactive)
@@ -25,6 +29,8 @@
 (setq evil-move-cursor-back nil)
 
 ;; ------------------------------------------------------
+
+(require-package 'vimish-fold)
 
 (require-package 'powerline-evil)
 ;; (powerline-center-evil-theme)
