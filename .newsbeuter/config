@@ -1,0 +1,14 @@
+# Adapted from:
+# http://moparx.com/configs/newsbeuter/
+# https://push.cx/2010/reading-400-feeds-with-newsbeuter
+#
+# Interface -------------------------------------------------------------- {{{1
+
+confirm-exit yes
+
+bind-key h quit
+bind-key k up
+bind-key j down
+bind-key O open-in-browser-and-mark-read
+bind-key "SPACE" open
+
