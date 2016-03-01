@@ -62,6 +62,9 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 #   export EDITOR='mvim'
 # fi
 export EDITOR='vim'
+# Adding the below line lets emacsclient start emacs if it isn't already started
+# ...Intuitive, right
+export ALTERNATE_EDITOR=''
 
 # Emacs
 alias ec="emacsclient"

@@ -125,10 +125,11 @@ Repeated invocations toggle between the two most recently open buffers."
 ;; NOTE: This freaks out with evil-mode!
 ;;       If your collaborator enters insert mode, so will you!
 
-(require-package 'vimish-fold)
-
 ;; (require-package 'gruvbox-theme)       ; Theme ---------------------------- {{{2
 ;; (load-theme 'gruvbox t)
+
+;; Checklist:
+;;   Org mode heirachies are not overly noisy
 
 ;; https://www.reddit.com/r/emacs/comments/308ibs/2015_emacs_theme_thread/
 
@@ -140,6 +141,7 @@ Repeated invocations toggle between the two most recently open buffers."
 (powerline-moe-theme)
 (moe-dark)
 
+;; Custom powerline colors
 (defun moe-theme-set-color-custom ()
     (set-face-attribute 'mode-line-buffer-id nil :background nil :foreground "#4b4b4b")
     (set-face-attribute 'minibuffer-prompt nil :foreground "#ff0000" :background "#080808")
