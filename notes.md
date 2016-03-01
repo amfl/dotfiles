@@ -49,7 +49,7 @@ Put this in cron. Inspired from [this post](http://www.imovedtolinux.com/2009/07
 	my_ip=$(host your_host.dyndns.org | ack-grep "has address (.*)" --output "\$1")
 	vsftpd_ip=`grep pasv_address $vsftpd_conf | cut -f2 -d=`
 
-	if [ "$my_ip" != "$vsftpd_ip" ] ; then
+	if [ "$my_ip" != "$vsftpd_ip" ] && [ "$my_ip" ] && [ "$vsftpd_ip" ]; then
 	( echo ",s/$vsftpd_ip/$my_ip/g" && echo w ) | ed - $vsftpd_conf
 	service vsftpd restart
 	fi
