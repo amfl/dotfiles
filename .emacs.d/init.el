@@ -92,6 +92,8 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (require 'evennia-mode)     ; Mode for writing scripts for the mu* framework, evennia.
 
+(require 'weechat-mode)     ; Mode for syntax highlighting my weechat logs
+
 ;; Third-Party Package Config --------------------------------------------- {{{1
 
 (require-package 'diminish)            ; Don't spam the modeline ---------- {{{2
