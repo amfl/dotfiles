@@ -10,8 +10,10 @@
         ("\\*\t\\([^ ]+\\)" 1 font-lock-function-name-face) ;; Nicks after an action
         ("^[0-9\-]+ [0-9:]+\t\\([^ *]+\\)\t" 1 font-lock-function-name-face) ;; Nicks in normal speech
         ("\t \\*" . font-lock-keyword-face) ;; * action indictators
-        ("\t> [^\t]+$" . font-lock-keyword-face) ;; > Implications
+        ("\t>+ [^\t]+$" . font-lock-keyword-face) ;; > Implications
         ("((.*?))" . font-lock-comment-face) ;; (( OOC ))
+        ("──.?\t\\(.*\\)$" 1 font-lock-comment-face) ;; Network events
+        ("\"[^\"\n]*[\"\n]" . font-lock-string-face)
         ))
 
 ;; ;; Stolen from http://stackoverflow.com/questions/24169418/adding-a-created-color-code-to-font-lock
@@ -30,7 +32,7 @@
 ;; 			                                  (string-to-number (nth 2 color-channels))))))))))
 
 (define-derived-mode weechat-mode fundamental-mode
-  (setq font-lock-defaults '(my-highlights))
+  (setq font-lock-defaults '(my-highlights 1))
   ;; (font-lock-add-keywords nil rgb-color-keywords)
   (setq mode-name "weechat"))
 
