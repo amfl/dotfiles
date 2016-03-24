@@ -26,9 +26,14 @@ values."
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
-     ;; git
+     html
+     python
+     evil-commentary
+     git
+     themes-megapack
      ;; markdown
-     ;; org
+     (org :variables
+          org-enable-github-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -198,7 +203,7 @@ values."
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil  ;; CHANGED AMFL
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
@@ -249,6 +254,31 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+  (setq evil-escape-unordered-key-sequence 1)
+  (setq-default evil-escape-key-sequence "jk")
+
+  ;; Move up and down based on visual lines rather than actual lines
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
+  ;; Use C-j and C-k to scroll up/down
+  (define-key evil-normal-state-map (kbd "C-k") (lambda ()
+                                                (interactive)
+                                                (evil-scroll-up nil)))
+  (define-key evil-normal-state-map (kbd "C-j") (lambda ()
+                                                (interactive)
+                                                (evil-scroll-down nil)))
+  ;; Don't move the cursor back when exiting insert mode
+  (setq evil-move-cursor-back nil)
+
+  ;; Custom Packages
+  ;; TODO: Sort these out with autoloads https://github.com/syl20bnr/spacemacs/blob/master/doc/LAYERS.org
+
+  (push "~/dotfiles/.emacs.d/lisp" load-path)
+  (use-package weechat-mode
+  :mode ("\\.weechatlog\\'" . weechat-mode))
+
+  ;;(require 'weechat-mode)     ; Mode for syntax highlighting my weechat logs
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

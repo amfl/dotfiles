@@ -34,7 +34,11 @@
 (define-derived-mode weechat-mode fundamental-mode
   (setq font-lock-defaults '(my-highlights 1))
   ;; (font-lock-add-keywords nil rgb-color-keywords)
-  (setq mode-name "weechat"))
+  (setq mode-name "weechat")
+  (setq adaptive-wrap-extra-indent 28)
+  (adaptive-wrap-prefix-mode)
+  (visual-line-mode)
+  )
 
 (add-to-list 'auto-mode-alist '("\\.weechatlog\\'" . weechat-mode))
 
