@@ -8,7 +8,7 @@
       '(
         ("^[0-9\-]+ [0-9:]+" . font-lock-comment-face) ;; Timestamps
         ("\\*\t\\([^ ]+\\)" 1 font-lock-function-name-face) ;; Nicks after an action
-        ("^[0-9\-]+ [0-9:]+\t\\([^ *]+\\)\t" 1 font-lock-function-name-face) ;; Nicks in normal speech
+        ("^[0-9\-]+ [0-9:]+\t\\([^\t*]+\\)\t" 1 font-lock-function-name-face) ;; Nicks in normal speech
         ("\t \\*" . font-lock-keyword-face) ;; * action indictators
         ("\t>+ [^\t]+$" . font-lock-keyword-face) ;; > Implications
         ("((.*?))" . font-lock-comment-face) ;; (( OOC ))
