@@ -28,6 +28,7 @@ values."
      emacs-lisp
      html
      python
+     rust
      evil-commentary
      git
      themes-megapack
@@ -37,7 +38,8 @@ values."
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     ;; spell-checking
+     spell-checking
+     markdown
      ;; syntax-checking
      ;; version-control
      )
@@ -271,12 +273,41 @@ you should place you code here."
   ;; Don't move the cursor back when exiting insert mode
   (setq evil-move-cursor-back nil)
 
+  ;; Custom Keymaps - o prefix
+  ;; Custom on anything
+  (spacemacs/set-leader-keys "oa" 'align-regexp)
+
+  ;; Global keys
+
+  ;; http://stackoverflow.com/questions/12292239/insert-the-output-of-shell-command-into-emacs-buffer
+  (defun put-timestamp ()
+    (interactive)
+    (insert (format-time-string "%Y-%m-%d")))
+  ;; (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
+  ;; (insert (shell-command-to-string "date")))
+
+  (global-set-key (kbd "<f5>") 'put-timestamp)
+  ;; (global-set-key (kbd "<f5>") 'org-time-stamp)
+
+  ;; Simplified from http://stackoverflow.com/questions/6462167/emacsclient-does-not-respond-to-mouse-clicks
+  (defun amfl-terminal-config (&optional frame)
+    "Establish settings for the current terminal."
+    ;; Always allow the mouse
+    (xterm-mouse-mode 1))
+  ;; Evaluate both now (for non-daemon emacs) and upon frame creation
+  ;; (for new terminals via emacsclient).
+  (amfl-terminal-config)
+  (add-hook 'after-make-frame-functions 'amfl-terminal-config)
+
   ;; Custom Packages
   ;; TODO: Sort these out with autoloads https://github.com/syl20bnr/spacemacs/blob/master/doc/LAYERS.org
 
   (push "~/dotfiles/.emacs.d/lisp" load-path)
   (use-package weechat-mode
-  :mode ("\\.weechatlog\\'" . weechat-mode))
+    :mode ("\\.weechatlog\\'" . weechat-mode)
+    :mode ("\\.eolog\\'" . weechat-mode))
+  (use-package omegle-mode
+    :mode ("\\.omegle\\'" . omegle-mode))
 
   ;;(require 'weechat-mode)     ; Mode for syntax highlighting my weechat logs
   )
