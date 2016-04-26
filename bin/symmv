@@ -1,0 +1,4 @@
+#!/bin/bash
+# symmv - For moving a file and replacing it with a symlink to its new destination
+mv "$1" "$2"
+ln -s "$2" "$1"

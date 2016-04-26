@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Stolen and modified from https://github.com/nekodex/lazymode/blob/master/puush/puu.sh
+
+# Source from config instead of hard-code
+. ~/.puushrc
+# EMAIL=#<email>
+# APIKEY=#<apikey>
+ENDPOINT=https://puush.me
+
+if [ $# -eq 1 ]; then
+  curl -s -F "z=lol" -F "e=$EMAIL" -F "k=$APIKEY" -F f=@$1 $ENDPOINT/api/up/ | cut -d',' -f 2
+else
+  echo "Usage: $0 <file>"
+fi
