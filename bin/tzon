@@ -1,0 +1,21 @@
+#!/bin/bash
+# A simple script for outputting many international clocks at once. Good if you have lots of internet friends.
+# Configuration:
+# Populate ~/.tzonrc with timezones and names. Eg,
+#    America/New_York Alice
+#    Pacific/Auckland Bob
+# Remember the file needs a newline at the end.
+
+TS=+'%Y-%m-%d %a %H:%M'
+
+printline() { COMMENT=${@:2}; export TZ=$1; echo -n $(date "${TS}"); printf " - %-20s (%s)\n" "$COMMENT" $1; }
+printall() {
+    while read -r line
+    do
+        printline $line
+    done < $1
+    # Also print yourself
+    printline $(cat /etc/timezone) $(whoami)
+}
+
+printall ~/.tzonrc | sort
