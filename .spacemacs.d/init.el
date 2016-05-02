@@ -273,12 +273,13 @@ you should place you code here."
   ;; Don't move the cursor back when exiting insert mode
   (setq evil-move-cursor-back nil)
 
-  ;; Custom Keymaps - o prefix
-  ;; Custom on anything
-  (spacemacs/set-leader-keys "oa" 'align-regexp)
-
-  ;; Global keys
-
+  ;; Custom functions
+  (defun clipboard-thinclient (&optional b e)
+    (interactive "r")
+    (shell-command-on-region b e "sendclipboard"))
+  (defun puush-thinclient (&optional b e)
+    (interactive "r")
+    (shell-command-on-region b e "puush | sendclipboard"))
   ;; http://stackoverflow.com/questions/12292239/insert-the-output-of-shell-command-into-emacs-buffer
   (defun put-timestamp ()
     (interactive)
@@ -286,8 +287,17 @@ you should place you code here."
   ;; (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
   ;; (insert (shell-command-to-string "date")))
 
+  ;; Custom Keymaps - o prefix
+  ;; Custom on anything
+  (spacemacs/set-leader-keys "oa" 'align-regexp)
+  (spacemacs/set-leader-keys "oc" 'clipboard-thinclient)
+  (spacemacs/set-leader-keys "op" 'puush-thinclient)
+
+  ;; Global keys
+
   (global-set-key (kbd "<f5>") 'put-timestamp)
   ;; (global-set-key (kbd "<f5>") 'org-time-stamp)
+
 
   ;; Simplified from http://stackoverflow.com/questions/6462167/emacsclient-does-not-respond-to-mouse-clicks
   (defun amfl-terminal-config (&optional frame)
