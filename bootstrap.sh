@@ -6,7 +6,7 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 # --------------------------------------------------
 # LIBRARY FUNCTIONS
 
-git-update() {
+git_update() {
   # Either clones a directory if it doesn't exist at the given location
   # or pulls it if it does exist.
   # $1 = repo URL
@@ -33,7 +33,7 @@ usage() {
   echo "  unlink        Unlink configs with stow"
 }
 
-install-pkg() {
+install_pkg() {
   OS=`uname`
 
   # Universal list of software for all operating systems.
@@ -62,7 +62,7 @@ install-pkg() {
   sudo $PKGMAN $SOFTWARE
 }
 
-install-git() {
+install_git() {
   git-update https://github.com/sickill/stderred.git                  ~/.stderred
 }
 
