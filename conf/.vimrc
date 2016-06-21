@@ -82,6 +82,13 @@ nnoremap \ :Ag<SPACE>
 " }}}
 " Plugin Setup ------------------------------------------------------------ {{{
 
+" Automatically download vim-plug if we don't have it
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 let g:plug_timeout = 9999
 
 call plug#begin()
