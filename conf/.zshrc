@@ -1,85 +1,47 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+####################################################
+# ANTIGEN
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="pygmalion"
+source ~/antigen/antigen.zsh
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias mcm="make clean; make"
+# Load oh-my-zsh's library.
+antigen use oh-my-zsh
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+antigen bundle common-aliases
 
-# Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
 
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
+antigen theme pygmalion
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
+antigen apply
 
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+####################################################
+# EXPORTS
 
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment following line if you want to  shown in the command execution time stamp
-# in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
-# yyyy-mm-dd
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-export EDITOR='vim'
 # Adding the below line lets emacsclient start emacs if it isn't already started
-# ...Intuitive, right
+# ...Intuitive, right?
 export ALTERNATE_EDITOR=''
 
-# Emacs
-alias ec="emacsclient"
+# Make 777 stuff readable in ls
+# export LS_COLORS='ow=01;30;42'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-export LD_PRELOAD="~/.stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
-export LS_COLORS='ow=01;30;42'
+####################################################
+# CUSTOM ALIASES
 
 # Enable mass, easy renaming... Why isn't this a default
 # http://www.mfasold.net/blog/2008/11/moving-or-renaming-multiple-files/
+#   mmv *.dat *.dat_old
+#   mmv foo.* bar.*
+#   mmv **/*2008.mp3 **/*2009.mp3
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
+# Easily start a new emacs client in terminal
+alias ec="emacsclient -t"
+
+####################################################
+# MACHINE SPECIFIC
+
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
