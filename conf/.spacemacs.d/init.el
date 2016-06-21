@@ -25,23 +25,27 @@ values."
      ;; ----------------------------------------------------------------
      ;; auto-completion
      ;; better-defaults
+     ;; syntax-checking
+     ;; version-control
+     ;; (shell :variables
+     ;;        shell-default-height 30
+     ;;        shell-default-position 'bottom)
+
+     evil-commentary
+     git
+     themes-megapack
+     spell-checking
+
+     ;; Languages
      emacs-lisp
      html
      python
      rust
-     evil-commentary
-     git
-     themes-megapack
-     ;; markdown
+     c-c++
+     php
+     markdown
      (org :variables
           org-enable-github-support t)
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     spell-checking
-     markdown
-     ;; syntax-checking
-     ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -213,7 +217,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers `relative
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -311,6 +315,10 @@ you should place you code here."
 
   ;; Custom Packages
   ;; TODO: Sort these out with autoloads https://github.com/syl20bnr/spacemacs/blob/master/doc/LAYERS.org
+
+  ;; Stolen from https://github.com/zachlatta/dotfiles/blob/master/spacemacs
+  ;; Enable org's table editor in markdown mode
+  (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
 
   (push "~/dotfiles/.emacs.d/lisp" load-path)
   (use-package weechat-mode
