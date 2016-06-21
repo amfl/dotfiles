@@ -12,7 +12,7 @@ git_update() {
   # $1 = repo URL
   # $2 = directory
 
-  echo git-update $1 $2...
+  echo git_update $1 $2...
   if [ -d "$2" ]; then
     # Pull down the latest master and replay our changes on top.
     git -C $2 pull --rebase --stat origin master
@@ -63,7 +63,8 @@ install_pkg() {
 }
 
 install_git() {
-  git-update https://github.com/sickill/stderred.git                  ~/.stderred
+  git_update https://github.com/sickill/stderred.git    ~/.stderred
+  git_update https://github.com/zsh-users/antigen.git   ~/.antigen
 }
 
 configure() {
@@ -90,14 +91,14 @@ fi
 
 case $1 in
   "all")
-    install-pkg
-    install-git
+    install_pkg
+    install_git
     configure
     link
     ;;
   "install")
-    install-pkg
-    install-git
+    install_pkg
+    install_git
     ;;
   "link")
     link
