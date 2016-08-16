@@ -5,4 +5,8 @@
 
 vimfx.set('mode.normal.history_back', '<c-o>')
 vimfx.set('mode.normal.history_forward', '<c-i>')
+
+vimfx.set('mode.normal.scroll_half_page_down', '<c-d>    d')
+vimfx.set('mode.normal.scroll_half_page_up', '<c-u>    u')
+
 vimfx.set('mode.normal.follow_in_tab', 'c')
