@@ -1,0 +1,28 @@
+#!/bin/bash
+# Script for downloading text from DeviantART
+# Requires: HTML-XML-utils
+
+URL=$1
+HTML=$(curl -Ls $URL | hxnormalize -l 240 -x)
+
+# Process the data
+
+TITLE=$(echo $HTML | hxselect -c ".metadata h2 a" | xargs)
+AUTHOR=$(echo $HTML | hxselect -c ".metadata .author .username")
+PUBLISHED="UNIMPLEMENTED"
+RETRIEVED=$(date)
+SLUG=$(echo $URL | grep -o "[^/]*$")
+
+# Output the data in a nice format
+
+echo "---"
+echo "author: \"${AUTHOR}\""
+echo "title: \"${TITLE}\""
+echo "source: \"${URL}\""
+echo "published: \"${PUBLISHED}\""
+echo "retrieved: \"${RETRIEVED}\""
+echo "---"
+echo $HTML |
+    hxselect -c ".gr-body .text" |
+    pandoc -t markdown -f html |
+    iconv -f utf-8 -t ascii//TRANSLIT
