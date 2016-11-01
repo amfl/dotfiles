@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Stolen and modified from https://github.com/nekodex/lazymode/blob/master/puush/puu.sh
 
 # Source from config instead of hard-code
