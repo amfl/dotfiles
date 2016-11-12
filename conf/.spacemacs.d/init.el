@@ -280,12 +280,20 @@ you should place you code here."
   (setq evil-move-cursor-back nil)
 
   ;; Custom functions
+  ;; (This could totally be optimized...)
   (defun clipboard-thinclient (&optional b e)
     (interactive "r")
-    (shell-command-on-region b e "sendclipboard"))
+    (if (use-region-p)
+      (shell-command-on-region b e "sendclipboard")
+      (shell-command-on-region (point-min) (point-max) "sendclipboard")
+    ))
   (defun puush-thinclient (&optional b e)
     (interactive "r")
-    (shell-command-on-region b e "puush | sendclipboard"))
+    (if (use-region-p)
+      (shell-command-on-region b e "puush | sendclipboard")
+      (shell-command-on-region (point-min) (point-max) "puush | sendclipboard")
+    ))
+
   ;; http://stackoverflow.com/questions/12292239/insert-the-output-of-shell-command-into-emacs-buffer
   (defun put-timestamp ()
     (interactive)
@@ -302,7 +310,7 @@ you should place you code here."
   ;; Global keys
 
   (global-set-key (kbd "<f5>") 'put-timestamp)
-  ;; (global-set-key (kbd "<f5>") 'org-time-stamp)
+  (global-set-key (kbd "<f6>") 'org-time-stamp)
 
 
   ;; Simplified from http://stackoverflow.com/questions/6462167/emacsclient-does-not-respond-to-mouse-clicks
