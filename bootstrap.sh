@@ -42,6 +42,11 @@ install_pkg() {
 
   case $OS in
     "Linux")
+      # https://writequit.org/org/#6017d330-9337-4d97-82f2-2e605b7a262a
+      # returns a string like "Fedora" or "Ubuntu" or "Debian"
+      # DISTRO=`lsb_release -i | cut -d: -f 2 | tr -d '[:space:]'`
+      # DISTRO=`lsb_release -i | cut -f 2`
+
       PKGMAN="apt-get install"
       SOFTWARE="$SOFTWARE build-essential silversearcher-ag ack-grep dictd dict-gcide vim"
       ;;
