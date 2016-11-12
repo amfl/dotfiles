@@ -279,6 +279,10 @@ you should place you code here."
   ;; Don't move the cursor back when exiting insert mode
   (setq evil-move-cursor-back nil)
 
+  ;; No fancy symbols in powerline
+  (setq powerline-default-separator 'nil)
+  (spaceline-compile)
+
   ;; Custom functions
   ;; (This could totally be optimized...)
   (defun clipboard-thinclient (&optional b e)
