@@ -11,9 +11,9 @@
         ("^[0-9\-]+ [0-9:]+\t\\([^\t*]+\\)\t" 1 font-lock-function-name-face) ;; Nicks in normal speech
         ("\t \\*" . font-lock-keyword-face) ;; * action indictators
         ("\t>+ [^\t]+$" . font-lock-keyword-face) ;; > Implications
+        ("\"[^\"\n]*[\"\n]" . font-lock-string-face) ;; "strings"
         ("((.*?))" . font-lock-comment-face) ;; (( OOC ))
         ("──.?\t\\(.*\\)$" 1 font-lock-comment-face) ;; Network events
-        ("\"[^\"\n]*[\"\n]" . font-lock-string-face)
         ))
 
 ;; ;; Stolen from http://stackoverflow.com/questions/24169418/adding-a-created-color-code-to-font-lock

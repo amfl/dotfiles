@@ -59,6 +59,9 @@ alias pki='apt-get install'
 # Pull down a webpage as googlebot
 alias googlebot='curl -L -A "Googlebot/2.1 (+http://www.google.com/bot.html)"'
 
+# I like things simple :)
+alias tree='tree --charset=ASCII'
+
 ####################################################
 # MACHINE SPECIFIC
 

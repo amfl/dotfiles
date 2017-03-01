@@ -1,3 +1,7 @@
+#NOP NOTES
+#NOP  https://www.reddit.com/r/MUD/comments/41okpc/mud_clients/
+#NOP  Up to date documentation: http://tintinplusplus.github.io/
+
 #NOP A better command you can use to connect to a MU* which will automatically
 #NOP log to a sensibly named file
 #alias {loggedsession}
@@ -13,8 +17,14 @@
 
 #NOP Stops semicolons from being interpreted as new commands in tintin++
 #config {VERBATIM} {ON}
+#config {WORDWRAP} {ON}
 
 #NOP Example hotkey config
 ##macro {\e[11~} { #showme This will execute on F1!; }
 
 #read .tin-private
+
+#NOP Split the screen so we can type without incoming text messing up the prompt
+#split
+#NOP TODO Do we need to use #prompt too?
+# http://tintin.sourceforge.net/manual/prompt.php
