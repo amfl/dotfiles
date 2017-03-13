@@ -28,3 +28,8 @@
 #split
 #NOP TODO Do we need to use #prompt too?
 # http://tintin.sourceforge.net/manual/prompt.php
+
+#NOP Prevent timeouts
+#NOP http://tintin.sourceforge.net/board/viewtopic.php?t=1352&sid=1112869823d71465e78fa27d6ff74ba7
+#NOP #tick {keepalive} {\xFF\xF1\} {300}
+#tick {keepalive} {#cr} {300}
