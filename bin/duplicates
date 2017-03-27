@@ -1,0 +1,9 @@
+#!/bin/sh
+# Find duplicate filenames in a directory tree
+# Stolen from http://stackoverflow.com/questions/16276595/how-to-find-duplicate-filenames-recursively-in-a-given-directory-bash
+dirname=$1
+find $dirname -type f |
+while read vo
+do
+  echo `basename "$vo"`
+done | awk '{arr[$0]++; next} END{for (i in arr){if(arr[i]>1){print i}}}'
