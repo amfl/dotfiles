@@ -19,12 +19,11 @@ autocmd InsertEnter * let CursorColumnI = col('.')
 autocmd CursorMovedI * let CursorColumnI = col('.')
 autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
 
-" Set cursor colors based on modes
-highlight CursorLine ctermbg=Yellow ctermfg=None guibg=Yellow
-
 " Pretty junky clipboard integration
-nnoremap <S-Insert> "+p
-inoremap <S-Insert> <esc>"+pa
+" Windows: Make sure win32yank.exe is on your PATH.
+nnoremap <S-Insert> "+P
+inoremap <S-Insert> <esc>"+Pa
+inoremap <C-v> <esc>"+Pa
 vnoremap <C-c> "+y 
 
 set number        " Show line numbers
@@ -48,6 +47,8 @@ Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
 Plug 'tpope/vim-surround'       " For manipulating surrounding text
 
 Plug 'tpope/vim-fugitive'       " Git integration
+
+Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
 
 " Languages
 Plug 'rust-lang/rust.vim'
