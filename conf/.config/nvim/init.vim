@@ -26,6 +26,9 @@ inoremap <S-Insert> <esc>"+Pa
 inoremap <C-v> <esc>"+Pa
 vnoremap <C-c> "+y 
 
+" Support the mouse
+set mouse=a
+
 set number        " Show line numbers
 set cursorline    " Highlight the line the current cursor is on
 
@@ -43,12 +46,14 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'vim-airline/vim-airline'  " Cool powerline status bar
 Plug 'vim-airline/vim-airline-themes'
 
+" Usability
 Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
 Plug 'tpope/vim-surround'       " For manipulating surrounding text
-
-Plug 'tpope/vim-fugitive'       " Git integration
-
 Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
+
+" Git
+Plug 'tpope/vim-fugitive'       " Git integration
+Plug 'airblade/vim-gitgutter'   " Compare lines to last git commit, stage chunks from in vim
 
 " Languages
 Plug 'rust-lang/rust.vim'
