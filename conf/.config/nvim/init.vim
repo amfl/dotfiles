@@ -32,6 +32,14 @@ set mouse=a
 set number        " Show line numbers
 set cursorline    " Highlight the line the current cursor is on
 
+" Remap leader to something easier to press
+let mapleader = ","
+map <space> <leader>
+
+" Jump back to previous buffer
+inoremap <leader><TAB> :e#<CR>
+nnoremap <leader><TAB> :e#<CR>
+
 " Plugins -------------------------------- {{{1
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -49,6 +57,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Usability
 Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
 Plug 'tpope/vim-surround'       " For manipulating surrounding text
+Plug 'tpope/vim-vinegar'        " Enhance the default file explorer, netrw
 Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
 
 " Git
