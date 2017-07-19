@@ -9,6 +9,8 @@
 "  autocmd VimEnter * PlugInstall | source $MYVIMRC
 "endif
 
+" Non-plugin Customization --------------- {{{1
+
 inoremap jk <esc>
 inoremap kj <esc>
 vnoremap jk <esc>
@@ -40,6 +42,23 @@ map <space> <leader>
 inoremap <leader><TAB> :e#<CR>
 nnoremap <leader><TAB> :e#<CR>
 
+if has("win32")
+	let g:config_path = '~/AppData/Local/nvim/'
+endif
+
+" Shortcut to edit dotfile
+nnoremap <leader>fed :execute "e " . g:config_path . "init.vim"<CR>
+
+" Quicksave sessions
+map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
+map <F3> :source ~/.vim_session <cr>     " And load session with F3
+
+" Special characters
+set showbreak=»
+" eol:¬¶, trail:•¤
+set listchars=nbsp:¬,tab:→\ ,extends:»,precedes:«,trail:-       " Special characters...
+set list          " Please show them
+
 " Plugins -------------------------------- {{{1
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -64,8 +83,9 @@ Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
 Plug 'tpope/vim-fugitive'       " Git integration
 Plug 'airblade/vim-gitgutter'   " Compare lines to last git commit, stage chunks from in vim
 
-" Languages
-Plug 'rust-lang/rust.vim'
+" Languages (Uncomment as required)
+" Plug 'rust-lang/rust.vim'
+" Plug 'jceb/vim-orgmode'         " Basic emacs org-mode functionality
 
 " Initialize plugin system
 call plug#end()
@@ -83,3 +103,8 @@ let g:airline_theme='jellybeans'
 
 set noshowmode  " airline replaces the default vim mode line, so we don't need
 
+" Plugin remaps ------------------------------------ {{{1
+
+nnoremap <leader>pf :CtrlP<CR>       " Open files in current project (See also: `:e .`)
+nnoremap <leader>pr :CtrlPMRU<CR>    " Open files you have opened recently (See also: `:bro ol` or `:ol`)
+nnoremap <leader>pb :CtrlPBuffer<CR> " Open a buffer that is already open (See also: `:ls`)
