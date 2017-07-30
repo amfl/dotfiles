@@ -1,4 +1,11 @@
 ####################################################
+# MACHINE SPECIFIC
+
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+
+####################################################
 # ANTIGEN
 
 source ~/.antigen/antigen.zsh
@@ -62,9 +69,3 @@ alias googlebot='curl -L -A "Googlebot/2.1 (+http://www.google.com/bot.html)"'
 # I like things simple :)
 alias tree='tree --charset=ASCII'
 
-####################################################
-# MACHINE SPECIFIC
-
-if [ -f ~/.zshrc.local ]; then
-  source ~/.zshrc.local
-fi
