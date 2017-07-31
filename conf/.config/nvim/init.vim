@@ -11,6 +11,36 @@
 
 " Non-plugin Customization --------------- {{{1
 
+if has("win32")
+    let g:config_path = '~/AppData/Local/nvim/'
+else
+    let g:config_path = '~/.config/nvim/'
+endif
+
+" Special characters
+set showbreak=»
+" eol:¬¶, trail:•¤
+set listchars=nbsp:¬,tab:→\ ,extends:»,precedes:«,trail:-       " Special characters...
+set list          " Please show them
+
+" Set tabs to be 4 spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Case insensitive unless we type caps
+" (Force sensitivity by suffixing with \C if neccesary)
+set ignorecase  " Need this for smartcase to work
+set smartcase
+
+" Support the mouse
+set mouse=a
+
+set number        " Show line numbers
+set cursorline    " Highlight the line the current cursor is on
+
+" Non-plugin Remaps ---------------------- {{{1
+
 inoremap jk <esc>
 inoremap kj <esc>
 vnoremap jk <esc>
@@ -28,36 +58,30 @@ inoremap <S-Insert> <esc>"+Pa
 inoremap <C-v> <esc>"+Pa
 vnoremap <C-c> "+y 
 
-" Support the mouse
-set mouse=a
-
-set number        " Show line numbers
-set cursorline    " Highlight the line the current cursor is on
-
-" Remap leader to something easier to press
-let mapleader = ","
-map <space> <leader>
-
-" Jump back to previous buffer
-inoremap <leader><TAB> :e#<CR>
-nnoremap <leader><TAB> :e#<CR>
-
-if has("win32")
-	let g:config_path = '~/AppData/Local/nvim/'
-endif
-
-" Shortcut to edit dotfile
-nnoremap <leader>fed :execute "e " . g:config_path . "init.vim"<CR>
-
 " Quicksave sessions
 map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
 map <F3> :source ~/.vim_session <cr>     " And load session with F3
 
-" Special characters
-set showbreak=»
-" eol:¬¶, trail:•¤
-set listchars=nbsp:¬,tab:→\ ,extends:»,precedes:«,trail:-       " Special characters...
-set list          " Please show them
+" Spacemacs-esque Remaps ----------------- {{{1
+
+" Remap leader key to something easier to press (Space!)
+let mapleader = ","
+map <space> <leader>
+
+" Remove highlighting
+nnoremap <leader>sc :nohl<CR>
+
+" Shortcut to edit dotfile
+nnoremap <leader>fed :execute "e " . g:config_path . "init.vim"<CR>
+
+" Paste without auto-indent problems
+nnoremap <leader>op :set invpaste paste?<CR>
+
+" ----
+
+" Jump back to previous buffer
+inoremap <leader><TAB> :e#<CR>
+nnoremap <leader><TAB> :e#<CR>
 
 " Plugins -------------------------------- {{{1
 call plug#begin('~/.local/share/nvim/plugged')
@@ -108,3 +132,5 @@ set noshowmode  " airline replaces the default vim mode line, so we don't need
 nnoremap <leader>pf :CtrlP<CR>       " Open files in current project (See also: `:e .`)
 nnoremap <leader>pr :CtrlPMRU<CR>    " Open files you have opened recently (See also: `:bro ol` or `:ol`)
 nnoremap <leader>pb :CtrlPBuffer<CR> " Open a buffer that is already open (See also: `:ls`)
+
+nnoremap <leader>pt :CtrlP ~/txt<CR> " Open files in notes dir
