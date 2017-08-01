@@ -101,7 +101,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
 Plug 'tpope/vim-surround'       " For manipulating surrounding text
 Plug 'tpope/vim-vinegar'        " Enhance the default file explorer, netrw
-Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
+
+if has("win32")
+    Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
+else
+    "Fuzzy finder
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+endif
 
 " Git
 Plug 'tpope/vim-fugitive'       " Git integration
@@ -129,8 +136,24 @@ set noshowmode  " airline replaces the default vim mode line, so we don't need
 
 " Plugin remaps ------------------------------------ {{{1
 
-nnoremap <leader>pf :CtrlP<CR>       " Open files in current project (See also: `:e .`)
-nnoremap <leader>pr :CtrlPMRU<CR>    " Open files you have opened recently (See also: `:bro ol` or `:ol`)
-nnoremap <leader>pb :CtrlPBuffer<CR> " Open a buffer that is already open (See also: `:ls`)
+function! s:find_git_root()
+    return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
 
-nnoremap <leader>pt :CtrlP ~/txt<CR> " Open files in notes dir
+" pf : Open files in current project (See also: `:e .`)
+" pr : Open files you have opened recently (See also: `:bro ol` or `:ol`)
+" pb : Open a buffer that is already open (See also: `:ls`)
+" pt : Open files in notes dir
+if has("win32")
+    nnoremap <leader>pf :CtrlP<CR>
+    nnoremap <leader>pr :CtrlPMRU<CR>
+    nnoremap <leader>pb :CtrlPBuffer<CR>
+    nnoremap <leader>pt :CtrlP ~/txt<CR>
+else
+    nnoremap <leader>pf :ProjectFiles<CR>
+    nnoremap <leader>pr :History<CR>
+    nnoremap <leader>pb :Buffers<CR>
+    nnoremap <leader>pt :FZF ~/txt<CR>
+endif
+
