@@ -1,13 +1,6 @@
 " Paths on Windows:
 "   config is C:\Users\User\AppData\Local\nvim
 "   ~      is C:\Users\User\
-"
-" Automatically download vim-plug if we don't have it
-" if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"  autocmd VimEnter * PlugInstall | source $MYVIMRC
-"endif
 
 " Non-plugin Customization --------------- {{{1
 
@@ -87,6 +80,15 @@ inoremap <leader><TAB> :e#<CR>
 nnoremap <leader><TAB> :e#<CR>
 
 " Plugins -------------------------------- {{{1
+
+" Automatically download vim-plug if we don't have it
+if empty(glob(g:config_path . 'autoload/plug.vim'))
+  execute '!curl -fLo ' . g:config_path . 'autoload/plug.vim --create-dirs' .
+         \' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  " Install plugins, re-source config so colorschemes are applied
+  autocmd VimEnter * PlugInstall --sync | execute 'source '.g:config_path.'init.vim'
+endif
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 if !has('nvim')
