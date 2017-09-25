@@ -32,6 +32,8 @@ set mouse=a
 set number        " Show line numbers
 set cursorline    " Highlight the line the current cursor is on
 
+set hidden        " Switch buffers without abandoning changes or writing out
+
 " Non-plugin Remaps ---------------------- {{{1
 
 " Use jk/kj to exit insertion mode (Writing this line was fun!)
