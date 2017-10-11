@@ -1,3 +1,5 @@
+This notes file is very rarely updated.
+
 Misc Notes
 -------------------------------
 
@@ -84,7 +86,7 @@ Will run trickle in standalone mode and limit to 20KB/s.
 
 	daemon=1800
 	protocol=freedns
-	use=web, web=http://ipinfo.io/json, web-skip='ip" : "'
+	use=web, web=https://ipinfo.io/json, web-skip='ip" : "'
 	server=freedns.afraid.org
 	login=USERNAMEHERE
 	password='PASSWORDHERE'
