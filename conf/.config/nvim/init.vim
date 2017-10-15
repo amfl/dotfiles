@@ -169,5 +169,6 @@ else
     nnoremap <leader>pr :History<CR>
     nnoremap <leader>pb :Buffers<CR>
     nnoremap <leader>pt :FZF ~/txt<CR>
+    nnoremap <leader>sp :Ag<CR>
 endif
 
