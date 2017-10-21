@@ -70,6 +70,7 @@ install_pkg() {
 install_git() {
   git_update https://github.com/sickill/stderred.git    ~/.stderred
   git_update https://github.com/zsh-users/antigen.git   ~/.antigen
+  git_update https://github.com/syl20bnr/spacemacs      ~/.emacs.d
 }
 
 configure() {
