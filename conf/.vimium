@@ -1,6 +1,6 @@
-# For Vimium addon for Chrome
+# For Vimium browser addon
 
 map <c-o> goBack
 map <c-i> goForward
-map <c-u> scrollPageDown
-map <c-d> scrollPageUp
+map <c-u> scrollPageUp
+map <c-d> scrollPageDown
