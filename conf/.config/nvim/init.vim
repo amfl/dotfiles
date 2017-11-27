@@ -124,6 +124,7 @@ Plug 'airblade/vim-gitgutter'   " Compare lines to last git commit, stage chunks
 " Languages (Uncomment as required)
 " Plug 'rust-lang/rust.vim'
 " Plug 'jceb/vim-orgmode'         " Basic emacs org-mode functionality
+" Plug 'martinda/Jenkinsfile-vim-syntax'
 
 Plug 'godlygeek/tabular'        " Dependecy for plasticboy/vim-markdown
 Plug 'plasticboy/vim-markdown'  " Markdown support
