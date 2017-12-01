@@ -65,11 +65,6 @@ alias mmv='noglob zmv -W'
 # Easily start a new emacs client in terminal
 alias ec="emacsclient -t"
 
-# Package manager commands
-# Will extend these definitions to other distros as required
-alias pks='apt-cache search'
-alias pki='apt-get install'
-
 # Pull down a webpage as googlebot
 alias googlebot='curl -L -A "Googlebot/2.1 (+http://www.google.com/bot.html)"'
 
