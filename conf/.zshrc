@@ -35,6 +35,7 @@ antigen apply
 ####################################################
 # EXPORTS
 
+export EDITOR='nvim'
 # Adding the below line lets emacsclient start emacs if it isn't already started
 # ...Intuitive, right?
 export ALTERNATE_EDITOR=''
