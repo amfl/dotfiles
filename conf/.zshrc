@@ -48,6 +48,12 @@ export PATH="${PATH}:/${HOME}/bin"
 ####################################################
 # CUSTOM ALIASES
 
+if command -v fd >/dev/null; then
+    # fd is a program, so don't let common-aliases clobber it!
+    # https://github.com/sharkdp/fd
+    unalias fd
+fi
+
 # Enable mass, easy renaming... Why isn't this a default
 # http://www.mfasold.net/blog/2008/11/moving-or-renaming-multiple-files/
 #   mmv *.dat *.dat_old
