@@ -1,8 +1,10 @@
+" vim:fdm=marker
+"
 " Paths on Windows:
 "   config is C:\Users\User\AppData\Local\nvim
 "   ~      is C:\Users\User\
 
-" Non-plugin Customization --------------- {{{1
+" Non-plugin Customization ----------------------------------------------- {{{1
 
 if has("win32")
     let g:config_path = '~/AppData/Local/nvim/'
@@ -13,8 +15,8 @@ endif
 " Special characters
 set showbreak=»
 " eol:¬¶, trail:•¤
-set listchars=nbsp:¬,tab:→\ ,extends:»,precedes:«,trail:-       " Special characters...
-set list          " Please show them
+set listchars=nbsp:¬,tab:→\ ,extends:»,precedes:«,trail:-
+set list          " Actually show the listchars above
 
 " Set tabs to be 4 spaces
 set tabstop=4
@@ -33,8 +35,13 @@ set number        " Show line numbers
 set cursorline    " Highlight the line the current cursor is on
 
 set hidden        " Switch buffers without abandoning changes or writing out
+"
+" Don't move the cursor back when exiting insert mode
+autocmd InsertEnter * let CursorColumnI = col('.')
+autocmd CursorMovedI * let CursorColumnI = col('.')
+autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
 
-" Non-plugin Remaps ---------------------- {{{1
+" Non-plugin Remaps ------------------------------------------------------ {{{1
 
 " Use jk/kj to exit insertion mode (Writing this line was fun!)
 inoremap jk <esc>
@@ -43,11 +50,6 @@ inoremap kj <esc>
 " Move up/down sensibly on wrapped lines
 noremap j gj
 noremap k gk
-
-" Don't move the cursor back when exiting insert mode
-autocmd InsertEnter * let CursorColumnI = col('.')
-autocmd CursorMovedI * let CursorColumnI = col('.')
-autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
 
 " Pretty junky clipboard integration
 " Windows: Make sure win32yank.exe is on your PATH.
@@ -60,7 +62,7 @@ vnoremap <C-c> "+y
 map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
 map <F3> :source ~/.vim_session <cr>     " And load session with F3
 
-" Spacemacs-esque Remaps ----------------- {{{1
+" Spacemacs-esque Remaps -----------------
 
 " Remap leader key to something easier to press (Space!)
 let mapleader = ","
@@ -69,19 +71,21 @@ map <space> <leader>
 " Remove highlighting
 nnoremap <leader>sc :nohl<CR>
 
-" Shortcut to edit dotfile
-nnoremap <leader>fed :execute "e " . g:config_path . "init.vim"<CR>
-
 " Paste without auto-indent problems
 nnoremap <leader>op :set invpaste paste?<CR>
 
-" ----
+" Toggle line numbers
+nnoremap <leader>tn :set invnumber<CR>
+
+" Shortcut to edit dotfiles
+nnoremap <leader>fed :execute "e " . g:config_path . "init.vim"<CR>
+nnoremap <leader>fex :execute "e ~/.nixos.dotfiles/configuration.nix"<CR>
 
 " Jump back to previous buffer
 inoremap <leader><TAB> :e#<CR>
 nnoremap <leader><TAB> :e#<CR>
 
-" Plugins -------------------------------- {{{1
+" Plugins ---------------------------------------------------------------- {{{1
 
 " Automatically download vim-plug if we don't have it
 if empty(glob(g:config_path . 'autoload/plug.vim'))
@@ -94,7 +98,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 if !has('nvim')
-    Plug 'tpope/vim-sensible'       " Sensible defaults. Neovim already includes this.
+    Plug 'tpope/vim-sensible'   " Sensible defaults. Neovim has this inbuilt.
 endif
 
 " Themes
@@ -112,27 +116,29 @@ Plug 'tpope/vim-vinegar'        " Enhance the default file explorer, netrw
 if has("win32")
     Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
 else
-    "Fuzzy finder
+    " Fuzzy finder - fzf
+    " This will also install fzf for the OS.
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
 endif
 
 " Git
 Plug 'tpope/vim-fugitive'       " Git integration
-Plug 'airblade/vim-gitgutter'   " Compare lines to last git commit, stage chunks from in vim
+Plug 'airblade/vim-gitgutter'   " See working dir changes, stage hunks from vim
 
 " Languages (Uncomment as required)
 " Plug 'rust-lang/rust.vim'
-" Plug 'jceb/vim-orgmode'         " Basic emacs org-mode functionality
+" Plug 'jceb/vim-orgmode'                " Basic emacs org-mode functionality
 " Plug 'martinda/Jenkinsfile-vim-syntax'
+" Plug 'LnL7/vim-nix'
 
-Plug 'godlygeek/tabular'        " Dependecy for plasticboy/vim-markdown
-Plug 'plasticboy/vim-markdown'  " Markdown support
+Plug 'godlygeek/tabular'               " md: plasticboy/vim-markdown dependency
+Plug 'plasticboy/vim-markdown'         " md: Markdown support
 
 " Initialize plugin system
 call plug#end()
 
-" Appearance and Themes ---------------------------- {{{1
+" Appearance and Themes -------------------------------------------------- {{{1
 
 " colorscheme industry
 " colorscheme gruvbox
@@ -147,8 +153,9 @@ set noshowmode  " airline replaces the default vim mode line, so we don't need
 
 " Fold markdown on the same line as the title, not the line after
 let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_toc_autofit = 1    " Make ToC not take up half the screen
 
-" Plugin remaps ------------------------------------ {{{1
+" Plugin remaps ---------------------------------------------------------- {{{1
 
 function! s:find_git_root()
     return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
