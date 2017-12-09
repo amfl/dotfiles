@@ -81,6 +81,10 @@ nnoremap <leader>tn :set invnumber<CR>
 nnoremap <leader>fed :execute "e " . g:config_path . "init.vim"<CR>
 nnoremap <leader>fex :execute "e ~/.nixos.dotfiles/configuration.nix"<CR>
 
+" Filetype-specific
+" TODO: Refactor so these aren't global..
+nnoremap <leader>mt :Toc<CR>
+
 " Jump back to previous buffer
 inoremap <leader><TAB> :e#<CR>
 nnoremap <leader><TAB> :e#<CR>
