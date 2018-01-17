@@ -75,7 +75,7 @@ nnoremap <leader>sc :nohl<CR>
 nnoremap <leader>op :set invpaste paste?<CR>
 
 " Toggle line numbers
-nnoremap <leader>tn :set invnumber<CR>
+nnoremap <leader>tn :set invnumber<CR>:GitGutterToggle<CR>
 
 " Shortcut to edit dotfiles
 nnoremap <leader>fed :execute "e " . g:config_path . "init.vim"<CR>
