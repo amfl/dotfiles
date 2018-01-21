@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pushd ~/screenshot
+scrot -s -e 'puush $f' | tr -d '\n' | xclip -selection c
+aplay ~/pop.wav

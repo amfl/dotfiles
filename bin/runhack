@@ -1,10 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 #
-# Usage: runhack delay_time command
-#
-# For example
-#    runhack 5 echo hi
-# Will echo hi every 5 seconds forever.
+
+if [ $# -lt 2 ]; then
+    cat << EOF
+Usage: runhack delay_time command
+
+For example
+   runhack 5 echo hi
+Will echo hi every 5 seconds forever.
+EOF
+    exit 1
+fi
 
 echo Repeat every $1 seconds: ${*:2}
 
