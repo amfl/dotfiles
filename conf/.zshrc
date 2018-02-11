@@ -21,6 +21,11 @@ antigen bundle common-aliases
 # bindkey -M filterselect '^J' down-line-or-history
 # bindkey -M filterselect '^K' up-line-or-history
 
+# Bindkeys - Can use `cat` and then press key combos to get codes for here
+# Ctrl + left/right to skip words
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+
 # Cool, but slows everything down :(
 # antigen bundle zsh-users/zsh-autosuggestions
 # bindkey '^ ' autosuggest-accept
