@@ -116,6 +116,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'     " Allow commenting blocks of code
 Plug 'tpope/vim-surround'       " For manipulating surrounding text
 Plug 'tpope/vim-vinegar'        " Enhance the default file explorer, netrw
+Plug 'tpope/vim-unimpaired'     " misc shortcuts + new lines in normal mode
 
 if has("win32")
     Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
