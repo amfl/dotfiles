@@ -118,6 +118,8 @@ Plug 'tpope/vim-surround'       " For manipulating surrounding text
 Plug 'tpope/vim-vinegar'        " Enhance the default file explorer, netrw
 Plug 'tpope/vim-unimpaired'     " misc shortcuts + new lines in normal mode
 
+Plug 'w0rp/ale'                 " Asynchronous Lint Engine
+
 if has("win32")
     Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
 else
