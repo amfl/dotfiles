@@ -141,6 +141,9 @@ Plug 'airblade/vim-gitgutter'   " See working dir changes, stage hunks from vim
 
 Plug 'godlygeek/tabular'               " md: plasticboy/vim-markdown dependency
 Plug 'plasticboy/vim-markdown'         " md: Markdown support
+Plug 'junegunn/vim-easy-align'         " md: Align tables
+" Stolen from https://robots.thoughtbot.com/align-github-flavored-markdown-tables-in-vim
+au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 
 " Initialize plugin system
 call plug#end()
