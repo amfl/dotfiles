@@ -28,6 +28,9 @@ set expandtab
 set ignorecase  " Need this for smartcase to work
 set smartcase
 
+" Show regex replace preview live as you type :%s/foo/bar/g
+set inccommand=nosplit
+
 " Support the mouse
 set mouse=a
 
