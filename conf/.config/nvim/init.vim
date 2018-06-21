@@ -54,6 +54,9 @@ inoremap kj <esc>
 noremap j gj
 noremap k gk
 
+" Make Y behave as C and D do
+noremap Y y$
+
 " Pretty junky clipboard integration
 " Windows: Make sure win32yank.exe is on your PATH.
 nnoremap <S-Insert> "+P
