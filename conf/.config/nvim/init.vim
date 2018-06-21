@@ -179,6 +179,10 @@ endfunction
 command! ProjectFiles execute 'Files' s:find_git_root()
 " Source: https://github.com/junegunn/fzf.vim/issues/47
 
+" Git commands
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :Gblame<CR>
+
 " pf : Open files in current project (See also: `:e .`)
 " pr : Open files you have opened recently (See also: `:bro ol` or `:ol`)
 " pb : Open a buffer that is already open (See also: `:ls`)
