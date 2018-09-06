@@ -88,20 +88,23 @@ bindkey "^V" edit-command-line
 
 # kubectl auto completion
 
-# Check if 'kubectl' is a command in $PATH
-if [ $commands[kubectl] ]; then
+completions=( kubectl helm )
+for i in "${completions[@]}"
+do
+    if [ $commands[$i] ]; then
 
-    # Placeholder 'kubectl' shell function:
-    # Will only be executed on the first call to 'kubectl'
-    kubectl() {
+        # Placeholder 'kubectl' shell function:
+        # Will only be executed on the first call to 'kubectl'
+        $i() {
 
-        # Remove this function, subsequent calls will execute 'kubectl' directly
-        unfunction "$0"
+            # Remove this function, subsequent calls will execute 'kubectl' directly
+            unfunction "$0"
 
-        # Load auto-completion
-        source <(kubectl completion zsh)
+            # Load auto-completion
+            source <($0 completion zsh)
 
-        # Execute 'kubectl' binary
-        $0 "$@"
-    }
-fi
+            # Execute 'kubectl' binary
+            $0 "$@"
+        }
+    fi
+done
