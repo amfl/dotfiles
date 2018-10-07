@@ -7,4 +7,4 @@
 
 #include ".Xresources.d/urxvt"
 ! #include ".Xresources.d/urxvt.mikado"
-#include ".Xresources.d/urxvt.marrakesh"
+#include ".Xresources.d/themes/marrakesh"
