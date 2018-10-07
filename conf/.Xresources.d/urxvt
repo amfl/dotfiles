@@ -1,0 +1,7 @@
+! URxvt.font: xft:DejaVu Sans Mono:size=11:hinting=true
+! URxvt*italicFont::              xft:Monospace:pixelsize=11:antialias=true:italic:autohint=true:hinting=true
+URxvt.scrollBar: false
+URxvt.urgentOnBell: true
+
+! No weird stuff on ctrl+shift
+URxvt*iso14755: false

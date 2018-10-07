@@ -1,0 +1,38 @@
+! http://terminal.sexy  xcolors.net/mikado
+! special
+URxvt.*.foreground:   #ffffff
+URxvt.*.background:   #000000
+URxvt.*.cursorColor:  #ffffff
+
+! black
+URxvt.*.color0:       #322a2c
+URxvt.*.color8:       #46423b
+
+! red
+URxvt.*.color1:       #a04363
+URxvt.*.color9:       #ae837a
+
+! green
+URxvt.*.color2:       #9b9329
+URxvt.*.color10:      #b4aa30
+
+! yellow
+URxvt.*.color3:       #bf7a29
+URxvt.*.color11:      #c7a551
+
+! blue
+URxvt.*.color4:       #6a8c8c
+URxvt.*.color12:      #74999e
+
+! magenta
+URxvt.*.color5:       #856774
+URxvt.*.color13:      #9c818e
+
+! cyan
+URxvt.*.color6:       #757978
+URxvt.*.color14:      #9fa590
+
+! white
+URxvt.*.color7:       #bcbcaf
+URxvt.*.color15:      #c1c4bc
+
