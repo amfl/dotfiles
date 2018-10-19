@@ -5,6 +5,5 @@
 *.boldItalicFont: xft:Fira Mono:size=11,style=bold
 *.letterSpace: -1
 
-#include ".Xresources.d/urxvt"
-! #include ".Xresources.d/urxvt.mikado"
-#include ".Xresources.d/themes/marrakesh"
+#include ".Xresources.d/urxvt.xresources"
+#include ".Xresources.d/themes/marrakesh.xresources"
