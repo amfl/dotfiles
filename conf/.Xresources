@@ -6,4 +6,6 @@
 *.letterSpace: -1
 
 #include ".Xresources.d/urxvt.xresources"
-#include ".Xresources.d/themes/marrakesh.xresources"
+/* #include ".Xresources.d/themes/marrakesh.xresources" */
+#include ".Xresources.d/themes/gruvbox-dark.xresources"
+#include ".Xresources.d/themes/gruvbox-urxvt256.xresources"
