@@ -1,0 +1,17 @@
+# I have an "outer tmux" which contains other tmux sessions across machines.
+# Start with:
+#     tmux -f ~/.tmux.conf.root
+
+# set Ctrl-a as the default prefix key combination
+# and unbind C-b to free it up
+set -g prefix C-a
+bind-key C-a send-prefix
+unbind C-b
+
+# Use shift+arrows to switch tabs
+bind -n S-Right next-window
+bind -n S-Left previous-window
+
+tmux_accent=white
+
+source-file ~/.tmux.conf.common

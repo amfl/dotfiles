@@ -1,0 +1,119 @@
+# Notes -------------------------------------------------------------------- {{{
+
+# "Ctrl+B ?" for in-tmux help!
+
+# Tmux cheat sheet
+# https://gist.github.com/andreyvit/2921703
+
+# How settings work in tmux
+# http://superuser.com/questions/758843/difference-between-global-server-session-and-window-options
+
+# }}}
+# General Settings---------------------------------------------------------- {{{
+
+set -g automatic-rename "off"
+set -g allow-rename "off"
+set -g base-index 1
+set -g default-terminal "screen-256color"
+set -g renumber-windows "on"
+
+setw -g mode-keys vi
+
+# change escape timeout to keep neovim happy
+# https://github.com/neovim/neovim/wiki/FAQ
+set -g escape-time 10
+
+# }}}
+# Mouse Functionality ------------------------------------------------------ {{{
+
+# Enable mouse for different versions of tmux
+# (If 'awk' exits with status 0, 'if-shell' evaluates to true)
+# tmux < v2.1:
+if-shell "tmux -V | head -1 | awk '{exit !($2 < \"2.1\")}'" \
+    "setw -g mode-mouse on ; set -g mouse-select-pane on ; set -g mouse-resize-pane on ; set -g mouse-select-window on ; " \
+    "set -g mouse on"
+
+# }}}
+# Remappings --------------------------------------------------------------- {{{
+
+# # set Ctrl-a as the default prefix key combination
+# # and unbind C-b to free it up
+# set -g prefix C-a
+# unbind C-b
+
+bind-key b last-window
+
+# map vi movement keys as pane movement keys
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+
+# Access your last used window
+bind-key Tab last-window
+
+# Shift panes around windows
+# http://maciej.lasyk.info/2014/Nov/19/tmux-join-pane/
+bind-key S command-prompt -p "Join pane from:"  "join-pane -s '%%'"
+bind-key s command-prompt -p "Send pane to:"  "join-pane -t '%%'"
+# Break this pane off to a new window
+bind-key B break-pane -t :
+
+# Shift windows around sessions
+# This is a default key! PREFIX .
+# bind-key S command-prompt -p "Send window to:"  "move-window -t '%%'"
+
+# Make a sTicky window (Who actually uses clock mode?)
+bind-key t command-prompt -p "Stick window to:"  "link-window -t '%%'"
+
+# Move the current window left/right
+bind-key -r C-p swap-window -t -1
+bind-key -r C-n swap-window -t +1
+
+# reload ~/.tmux.conf using PREFIX R
+bind-key R source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf."
+
+# maintain pwd when splitting pane
+
+if-shell "tmux -V | head -1 | awk '{exit !($2 > \"2.1\")}'" \
+    "bind '\"' split-window -c \"#{pane_current_path}\" ; bind % split-window -h -c \"#{pane_current_path}\" ; bind c new-window -c \"#{pane_current_path}\" ; "
+
+# }}}
+# Theme -------------------------------------------------------------------- {{{
+
+set -g status-fg white
+set -g status-bg black
+
+# Accent is set in a config which includes this one
+# Remember you can use #[fg=$tmux_accent,bg=white] in any of these format strings.
+set -g status-left ' #[bold]#S#[default] |'
+set -g status-right ' #[bold]#(hostname)#[default] | %U %a %m-%d %H:%M '
+
+set -g pane-active-border-fg $tmux_accent
+set -g window-status-format " #I #W "
+
+setw -g window-status-fg white
+setw -g window-status-current-bg $tmux_accent
+setw -g window-status-current-fg brightwhite
+setw -g window-status-current-attr bold
+setw -g window-status-current-format ' #I #W '
+
+# }}}
+# Clipboard ---------------------------------------------------------------- {{{
+
+# # Try to mimic vim the best you can
+# bind-key -t vi-copy v begin-selection
+# bind-key -t vi-copy C-v rectangle-toggle
+# # Interact with thinclient
+# bind-key -t vi-copy y copy-pipe "sendclipboard"
+# bind-key -t vi-copy p copy-pipe "puush | sendclipboard"
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xsel -ib"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection-and-cancel "xsel -ib"
+
+# }}}
+# Custom Functions --------------------------------------------------------- {{{
+
+# Send the keys of today's date in YYYY-MM-DD
+bind-key D run-shell 'tmux send-keys $(date +%F)'
+
+# }}}
