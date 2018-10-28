@@ -108,3 +108,6 @@ do
         }
     fi
 done
+
+export FZF_DEFAULT_OPTS='--color 16'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
