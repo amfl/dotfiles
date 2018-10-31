@@ -22,6 +22,9 @@ set list          " Actually show the listchars above
 set tabstop=4
 set shiftwidth=4
 set expandtab
+autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2
+autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2
+autocmd Filetype Jenkinsfile setlocal commentstring=//\ %s
 
 " Case insensitive unless we type caps
 " (Force sensitivity by suffixing with \C if neccesary)
