@@ -29,7 +29,12 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme pygmalion
 
+antigen bundle vi-mode
+
 antigen apply
+
+# Fix key bindings in vi-mode
+source ~/.zshrc.vimode
 
 ####################################################
 # EXPORTS
