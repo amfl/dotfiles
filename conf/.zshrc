@@ -15,12 +15,6 @@ antigen use oh-my-zsh
 
 antigen bundle common-aliases
 
-# Supercharge C-r for history searching
-# antigen bundle zsh-users/zaw
-# bindkey '^;' zaw-history
-# bindkey -M filterselect '^J' down-line-or-history
-# bindkey -M filterselect '^K' up-line-or-history
-
 # Bindkeys - Can use `cat` and then press key combos to get codes for here
 # Ctrl + left/right to skip words
 bindkey '^[[1;5D' backward-word
@@ -71,11 +65,13 @@ alias mmv='noglob zmv -W'
 # Named for legacy reasons from my emacs days - alias ec="emacsclient -t"
 alias ec=$EDITOR
 
-# Pull down a webpage as googlebot
+# Pull down a webpage as googlebot. Can often get around enforced registrations
 alias googlebot='curl -L -A "Googlebot/2.1 (+http://www.google.com/bot.html)"'
 
 # I like things simple :)
 alias tree='tree --charset=ASCII'
+
+alias psg='ps aux | grep -i'
 
 ####################################################
 # VI MODE
@@ -86,7 +82,10 @@ export KEYTIMEOUT=1
 
 bindkey "^V" edit-command-line
 
-# kubectl auto completion
+####################################################
+# AUTO COMPLETION
+# Some software provides autocompletions for zsh.
+# Lazy load as required.
 
 completions=( kubectl helm )
 for i in "${completions[@]}"
@@ -96,7 +95,6 @@ do
         # Placeholder 'kubectl' shell function:
         # Will only be executed on the first call to 'kubectl'
         $i() {
-
             # Remove this function, subsequent calls will execute 'kubectl' directly
             unfunction "$0"
 
@@ -108,6 +106,11 @@ do
         }
     fi
 done
+
+####################################################
+# FUZZY FINDER
+# This is installed via vim plugin.
+#   https://github.com/junegunn/fzf
 
 export FZF_DEFAULT_OPTS='--color 16'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
