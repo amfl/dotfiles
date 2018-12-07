@@ -114,7 +114,7 @@ if !has('nvim')
     Plug 'tpope/vim-sensible'   " Sensible defaults. Neovim has this inbuilt.
 endif
 
-" Themes
+" Themes (256 color)
 " Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
 
@@ -128,6 +128,8 @@ Plug 'tpope/vim-vinegar'        " Enhance the default file explorer, netrw
 Plug 'tpope/vim-unimpaired'     " misc shortcuts + new lines in normal mode
 
 Plug 'w0rp/ale'                 " Asynchronous Lint Engine
+Plug 'sgur/vim-editorconfig'    " Obey `.editorconfig` files (https://editorconfig.org/)
+                                " (This has better performance than the official plugin)
 
 if has("win32")
     Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
