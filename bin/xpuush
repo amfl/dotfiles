@@ -1,5 +1,5 @@
 #!/bin/sh
 
-pushd ~/screenshot
+pushd ~/ss
 scrot -s -e 'puush $f' | tr -d '\n' | xclip -selection c
 aplay ~/pop.wav
