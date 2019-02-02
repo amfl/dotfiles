@@ -24,12 +24,16 @@ set shiftwidth=4
 set expandtab
 autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2
 autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2
+autocmd Filetype lua setlocal tabstop=2 shiftwidth=2
+autocmd Filetype markdown setlocal tabstop=2 shiftwidth=2
 autocmd Filetype Jenkinsfile setlocal commentstring=//\ %s
 
 " Case insensitive unless we type caps
 " (Force sensitivity by suffixing with \C if neccesary)
 set ignorecase  " Need this for smartcase to work
 set smartcase
+
+set noswapfile
 
 " Show regex replace preview live as you type :%s/foo/bar/g
 set inccommand=nosplit
@@ -70,6 +74,10 @@ vnoremap <C-c> "+y
 " Quicksave sessions
 map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
 map <F3> :source ~/.vim_session <cr>     " And load session with F3
+
+" netrw preferences
+" Remember: You can use `gn` to change to the dir under the cursor
+let g:netrw_liststyle = 3
 
 " Spacemacs-esque Remaps -----------------
 
