@@ -128,7 +128,7 @@ if !has('nvim')
 endif
 
 " Themes (256 color)
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
 
 Plug 'vim-airline/vim-airline'  " Cool powerline status bar
@@ -175,15 +175,22 @@ call plug#end()
 
 " Appearance and Themes -------------------------------------------------- {{{1
 
-" colorscheme industry
+" Basic 16 color
+colorscheme desert
+let g:airline_theme='dark_minimal'
+
+" " Gruvbox (Retro and warm feeling)
 " colorscheme gruvbox
-colorscheme jellybeans
+" let g:gruvbox_termcolors=16
+" let g:airline_theme='gruvbox'
+
+" " Jellybeans (Dark and good for work)
+" colorscheme jellybeans
+" let g:airline_theme='jellybeans'
+
 set background=dark
 
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='powerlineish'
-let g:airline_theme='jellybeans'
-
 set noshowmode  " airline replaces the default vim mode line, so we don't need
 
 " Fold markdown on the same line as the title, not the line after
