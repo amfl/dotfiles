@@ -4,4 +4,5 @@
 # https://gist.github.com/tayfie/6dad43f1a452440fba7ea1c06d1b603a
 # wget -P pictures -nd -r -l 1 -H -D i.4cdn.org -A png,gif,jpg,jpeg,webm [thread-url]
 # wget -nd -r -l 1 -H -D i.4cdn.org -A png,gif,jpg,jpeg,webm $1
-wget -nd -r -l 1 -H -D is2.4chan.org -A png,gif,jpg,jpeg,webm "$1"
+# wget -nd -r -l 1 -H -D is2.4chan.org -A png,gif,jpg,jpeg,webm "$1"
+wget -nd -r -l 1 -H -D i.4cdn.org -A png,gif,jpg,jpeg,webm "$1"
