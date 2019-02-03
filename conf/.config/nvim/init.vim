@@ -110,10 +110,15 @@ nnoremap <leader><TAB> :e#<CR>
 
 " Automatically download vim-plug if we don't have it
 if empty(glob(g:config_path . 'autoload/plug.vim'))
-  execute '!curl -fLo ' . g:config_path . 'autoload/plug.vim --create-dirs' .
+    execute '!curl -fLo ' . g:config_path . 'autoload/plug.vim --create-dirs' .
          \' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  " Install plugins, re-source config so colorschemes are applied
-  autocmd VimEnter * PlugInstall --sync | execute 'source '.g:config_path.'init.vim'
+    if v:shell_error == 0
+        " Install plugins, re-source config so colorschemes are applied
+        autocmd VimEnter * PlugInstall --sync | execute 'source '.g:config_path.'init.vim'
+    else
+        echom "Failed to install vim-plug in order to obtain plugins."
+        echom "Curl returned status: ".v:shell_error
+    end
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
