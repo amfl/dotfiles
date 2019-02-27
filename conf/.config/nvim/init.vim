@@ -141,6 +141,7 @@ Plug 'tpope/vim-vinegar'        " Enhance the default file explorer, netrw
 Plug 'tpope/vim-unimpaired'     " misc shortcuts + new lines in normal mode
 Plug 'tpope/vim-repeat'         " Allow repeating supported plugins with `.`
 
+Plug 'wellle/targets.vim'       " Additional text objects like `cil)`
 Plug 'w0rp/ale'                 " Asynchronous Lint Engine
 Plug 'sgur/vim-editorconfig'    " Obey `.editorconfig` files (https://editorconfig.org/)
                                 " (This has better performance than the official plugin)
