@@ -76,7 +76,8 @@ map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
 map <F3> :source ~/.vim_session <cr>     " And load session with F3
 
 " netrw preferences
-" Remember: You can use `gn` to change to the dir under the cursor
+" Remember: You can use `gn` to change to the dir under the cursor,
+"           and `i` to change style on the fly.
 let g:netrw_liststyle = 3
 
 " Spacemacs-esque Remaps -----------------
