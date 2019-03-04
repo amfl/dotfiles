@@ -45,7 +45,7 @@ set number        " Show line numbers
 set cursorline    " Highlight the line the current cursor is on
 
 set hidden        " Switch buffers without abandoning changes or writing out
-"
+
 " Don't move the cursor back when exiting insert mode
 autocmd InsertEnter * let CursorColumnI = col('.')
 autocmd CursorMovedI * let CursorColumnI = col('.')
