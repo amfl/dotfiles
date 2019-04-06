@@ -24,6 +24,9 @@
 
 #read .tin-private
 
+#NOP Bind a command to connect to local evennia dev environment
+#alias /local loggedsession local    localhost 4000
+
 #NOP Split the screen so we can type without incoming text messing up the prompt
 #split
 #NOP TODO Do we need to use #prompt too?
