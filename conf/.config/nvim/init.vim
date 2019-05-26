@@ -146,6 +146,7 @@ Plug 'wellle/targets.vim'       " Additional text objects like `cil)`
 Plug 'w0rp/ale'                 " Asynchronous Lint Engine
 Plug 'sgur/vim-editorconfig'    " Obey `.editorconfig` files (https://editorconfig.org/)
                                 " (This has better performance than the official plugin)
+Plug 'jpalardy/vim-slime'       " Send buffer snippets to a REPL
 
 if has("win32")
     Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
@@ -228,3 +229,5 @@ else
     nnoremap <leader>sp :Ag 
 endif
 
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.1"}
