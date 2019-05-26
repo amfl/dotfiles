@@ -116,6 +116,7 @@ done
 # Avoids polluting whichever system you are working on
 alias dknode='docker run -u $(id -u) --rm -it -v $(pwd):/tmp/project -w /tmp/project node:10.14.2-alpine sh'
 alias dkrust='docker run -u $(id -u) -e USER=$USER --rm -it -v $(pwd):/tmp/project -w /tmp/project rust:1.32-slim bash'
+alias dkpy3='docker run --rm -u $(id -u) -ti -v $(pwd):/tmp/workdir -w /tmp/workdir python:3.7-stretch bash'
 
 ####################################################
 # FUZZY FINDER
