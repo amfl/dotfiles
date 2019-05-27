@@ -112,6 +112,21 @@ bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xsel -ib"
 bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection-and-cancel "xsel -ib"
 
 # }}}
+# Tmux Plugins ------------------------------------------------------------- {{{
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Automatically save state of tmux, can also be manually invoked with
+# - prefix + Ctrl-s for saving
+# - prefix + Ctrl-r for restoring
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
+#
+# }}}
 # Custom Functions --------------------------------------------------------- {{{
 
 # Send the keys of today's date in YYYY-MM-DD
