@@ -1,3 +1,10 @@
+! http://wiki.c2.com/?RemapCapsLock
+!
+! Swap Caps_Lock and Control_L
+!
 remove Lock = Caps_Lock
-keycode 0x42 = Control_L
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
 add Control = Control_L
