@@ -5,3 +5,15 @@ URxvt.urgentOnBell: true
 
 ! No weird stuff on ctrl+shift
 URxvt*iso14755: false
+
+!!!!!!!!!!!
+! Plugins !
+!!!!!!!!!!!
+
+URxvt.perl-ext-common: font-size,fullscreen
+
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-0:      perl:font-size:reset
+
+URxvt.keysym.F11:      perl:fullscreen:switch
