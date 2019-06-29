@@ -19,7 +19,7 @@ set -g renumber-windows "on"
 
 setw -g mode-keys vi
 
-# Constrain only windows to smallest viewer, not entire sessions                                                                                                          
+# Constrain only windows to smallest viewer, not entire sessions
 setw -g aggressive-resize on
 
 # change escape timeout to keep neovim happy
