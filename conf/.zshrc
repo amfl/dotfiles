@@ -127,3 +127,9 @@ alias dknim='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -
 
 export FZF_DEFAULT_OPTS='--color 16'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
