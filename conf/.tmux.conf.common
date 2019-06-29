@@ -105,8 +105,7 @@ setw -g window-status-current-format ' #I #W '
 # Clipboard ---------------------------------------------------------------- {{{
 
 # # Try to mimic vim the best you can
-# bind-key -t vi-copy v begin-selection
-# bind-key -t vi-copy C-v rectangle-toggle
+bind-key -T copy-mode-vi v send-keys -X begin-selection
 # # Interact with thinclient
 # bind-key -t vi-copy y copy-pipe "sendclipboard"
 # bind-key -t vi-copy p copy-pipe "puush | sendclipboard"
