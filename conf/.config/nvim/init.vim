@@ -187,18 +187,18 @@ call plug#end()
 
 " Appearance and Themes -------------------------------------------------- {{{1
 
-" Basic 16 color
-colorscheme desert
-let g:airline_theme='dark_minimal'
+" " Basic 16 color
+" colorscheme desert
+" let g:airline_theme='dark_minimal'
 
 " " Gruvbox (Retro and warm feeling)
 " colorscheme gruvbox
 " let g:gruvbox_termcolors=16
 " let g:airline_theme='gruvbox'
 
-" " Jellybeans (Dark and good for work)
-" colorscheme jellybeans
-" let g:airline_theme='jellybeans'
+" Jellybeans (Dark and good for work)
+colorscheme jellybeans
+let g:airline_theme='jellybeans'
 
 set background=dark
 
