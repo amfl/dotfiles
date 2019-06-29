@@ -53,6 +53,15 @@ autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) 
 
 " Non-plugin Remaps ------------------------------------------------------ {{{1
 
+" re-run the last command in the next pane
+" https://superuser.com/questions/744857/how-to-send-keys-to-other-pane
+nnoremap <C-p> :silent !tmux send-keys -t .+ Up Enter <enter>
+" Alternative workflow ideas:
+" Have a key chuck you over to another pane to run some interactive process
+"   :nnoremap <C-p> :silent !tmux send-keys -t .+ Up Enter && tmux select-pane R <enter>
+" And then send you back when it's done
+"   /run.sh ; tmux select-pane -L
+
 " Use jk/kj to exit insertion mode (Writing this line was fun!)
 inoremap jk <esc>
 inoremap kj <esc>
