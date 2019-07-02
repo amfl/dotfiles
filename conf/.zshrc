@@ -15,11 +15,6 @@ antigen use oh-my-zsh
 
 antigen bundle common-aliases
 
-# Bindkeys - Can use `cat` and then press key combos to get codes for here
-# Ctrl + left/right to skip words
-bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5C' forward-word
-
 # Cool, but slows everything down :(
 # antigen bundle zsh-users/zsh-autosuggestions
 # bindkey '^ ' autosuggest-accept
@@ -31,10 +26,19 @@ antigen theme pygmalion
 
 antigen bundle vi-mode
 
+# Note that as soon as this line happens, a lot of stuff is lost (Old keybinds, etc)
 antigen apply
+
+####################################################
+# KEYBINDS
 
 # Fix key bindings in vi-mode
 source ~/.zshrc.vimode
+
+# Bindkeys - Can use `cat` and then press key combos to get codes for here
+# Ctrl + left/right to skip words
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 
 ####################################################
 # EXPORTS
