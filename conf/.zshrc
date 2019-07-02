@@ -40,6 +40,10 @@ source ~/.zshrc.vimode
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
+# Ctrl + j/k to quickly go up/down (mimicks fzf controls)
+bindkey '^K' up-line-or-search
+bindkey '^J' down-line-or-search
+
 ####################################################
 # EXPORTS
 
