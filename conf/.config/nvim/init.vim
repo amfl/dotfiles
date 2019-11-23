@@ -140,6 +140,7 @@ endif
 " Themes (256 color)
 Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
+Plug 'chriskempson/base16-vim'
 
 Plug 'vim-airline/vim-airline'  " Cool powerline status bar
 Plug 'vim-airline/vim-airline-themes'
@@ -187,18 +188,40 @@ call plug#end()
 
 " Appearance and Themes -------------------------------------------------- {{{1
 
-" " Basic 16 color
+" " Basic 16 color ------------------------------------------------------- {{{2
 " colorscheme desert
 " let g:airline_theme='dark_minimal'
 
-" " Gruvbox (Retro and warm feeling)
+" " Gruvbox (Retro and warm feeling) ------------------------------------- {{{2
 " colorscheme gruvbox
 " let g:gruvbox_termcolors=16
 " let g:airline_theme='gruvbox'
 
-" Jellybeans (Dark and good for work)
-colorscheme jellybeans
-let g:airline_theme='jellybeans'
+" Jellybeans (Dark and good for work) ------------------------------------ {{{2
+" colorscheme jellybeans
+" let g:airline_theme='jellybeans'
+
+" Base16 ----------------------------------------------------------------- {{{2
+let g:airline_theme='base16_colors'
+let base16colorspace=256
+colorscheme base16-default-dark
+
+" Keep sign column and line numbers dark
+function! s:base16_customize() abort
+  call Base16hi("SignColumn", g:base16_gui03, g:base16_gui01, g:base16_cterm03, g:base16_cterm00, "", "")
+  call Base16hi("LineNr", g:base16_gui03, g:base16_gui01, g:base16_cterm03, g:base16_cterm00, "", "")
+  call Base16hi("GitGutterAdd", g:base16_gui0B, g:base16_gui01, g:base16_cterm0B, g:base16_cterm00, "", "")
+  " base0E (purple) is defined as 'diff changed', but I prefer this to be blue (base0D)
+  call Base16hi("GitGutterChange", g:base16_gui0D, g:base16_gui01, g:base16_cterm0D, g:base16_cterm00, "", "")
+  call Base16hi("GitGutterDelete", g:base16_gui08, g:base16_gui01, g:base16_cterm08, g:base16_cterm00, "", "")
+endfunction
+
+augroup on_change_colorscheme
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
+
+" Other stuff ------------------------------------------------------------ {{{2
 
 set background=dark
 
