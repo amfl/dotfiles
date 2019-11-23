@@ -10,7 +10,10 @@ URxvt*iso14755: false
 ! Plugins !
 !!!!!!!!!!!
 
-URxvt.perl-ext-common: font-size,fullscreen
+URxvt.perl-ext-common: font-size,fullscreen,matcher
+
+URxvt.url-launcher: xdg-open
+URxvt.matcher.button: 1
 
 URxvt.keysym.C-Up:     perl:font-size:increase
 URxvt.keysym.C-Down:   perl:font-size:decrease
