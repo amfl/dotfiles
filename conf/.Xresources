@@ -14,6 +14,10 @@
 ! Use -2 for Fira Code, -1 for Fira Mono
 *.letterSpace: -1
 
+! Tewi
+! *.font: xft:tewi:size=18
+! *.boldFont: xft:tewi:size=18:style=bold
+
 #include ".Xresources.d/urxvt.xresources"
 /* #include ".Xresources.d/themes/marrakesh.xresources" */
 #include ".Xresources.d/themes/gruvbox-dark.xresources"
