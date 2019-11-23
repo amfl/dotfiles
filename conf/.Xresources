@@ -1,11 +1,13 @@
 ! Fonts
-*.font: xft:Fira Mono:size=11,style=medium
-*.boldFont: xft:Fira Mono:size=11,style=bold
-*.italicFont: xft:Fira Mono:size=11,style=italic
-*.boldItalicFont: xft:Fira Mono:size=11,style=bold
 
-! Can try use a backup font to render the characters you don't have
-! *.font: xft:Fira Code:size=11,style=medium, xft:DejaVu Sans:size=7
+! Fira
+*.font: xft:Fira Mono:size=11:style=light
+*.boldFont: xft:Fira Mono:size=11:style=bold
+*.italicFont: xft:Fira Mono:size=11:style=italic
+! *.boldItalicFont: xft:Fira Mono:size=11:style=bold
+
+! Can try use a backup font to render the characters you do not have
+! *.font: xft:Fira Code:size=11:style=medium: xft:DejaVu Sans:size=7
 
 ! Setting this too low can cause urxvt to break wide unicode stuff
 ! https://superuser.com/questions/1234421/prevent-urxvt-letterspace-from-breaking-certain-unicode-characters
