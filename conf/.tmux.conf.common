@@ -97,7 +97,7 @@ set -g window-status-format " #I #W "
 
 setw -g window-status-fg white
 setw -g window-status-current-bg $tmux_accent
-setw -g window-status-current-fg brightwhite
+setw -g window-status-current-fg brightblack
 setw -g window-status-current-attr bold
 setw -g window-status-current-format ' #I #W '
 
