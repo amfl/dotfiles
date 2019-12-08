@@ -228,7 +228,14 @@ augroup END
 
 set background=dark
 
-let g:airline_powerline_fonts = 1
+" Get rid of all the airline symbols.
+" I want clean looks without relying on patched fonts.
+let g:airline_powerline_fonts = 0
+let g:airline_symbols_ascii = 1
+let g:airline_symbols = {}
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.linenr = ''
 set noshowmode  " airline replaces the default vim mode line, so we don't need
 
 " Fold markdown on the same line as the title, not the line after
