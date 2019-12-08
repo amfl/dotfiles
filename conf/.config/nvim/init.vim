@@ -72,6 +72,9 @@ noremap k gk
 
 " Make Y behave as C and D do
 noremap Y y$
+" Split lines - opposite of J
+" https://github.com/drzel/vim-split-line
+nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 
 " Pretty junky clipboard integration
 " Windows: Make sure win32yank.exe is on your PATH.
