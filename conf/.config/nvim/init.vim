@@ -160,6 +160,8 @@ Plug 'w0rp/ale'                 " Asynchronous Lint Engine
 Plug 'sgur/vim-editorconfig'    " Obey `.editorconfig` files (https://editorconfig.org/)
                                 " (This has better performance than the official plugin)
 Plug 'jpalardy/vim-slime'       " Send buffer snippets to a REPL
+Plug 'majutsushi/tagbar'        " Show tags in window ordered by scope
+                                " (requires `universal-ctags` or similar installed)
 
 if has("win32")
     Plug 'ctrlpvim/ctrlp.vim'       " Jump around files
@@ -270,6 +272,8 @@ else
     nnoremap <leader>pt :FZF ~/txt<CR>
     nnoremap <leader>sp :Ag 
 endif
+
+nmap <leader>tt :TagbarToggle<CR>
 
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.1"}
