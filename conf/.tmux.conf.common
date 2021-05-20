@@ -11,9 +11,9 @@
 # }}}
 # General Settings---------------------------------------------------------- {{{
 
-set -g automatic-rename "off"
-set -g allow-rename "off"
-set -g base-index 1
+set -g automatic-rename "off"  # Rename window based on current process
+set -g allow-rename "off"  # Allow automatic rename to clobber manual names
+set -g base-index 1        # Windows start at 1 (not 0) because it's left of kb
 
 # Enable 256 colors inside tmux
 # https://github.com/tmux/tmux/wiki/FAQ#how-do-i-use-a-256-colour-terminal
@@ -26,6 +26,7 @@ set -g default-terminal "tmux-256color"
 # printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
 set -as terminal-overrides ",rxvt-unicode-256color:Tc"
 
+# Automatically renumber windows when they are moved/closed
 set -g renumber-windows "on"
 
 setw -g mode-keys vi
@@ -61,7 +62,7 @@ bind-key j select-pane -D
 bind-key k select-pane -U
 bind-key l select-pane -R
 
-# Access your last used window
+# Access your last used window (Easy to remember, like alt-tab!)
 bind-key Tab last-window
 
 # Shift panes around windows
@@ -76,6 +77,8 @@ bind-key B break-pane -t :
 # bind-key S command-prompt -p "Send window to:"  "move-window -t '%%'"
 
 # Make a sTicky window (Who actually uses clock mode?)
+# This allows you to bind a window into multiple sessions.
+# Use `unlink-window` to reverse it.
 bind-key t command-prompt -p "Stick window to:"  "link-window -t '%%'"
 
 # Move the current window left/right
