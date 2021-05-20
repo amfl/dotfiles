@@ -14,7 +14,18 @@
 set -g automatic-rename "off"
 set -g allow-rename "off"
 set -g base-index 1
-set -g default-terminal "screen-256color"
+
+# Enable 256 colors inside tmux
+# https://github.com/tmux/tmux/wiki/FAQ#how-do-i-use-a-256-colour-terminal
+set -g default-terminal "tmux-256color"
+# Enable true RGB
+# https://github.com/tmux/tmux/wiki/FAQ#how-do-i-use-rgb-colour
+# This needs to match the $TERM of your actual terminal emulator outside tmux
+# To test:
+#                  ;R  ;G  ;B
+# printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
+set -as terminal-overrides ",rxvt-unicode-256color:Tc"
+
 set -g renumber-windows "on"
 
 setw -g mode-keys vi
