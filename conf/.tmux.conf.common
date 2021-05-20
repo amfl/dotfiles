@@ -55,8 +55,6 @@ if-shell "tmux -V | head -1 | awk '{exit !($2 < \"2.1\")}'" \
 # set -g prefix C-a
 # unbind C-b
 
-bind-key b last-window
-
 # map vi movement keys as pane movement keys
 bind-key h select-pane -L
 bind-key j select-pane -D
