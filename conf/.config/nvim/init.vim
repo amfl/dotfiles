@@ -205,6 +205,7 @@ if !empty($BASE16_THEME) " For use with chriskempson/base16-shell
     let base16colorspace=256
     colorscheme base16-default-dark
 
+    " Customizations https://github.com/chriskempson/base16-vim#customization
     " Keep sign column and line numbers dark
     function! s:base16_customize() abort
       call Base16hi("SignColumn", g:base16_gui03, g:base16_gui01, g:base16_cterm03, g:base16_cterm00, "", "")
