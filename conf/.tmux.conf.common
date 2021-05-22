@@ -108,7 +108,7 @@ set -g pane-active-border-style fg=$tmux_accent
 set -g window-status-format " #I #W "
 
 setw -g window-status-style fg=white
-setw -g window-status-current-style bg=$tmux_accent,fg=brightblack,bold
+setw -g window-status-current-style bg=$tmux_accent,fg=$tmux_accent_fg,bold
 setw -g window-status-current-format ' #I #W '
 
 # }}}
