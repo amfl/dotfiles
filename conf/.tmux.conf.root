@@ -1,6 +1,39 @@
-# I have an "outer tmux" which contains other tmux sessions across machines.
-# Start with:
-#     tmux -f ~/.tmux.conf.root
+# I use many machines day-to-day. The workflow I have come up with to manage
+# them is for each machine to have their own "outer tmux" which is unique to
+# that machine, and an "inner tmux" which can be mounted across many machines.
+#
+# The "outer tmux" simply holds the "inner tmux" sessions of other machines.
+# - Each machine has one.
+# - Its key prefix is C-a.
+#
+# The "inner tmux" is where the day-to-day work on that computer is done.
+# - Each machine has one.
+# - Its key prefix is C-b.
+# - Each machine can have a custom accent color for ease of recognition.
+#
+# The benefit of this workflow is that all your machines can quickly access
+# sessions on all your other machines, and you don't rely on having one "always
+# online" server which hosts a single "outer tmux" that manages all your
+# sessions.
+#
+# I am not the first to think of this!
+# https://medium.com/free-code-camp/tmux-in-practice-series-of-posts-ae34f16cfab0
+#
+# USAGE
+# -----
+#
+# Start your "outer tmux" first with:
+#
+#     tmux -f ~/.tmux.conf.root -L outer
+#
+# Then, from a window in your "outer tmux", you can attach directly to the
+# "inner tmux" of a remote machine:
+#
+#     autossh $OTHER_MACHINE -t "tmux attach"
+#
+# Or your own machine:
+#
+#     unset TMUX && tmux attach
 
 # set Ctrl-a as the default prefix key combination
 # and unbind C-b to free it up
