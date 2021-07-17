@@ -19,13 +19,13 @@
 -- * plugin: sgur/vim-editorconfig => editorconfig/vim-editorconfig
 -- * plugin: fugitive => neogit
 --     * Speed issues have been addressed
+-- * plugin: vim-airline => lualine
 --
 -- MISSING
 --
 -- * plugin: Character alignment plugin
 -- * plugin: base16 color scheme
 -- * plugin: autocompletion/syntax highlighting
--- * plugin: Airline or similar
 
 -- SETTINGS {{{1
 
@@ -102,6 +102,17 @@ require("packer").startup(function()
   -- Colors and Themes
   use {"sainnhe/gruvbox-material"}
   use {"norcalli/nvim-colorizer.lua"}    -- Highlight colorcodes (Like #fe03bb)
+  use {"hoob3rt/lualine.nvim",           -- Status line
+        config = function()
+            require("lualine").setup {
+                options = {
+                    component_separators = "",
+                    icons_enabled = false,
+                    section_separators = "",
+                    theme = "codedark",
+                }
+            }
+        end }
 
   -- Usability
   use {"tpope/vim-commentary"}           -- Allow commenting blocks of code
@@ -144,6 +155,7 @@ end)
 
 vim.o["termguicolors"] = true
 vim.cmd "colorscheme gruvbox-material"
+vim.o["showmode"] = false -- lualine plugin replaces vim mode indicator
 
 -- Plugin Settings
 
