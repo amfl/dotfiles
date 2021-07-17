@@ -2,13 +2,30 @@
 
 -- CHANGELOG {{{1
 -- Transition to neovim 0.5!
+--
 -- Theme: Simplify and remove bespoke stuff.
--- * Everything in lua
--- * <leader>sc => yoh (vim-unimpaired binding)
--- * Remove clipboard integration remaps. I think it was messing with things.
--- * No longer move cursor back when exiting insert mode.
---    * https://vi.stackexchange.com/questions/3138/cursor-moves-one-character-backwards-on-exiting-insert-mode
---    * The vi mode in zsh mixes me up sometimes based on this
+--
+-- * Everything in lua!
+-- * Drop Windows support because it's not useful to me
+-- * binding: <leader>sc => yoh (vim-unimpaired binding)
+-- * binding: Remove clipboard integration bindings. I think it was messing with things.
+-- * binding: No longer move cursor back when exiting insert mode.
+--     * I prefer old behavior, but my desire for standard behavior is even stronger.
+--     * https://vi.stackexchange.com/questions/3138/cursor-moves-one-character-backwards-on-exiting-insert-mode
+--     * The vi mode in zsh mixes me up sometimes based on this
+-- * plugin-manager: vim-plug => packer
+-- * plugin: fzf => telescope
+-- * plugin: gitgutter => gitsigns
+-- * plugin: sgur/vim-editorconfig => editorconfig/vim-editorconfig
+-- * plugin: fugitive => neogit
+--     * Speed issues have been addressed
+--
+-- MISSING
+--
+-- * plugin: Character alignment plugin
+-- * plugin: base16 color scheme
+-- * plugin: autocompletion/syntax highlighting
+-- * plugin: Airline or similar
 
 -- SETTINGS {{{1
 
