@@ -129,7 +129,9 @@ require("packer").startup(function()
   use { "lewis6991/gitsigns.nvim",       -- Show git status in gutter. Bindings to stage hunks.
         requires = "nvim-lua/plenary.nvim",
         config = function()
-            require("gitsigns").setup()
+            require("gitsigns").setup {
+                update_debounce = 300, -- Increase to prevent flickering
+            }
         end }
 
   use { "nvim-telescope/telescope.nvim", -- Fuzzy finder
