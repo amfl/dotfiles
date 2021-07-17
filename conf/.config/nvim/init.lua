@@ -54,6 +54,18 @@ vim.o["hidden"] = true
 -- Mouse support for all modes
 vim.o["mouse"] = "a"
 
+-- Special characters
+vim.o["showbreak"] = "»"
+vim.opt.listchars = {
+    -- eol = "¶",
+    extends = "»",
+    nbsp = "¬",
+    precedes = "«",
+    tab = ">~",
+    trail = "-", -- Other chars: •¤
+}
+vim.o["list"] = true -- Actually show the listchars above
+
 -- REMAPS {{{1
 
 -- Use jk/kj to exit insertion mode (Writing this line was fun!)
