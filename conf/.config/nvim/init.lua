@@ -99,8 +99,9 @@ require("packer").startup(function()
   -- Packer can manage itself as an optional plugin
   use {"wbthomason/packer.nvim", opt = true}
 
-  -- Theme
+  -- Colors and Themes
   use {"sainnhe/gruvbox-material"}
+  use {"norcalli/nvim-colorizer.lua"}    -- Highlight colorcodes (Like #fe03bb)
 
   -- Usability
   use {"tpope/vim-commentary"}           -- Allow commenting blocks of code
