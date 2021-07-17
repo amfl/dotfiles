@@ -121,10 +121,22 @@ require("packer").startup(function()
             require("gitsigns").setup()
         end }
 
-  use {
-      "nvim-telescope/telescope.nvim",
-      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+  use { "nvim-telescope/telescope.nvim", -- Fuzzy finder
+      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
+      config = function()
+          require("telescope").setup {
+              defaults = {
+                  mappings = {
+                      i = {  -- Move through list with Ctrl j/k
+                          ["<C-j>"] = require('telescope.actions').move_selection_next,
+                          ["<C-k>"] = require('telescope.actions').move_selection_previous,
+                      }
+                  }
+              }
+          }
+      end
   }
+  -- TODO: What is "nvim-telescope/telescope-hop"?
 end)
 -- To update things: `PackerSync`
 
