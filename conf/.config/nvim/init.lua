@@ -95,6 +95,14 @@ require("packer").startup(function()
   use {"jpalardy/vim-slime"}             -- Send buffer snippets to a REPL
   use {"editorconfig/editorconfig-vim"}  -- Obey `.editorconfig` files (https://editorconfig.org/)
 
+  -- Git
+  use { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }
+  use { "lewis6991/gitsigns.nvim",       -- Show git status in gutter. Bindings to stage hunks.
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("gitsigns").setup()
+        end }
+
   use {
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
