@@ -16,17 +16,17 @@ vim.g["config_path"] = "~/.config/nvim/"
 
 -- Indentation
 local indent = 4
-vim.bo["expandtab"] = true
-vim.bo["smartindent"] = true
-vim.bo["shiftwidth"] = indent
-vim.bo["tabstop"] = indent
+vim.o["expandtab"] = true
+vim.o["smartindent"] = true
+vim.o["shiftwidth"] = indent
+vim.o["tabstop"] = indent
 
 -- Case insensitive unless we type caps
 -- (Force sensitivity by suffixing with \C if neccesary)
 vim.go["ignorecase"] = true
 vim.go["smartcase"] = true
 
-vim.bo["swapfile"] = false
+vim.o["swapfile"] = false
 
 vim.wo["number"] = true      -- Show line numbers
 vim.wo["cursorline"] = true  -- Highlight line the cursor is on
