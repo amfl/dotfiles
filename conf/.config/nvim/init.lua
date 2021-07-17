@@ -96,13 +96,13 @@ vim.cmd [[packadd packer.nvim]]
 -- vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
 
 require("packer").startup(function()
-  -- Packer can manage itself as an optional plugin
-  use {"wbthomason/packer.nvim", opt = true}
+    -- Packer can manage itself as an optional plugin
+    use {"wbthomason/packer.nvim", opt = true}
 
-  -- Colors and Themes
-  use {"sainnhe/gruvbox-material"}
-  use {"norcalli/nvim-colorizer.lua"}    -- Highlight colorcodes (Like #fe03bb)
-  use {"hoob3rt/lualine.nvim",           -- Status line
+    -- Colors and Themes
+    use {"sainnhe/gruvbox-material"}
+    use {"norcalli/nvim-colorizer.lua"}    -- Highlight colorcodes (Like #fe03bb)
+    use {"hoob3rt/lualine.nvim",           -- Status line
         config = function()
             require("lualine").setup {
                 options = {
@@ -114,19 +114,19 @@ require("packer").startup(function()
             }
         end }
 
-  -- Usability
-  use {"tpope/vim-commentary"}           -- Allow commenting blocks of code
-  use {"tpope/vim-repeat"}               -- Allow repeating supported plugins with `.`
-  use {"tpope/vim-surround"}             -- For manipulating surrounding text
-  use {"tpope/vim-unimpaired"}           -- Complimentary pairs of mappings
-  use {"tpope/vim-vinegar"}              -- Enhance the default file explorer, netrw
+    -- Usability
+    use {"tpope/vim-commentary"}           -- Allow commenting blocks of code
+    use {"tpope/vim-repeat"}               -- Allow repeating supported plugins with `.`
+    use {"tpope/vim-surround"}             -- For manipulating surrounding text
+    use {"tpope/vim-unimpaired"}           -- Complimentary pairs of mappings
+    use {"tpope/vim-vinegar"}              -- Enhance the default file explorer, netrw
 
-  use {"jpalardy/vim-slime"}             -- Send buffer snippets to a REPL
-  use {"editorconfig/editorconfig-vim"}  -- Obey `.editorconfig` files (https://editorconfig.org/)
+    use {"jpalardy/vim-slime"}             -- Send buffer snippets to a REPL
+    use {"editorconfig/editorconfig-vim"}  -- Obey `.editorconfig` files (https://editorconfig.org/)
 
-  -- Git
-  use { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }
-  use { "lewis6991/gitsigns.nvim",       -- Show git status in gutter. Bindings to stage hunks.
+    -- Git
+    use { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }
+    use { "lewis6991/gitsigns.nvim",       -- Show git status in gutter. Bindings to stage hunks.
         requires = "nvim-lua/plenary.nvim",
         config = function()
             require("gitsigns").setup {
@@ -134,22 +134,22 @@ require("packer").startup(function()
             }
         end }
 
-  use { "nvim-telescope/telescope.nvim", -- Fuzzy finder
-      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
-      config = function()
-          require("telescope").setup {
-              defaults = {
-                  mappings = {
-                      i = {  -- Move through list with Ctrl j/k
-                          ["<C-j>"] = require('telescope.actions').move_selection_next,
-                          ["<C-k>"] = require('telescope.actions').move_selection_previous,
-                      }
-                  }
-              }
-          }
-      end
-  }
-  -- TODO: What is "nvim-telescope/telescope-hop"?
+    use { "nvim-telescope/telescope.nvim", -- Fuzzy finder
+        requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
+        config = function()
+            require("telescope").setup {
+                defaults = {
+                    mappings = {
+                        i = {  -- Move through list with Ctrl j/k
+                            ["<C-j>"] = require('telescope.actions').move_selection_next,
+                            ["<C-k>"] = require('telescope.actions').move_selection_previous,
+                        }
+                    }
+                }
+            }
+        end
+    }
+    -- TODO: What is "nvim-telescope/telescope-hop"?
 end)
 -- To update things: `PackerSync`
 
