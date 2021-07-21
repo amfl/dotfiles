@@ -118,11 +118,12 @@ setw -g window-status-current-format ' #I #W '
 
 # # Try to mimic vim the best you can
 bind-key -T copy-mode-vi v send-keys -X begin-selection
-# # Interact with thinclient
-# bind-key -t vi-copy y copy-pipe "sendclipboard"
-# bind-key -t vi-copy p copy-pipe "puush | sendclipboard"
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xsel -ib"
 bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection-and-cancel "xsel -ib"
+
+# Allow programs inside tmux to set the clipboard copy buffer via OSC52 code.
+# This includes a nested tmux!
+set -g set-clipboard "on"
 
 # }}}
 # Custom Functions --------------------------------------------------------- {{{
