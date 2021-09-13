@@ -139,6 +139,12 @@ require("packer").startup(function()
     use {"jpalardy/vim-slime"}             -- Send buffer snippets to a REPL
     use {"editorconfig/editorconfig-vim"}  -- Obey `.editorconfig` files (https://editorconfig.org/)
 
+    -- Language Server Protocol (LSP)
+    use {"neovim/nvim-lspconfig"}          -- Collection of common LSP configs.
+                                           -- Helps nvim find language servers.
+    use {"hrsh7th/nvim-cmp"}               -- Completion engine which can draw from LSP (and other stuff).
+    use {"hrsh7th/cmp-nvim-lsp"}           -- LSP source for nvim-cmp
+
     -- Git
     use { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }
     use { "lewis6991/gitsigns.nvim",       -- Show git status in gutter. Bindings to stage hunks.
