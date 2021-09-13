@@ -96,6 +96,9 @@ vim.g["mapleader"] = " "
 -- Edit dotfiles
 vim.api.nvim_set_keymap("n", "<leader>fed", ":e " .. vim.g["config_path"] .. "init.lua<cr>", {noremap = true})
 
+-- Jump back to previous buffer
+vim.api.nvim_set_keymap("n", "<leader><TAB>", "<C-^>", {noremap = true})
+
 -- PLUGINS {{{1
 
 -- Auto install packer.nvim if required
