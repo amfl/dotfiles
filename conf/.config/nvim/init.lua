@@ -115,7 +115,9 @@ require("packer").startup(function()
     use {"wbthomason/packer.nvim", opt = true}
 
     -- Colors and Themes
-    use {"sainnhe/gruvbox-material"}
+    use {"sainnhe/gruvbox-material"}       -- Warm and cozy.    256/truecolor
+    use {"jeffkreeftmeijer/vim-dim"}       -- Default IMproved. 16 color
+
     use {"norcalli/nvim-colorizer.lua"}    -- Highlight colorcodes (Like #fe03bb)
     use {"hoob3rt/lualine.nvim",           -- Status line
         config = function()
@@ -176,8 +178,10 @@ end)
 
 -- Colorscheme
 
-vim.o["termguicolors"] = true
-vim.cmd "colorscheme gruvbox-material"
+-- vim.o["termguicolors"] = true
+-- vim.cmd "colorscheme gruvbox-material"
+vim.cmd "colorscheme dim"
+
 vim.o["showmode"] = false -- lualine plugin replaces vim mode indicator
 
 -- Plugin Settings
