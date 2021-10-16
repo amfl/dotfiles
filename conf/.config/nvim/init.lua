@@ -142,10 +142,25 @@ require("packer").startup(function()
     use {"editorconfig/editorconfig-vim"}  -- Obey `.editorconfig` files (https://editorconfig.org/)
 
     -- Language Server Protocol (LSP)
-    use {"neovim/nvim-lspconfig"}          -- Collection of common LSP configs.
-                                           -- Helps nvim find language servers.
-    use {"hrsh7th/nvim-cmp"}               -- Completion engine which can draw from LSP (and other stuff).
-    use {"hrsh7th/cmp-nvim-lsp"}           -- LSP source for nvim-cmp
+    -- use {"neovim/nvim-lspconfig"}          -- Collection of common LSP configs.
+    --                                        -- Helps nvim find language servers.
+    -- use {"hrsh7th/cmp-nvim-lsp"}           -- LSP source for nvim-cmp
+
+    use {"hrsh7th/nvim-cmp",               -- Completion engine which can draw from LSP (and other stuff).
+        requires = {
+            {"hrsh7th/cmp-buffer"},            -- Let nvim-cmp autocomplete from buffer words
+        },
+        config = function()
+            local cmp = require("cmp")
+            cmp.setup {
+                mapping = {
+                    ["<TAB>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                },
+                sources = {
+                    { name = "buffer" },
+                }
+            }
+        end }
 
     -- Git
     use { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }
