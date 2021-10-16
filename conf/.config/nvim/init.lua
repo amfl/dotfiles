@@ -142,22 +142,36 @@ require("packer").startup(function()
     use {"editorconfig/editorconfig-vim"}  -- Obey `.editorconfig` files (https://editorconfig.org/)
 
     -- Language Server Protocol (LSP)
-    -- use {"neovim/nvim-lspconfig"}          -- Collection of common LSP configs.
-    --                                        -- Helps nvim find language servers.
-    -- use {"hrsh7th/cmp-nvim-lsp"}           -- LSP source for nvim-cmp
 
-    use {"hrsh7th/nvim-cmp",               -- Completion engine which can draw from LSP (and other stuff).
+    -- Helps nvim find and automatically start the correct language servers.
+    -- Can provide completion alone via nvim's omnifunc, works better with nvim-cmp (below)
+    use {"neovim/nvim-lspconfig"}          -- Collection of common LSP configs.
+
+    -- Autocompletion engine which can draw from LSP (and other stuff).
+    -- It provides additional functionality over vim's native omnicompletion like
+    -- async, autocomplete, more columns...
+    use {"hrsh7th/nvim-cmp",
         requires = {
             {"hrsh7th/cmp-buffer"},            -- Let nvim-cmp autocomplete from buffer words
+            {"hrsh7th/cmp-nvim-lsp"},          -- Let nvim-cmp autocomplete from LSP
         },
         config = function()
             local cmp = require("cmp")
             cmp.setup {
                 mapping = {
+                    ["<C-Space>"] = cmp.mapping.complete(), -- Manually invoke completion menu
                     ["<TAB>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 },
                 sources = {
+                    { name = "nvim_lsp" },
                     { name = "buffer" },
+                },
+                completion = {
+                    autocomplete = false
                 }
             }
         end }
@@ -191,6 +205,28 @@ require("packer").startup(function()
 end)
 -- To update things: `PackerSync`
 
+-- PLUGIN SETTINGS {{{1
+
+-- LSP config {{{
+-- Now that cmp_nvim_lsp is installed, we should tell the language servers that
+-- we support more capabilities than plain old neovim would otherwise.
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+require("cmp_nvim_lsp").update_capabilities(capabilities)
+
+-- List of LSP servers you want nvim to be aware of
+-- For all possibilities, see:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+local language_servers = {"rust_analyzer"}
+
+-- Set up each LSP server by telling it which capabilities nvim supports
+local lspconfig = require("lspconfig")
+for _, lsp in ipairs(language_servers) do
+    lspconfig[lsp].setup {
+        capabilities = capabilities,
+    }
+end
+-- }}}
+
 -- Colorscheme
 
 -- vim.o["termguicolors"] = true
@@ -210,3 +246,4 @@ vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep<cr>", {noremap 
 vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers<cr>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fh", ":Telescope help_tags<cr>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope oldfiles<cr>", {noremap = true})
+
