@@ -1,0 +1,18 @@
+# Use with:
+#     lynx -cfg=~/.lynxrc
+# Debug with:
+#     lynx -cfg=~/.lynxrc -show_cfg
+# See all options at:
+#     https://lynx.invisible-island.net/lynx_help/body.html
+
+VI_KEYS_ALWAYS_ON:TRUE
+DEFAULT_INDEX_FILE:https://google.com  # Opens when you press I
+STARTFILE:https://google.com           # Homepage
+
+###########################################################
+# Cookies
+###########################################################
+
+PERSISTENT_COOKIES:FALSE         # Save/load cookies from file
+COOKIE_REJECT_DOMAINS:google.com # Automatically reject cookies from these domains
+# COOKIE_FILE:~/.lynx_cookies      # Write to disk
