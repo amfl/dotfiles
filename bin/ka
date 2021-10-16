@@ -1,0 +1,20 @@
+#!/bin/sh
+# ka - "Keep Alive"
+# Tiny autossh wrapper to also set tmux window names.
+#
+# Works best when you have short, friendly aliases for machines in
+# `~/.ssh/config`
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 MACHINE_NAME [SSH ARGS]"
+    exit 1
+fi
+
+tmux rename-window "$1"
+
+# Disable the autossh monitor port.
+# Vanilla `autossh` has no default for this value. Ports also cannot be reused,
+# which makes choosing a good port number tricky for new sessions. The low
+# value/complexity ratio makes this feature not worth using, especially given
+# that ssh provides keepalive functionality anyway.
+autossh -M 0 "$@" -t 'tmux a'
