@@ -131,4 +131,17 @@ set -g set-clipboard "on"
 # Send the keys of today's date in YYYY-MM-DD
 bind-key D run-shell 'tmux send-keys $(date +%F)'
 
+# [Y]eet the contents of the paste buffer as OSC52 to the containing terminal.
+# `osc52` and `tmux-tty` scripts are in the `bin` directory of this repo.
+#
+# Motivation: It isn't desirable to use OSC52 in _every_ situation - Eg,
+# copying a large amount of text from nvim in a remote tmux to the `+` register
+# so it can be pasted into another nvim instance running on the same remote
+# host. There would be no need to transfer the entire vim buffer across SSH.
+#
+# However, sometimes you _do_ want to exfiltrate data from a remote session, so
+# it's handy to have the option to explicitly slurp the remote tmux paste
+# buffer into your local tmux paste buffer.
+bind-key Y run-shell 'tmux show-buffer | osc52 > $(tmux-tty)'
+
 # }}}
