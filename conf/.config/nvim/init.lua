@@ -176,6 +176,17 @@ require("packer").startup(function()
             }
         end }
 
+    -- Filetype-specific
+
+    use { "plasticboy/vim-markdown",       -- md: Markdown support
+        requires = "godlygeek/tabular",    -- md: plasticboy/vim-markdown dependency
+        config = function()
+            -- Fold markdown on the same line as the title, not the line after
+            vim.g["vim_markdown_folding_style_pythonic"] = 1
+            -- Make ToC not take up half the screen
+            vim.g["vim_markdown_toc_autofit"] = 1
+        end }
+
     -- Git
     use { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }
     use { "lewis6991/gitsigns.nvim",       -- Show git status in gutter. Bindings to stage hunks.
