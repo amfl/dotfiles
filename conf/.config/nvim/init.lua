@@ -246,6 +246,12 @@ end
 -- vim.cmd "colorscheme gruvbox-material"
 vim.cmd "colorscheme dim"
 
+-- The linux framebuffer terminal doesn't support underline, so it makes lines
+-- blue instead, which I am not happy with.
+-- TODO: Only apply this in TERMs without underline support
+-- It's not sufficient to say only `hi CursorLine...` and I'm not sure why
+vim.cmd "au VimEnter * hi CursorLine cterm=bold"
+
 vim.o["showmode"] = false -- lualine plugin replaces vim mode indicator
 
 -- Plugin Settings
