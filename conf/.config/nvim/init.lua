@@ -34,7 +34,9 @@ vim.g["config_path"] = "~/.config/nvim/"
 -- Indentation
 local indent = 4
 vim.o["expandtab"] = true
-vim.o["smartindent"] = true
+-- :help smartindent
+-- When using the ">>" command, lines starting with '#' are not shifted right.
+-- vim.o["smartindent"] = false
 vim.o["shiftwidth"] = indent
 vim.o["tabstop"] = indent
 
