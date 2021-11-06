@@ -17,7 +17,6 @@
 -- * plugin: fzf => telescope
 -- * plugin: gitgutter => gitsigns
 -- * plugin: sgur/vim-editorconfig => editorconfig/vim-editorconfig
--- * plugin: fugitive => neogit
 --     * Speed issues have been addressed
 -- * plugin: vim-airline => lualine
 --
@@ -193,8 +192,7 @@ require("packer").startup(function()
     use { "HiPhish/info.vim" }             -- info: Read info/texinfo doc files
 
     -- Git
-    use { "TimUntersberger/neogit",        -- Magit implementation
-        requires = "nvim-lua/plenary.nvim" }
+    use { "tpope/vim-fugitive" }           -- Git integration
     use { "lewis6991/gitsigns.nvim",       -- Show git status in gutter. Bindings to stage hunks.
         requires = "nvim-lua/plenary.nvim",
         config = function()
