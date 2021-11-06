@@ -233,7 +233,7 @@ require("cmp_nvim_lsp").update_capabilities(capabilities)
 -- List of LSP servers you want nvim to be aware of
 -- For all possibilities, see:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
-local language_servers = {"rust_analyzer"}
+local language_servers = {"rust_analyzer", "gopls"}
 
 -- Set up each LSP server by telling it which capabilities nvim supports
 local lspconfig = require("lspconfig")
