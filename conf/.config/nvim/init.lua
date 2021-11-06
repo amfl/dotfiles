@@ -138,6 +138,8 @@ require("packer").startup(function()
     use {"tpope/vim-unimpaired"}           -- Complimentary pairs of mappings
     use {"tpope/vim-vinegar"}              -- Enhance the default file explorer, netrw
 
+    use {"farmergreg/vim-lastplace"}       -- Remember last place in files. Good for ebooks.
+
     use {"jpalardy/vim-slime"}             -- Send buffer snippets to a REPL
     use {"editorconfig/editorconfig-vim"}  -- Obey `.editorconfig` files (https://editorconfig.org/)
 
