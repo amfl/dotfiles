@@ -190,7 +190,8 @@ require("packer").startup(function()
         end }
 
     -- Git
-    use { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }
+    use { "TimUntersberger/neogit",        -- Magit implementation
+        requires = "nvim-lua/plenary.nvim" }
     use { "lewis6991/gitsigns.nvim",       -- Show git status in gutter. Bindings to stage hunks.
         requires = "nvim-lua/plenary.nvim",
         config = function()
