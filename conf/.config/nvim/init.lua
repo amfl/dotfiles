@@ -188,6 +188,7 @@ require("packer").startup(function()
             -- Make ToC not take up half the screen
             vim.g["vim_markdown_toc_autofit"] = 1
         end }
+    use { "HiPhish/info.vim" }             -- info: Read info/texinfo doc files
 
     -- Git
     use { "TimUntersberger/neogit",        -- Magit implementation
