@@ -1,0 +1,15 @@
+# Blue is often too dark to have good readability
+anchor_color magenta
+
+# Only healthy snacks for me
+use_cookie 0
+accept_cookie 0
+
+# Show links we're hovering
+display_link 1
+
+wrap_search 1
+
+# Remember heaps of pages
+use_history 1
+history 100000

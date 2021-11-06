@@ -1,0 +1,23 @@
+# Vim-style movement
+#
+# Notes:
+#  - C-j is detected as ENTER
+#  - C-i is detected as TAB
+
+keymap C-u PREV_PAGE
+keymap C-d NEXT_PAGE
+
+# keymap C-j NEXT_LINK
+# keymap C-k PREV_LINK
+
+## Cannot go forward after executing BACK. You probably want PREV.
+# keymap C-o BACK
+## C-i == TAB, you probably don't want to set this.
+# keymap C-i NEXT
+
+keymap C-o PREV
+# keymap H PREV
+keymap L NEXT
+keymap b   PREV_WORD
+
+keymap C-w CLOSE_TAB
