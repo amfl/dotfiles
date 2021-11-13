@@ -1,0 +1,46 @@
+#!/bin/sh
+# Search the internet from terminal.
+
+#  Default search engine
+engine='searx_local'
+
+#####################################################
+# Argparse nonsense
+
+ARGS=$(getopt --options e: --long "engine:" -- "$@")
+eval set -- "$ARGS"
+
+while true
+do
+case $1 in
+-e|--engine)
+    shift
+    export engine=$1
+    ;;
+--)
+    shift
+    break;;
+esac
+shift
+done
+
+#####################################################
+
+case $engine in
+ddg)
+    url='https://lite.duckduckgo.com/lite?kd=-1&kp=-1&q='
+    ;;
+google)
+    url='https://google.com/search?q='
+    ;;
+searx_local)
+    url='http://localhost:8081/search?categories=general&q='
+    ;;
+*)
+    echo "Unknown engine: $engine"
+    exit 1
+esac
+
+searchterm=$(echo "$@" | sed -e 's/\ /+/g')
+# exec lynx -cfg=~/.lynxrc "$url$searchterm"
+exec w3m "$url$searchterm"
