@@ -13,6 +13,10 @@ STARTFILE:https://google.com           # Homepage
 # Cookies
 ###########################################################
 
+SET_COOKIES:FALSE                # Never set new cookies
+ACCEPT_ALL_COOKIES:FALSE
+
+# If cookies are enabled...
 PERSISTENT_COOKIES:FALSE         # Save/load cookies from file
 COOKIE_REJECT_DOMAINS:google.com # Automatically reject cookies from these domains
 # COOKIE_FILE:~/.lynx_cookies      # Write to disk
