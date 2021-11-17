@@ -21,3 +21,11 @@ keymap L NEXT
 keymap b   PREV_WORD
 
 keymap C-w CLOSE_TAB
+
+keymap - PREV
+
+# Automatic search stuff
+# https://unix.stackexchange.com/questions/183048/
+# See also: cgi-bin
+# https://www.reddit.com/r/archlinux/comments/75sz9m/help_with_w3m_cgibin_scripts/
+keymap  ss COMMAND "TAB_GOTO http://localhost:8081/; GOTO_LINE 6; NEXT_LINK;"
