@@ -48,4 +48,4 @@ bind -n S-Left previous-window
 tmux_accent=white
 tmux_accent_fg=brightblack
 
-source-file ~/.tmux.conf.common
+source-file ~/.config/tmux/tmux.conf.common
