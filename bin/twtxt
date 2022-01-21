@@ -1,0 +1,4 @@
+#!/bin/sh
+# One-liner for writing twtxts, which are the smol web analogue of tweets.
+# See: https://github.com/buckket/twtxt
+echo -e "$(date +%FT%T%:z)\t$@" >> ~/memex/twtxt.txt
