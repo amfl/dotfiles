@@ -17,4 +17,4 @@ tmux rename-window "$1"
 # which makes choosing a good port number tricky for new sessions. The low
 # value/complexity ratio makes this feature not worth using, especially given
 # that ssh provides keepalive functionality anyway.
-autossh -M 0 "$@" -t 'tmux a'
+autossh -M 0 "$@" -t 'tmux a -d'
