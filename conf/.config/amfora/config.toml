@@ -48,10 +48,10 @@ ansi = true
 bullets = true
 
 # Whether to show link after link text
-show_link = false
+show_link = true
 
 # A number from 0 to 1, indicating what percentage of the terminal width the left margin should take up.
-left_margin = 0.15
+left_margin = 0.03
 
 # The max number of columns to wrap a page's text to. Preformatted blocks are not wrapped.
 max_width = 100
@@ -336,6 +336,9 @@ entries_per_page = 20
 # quote_text
 # preformatted_text
 # list_text
+
+amfora_link = "teal"
+foreign_lint = "teal"
 
 # btn_bg: The bg color for all modal buttons
 # btn_text: The text color for all modal buttons
