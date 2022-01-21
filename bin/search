@@ -34,6 +34,7 @@ google)
     url='https://google.com/search?q='
     ;;
 searx_local)
+    # See `bin/searx`
     url='http://localhost:8081/search?categories=general&q='
     ;;
 *)
