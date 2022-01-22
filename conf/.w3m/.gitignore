@@ -1,2 +1,4 @@
 # w3m temp files
 w3m*
+# Ensure no accidental history sharing
+history
