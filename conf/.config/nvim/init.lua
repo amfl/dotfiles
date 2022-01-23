@@ -188,8 +188,10 @@ require("packer").startup(function()
 
     -- Filetype-specific
 
-    use { "plasticboy/vim-markdown",       -- md: Markdown support
-        requires = "godlygeek/tabular",    -- md: plasticboy/vim-markdown dependency
+    -- use { "pirmd/gemini.vim" }             -- gemini syntax highlighting
+    -- use { "LnL7/vim-nix" }                 -- nix syntax highlighting
+    use { "plasticboy/vim-markdown",       -- markdown syntax highlighting
+        requires = "godlygeek/tabular",
         config = function()
             -- Fold markdown on the same line as the title, not the line after
             vim.g["vim_markdown_folding_style_pythonic"] = 1
