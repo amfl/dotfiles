@@ -47,37 +47,8 @@ bindkey "^V" edit-command-line
 ##################
 # PROMPT
 
-# https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/
-# Load version control information
-autoload -Uz vcs_info
-precmd() { vcs_info }
-
-# https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#vcs_005finfo-Variables
-# Format the vcs_info_msg_0_ variable
-zstyle ':vcs_info:git:*' formats '%b'
-
-# Set up the prompt (with git branch name)
-setopt PROMPT_SUBST
-
-# DEFAULT PROMPT
-# export PROMPT='%B%(?..[%?] )%b%n@%U%m%u> '
-export PROMPT='%B%(?..[%?] )%b%F{magenta}%n%F{cyan}@%F{yellow}%m%u%F{red}:%F{cyan}%~%F{red}|%F{green}${vcs_info_msg_0_}%F{yellow}%(!,#,$) %f'
-# PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
-
-# Try to get the date show up before each command
-# https://stackoverflow.com/questions/13125825/zsh-update-prompt-with-current-time-when-a-command-is-started
-export RPROMPT='[%D{%L:%M:%S %p}]'
-
-# When you press enter, redraw the previous prompt so the date is accurate.
-# preexec() { zle reset-prompt }
-function _reset-prompt-and-accept-line {
-  zle reset-prompt
-  zle .accept-line     # Note the . meaning the built-in accept-line.
-}
-zle -N accept-line _reset-prompt-and-accept-line
-
-# Optional: If you want that branch info to display aligned to the right, remove the ${vcs_info_msg_0_} line from your PROMPT and add an RPROMPT line to your config file instead as below
-# RPROMPT=\$vcs_info_msg_0_
+# Check conf/.config/starship.toml
+eval "$(starship init zsh)"
 
 # FZF {{{1
 
