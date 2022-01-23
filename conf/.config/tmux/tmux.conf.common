@@ -130,6 +130,9 @@ set -g set-clipboard "on"
 
 # Send the keys of today's date in YYYY-MM-DD
 bind-key D run-shell 'tmux send-keys $(date +%F)'
+# Full RFC3339 datetime
+bind-key F run-shell 'tmux send-keys $(date +%FT%T%:z)'
+# TODO: Replace above - What is the portability of the --rfc-3339=date argument?
 
 # [Y]eet the contents of the paste buffer as OSC52 to the containing terminal.
 # `osc52` and `tmux-tty` scripts are in the `bin` directory of this repo.
