@@ -1,13 +1,175 @@
 # https://starship.rs/config/
 
-# Don't print a new line at the start of the prompt
-# add_newline = false
+# Custom theme based on zsh pygmalion.
+# Avoids fancy symbols where possible.
 
-# Disable the package module, hiding it from the prompt completely
-# [package]
-# disabled = true
+# Prompt and System
+
+# Fiddle with the format to get the right things on the right lines.
+# Key takeaway: $all contains the default modules, but it won't
+#               duplicate anything you explicitly define.
+format = """$time\
+$all\
+$line_break\
+
+$jobs\
+$battery\
+$status\
+$shell\
+$username\
+[@](cyan)\
+$hostname\
+[:](red)\
+$directory\
+$character"""
 
 [character]
-# Just a boring $ for me!
-success_symbol = "[\\$](bold green)"
-error_symbol = "[\\$](bold red)"
+success_symbol = "[\\$](yellow)"
+error_symbol = "[\\$](red)"
+vicmd_symbol = "[>](green)"
+
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "bright-black"
+
+[directory]
+style = "cyan"
+read_only = " ro"
+truncate_to_repo = true
+truncation_length = 0
+fish_style_pwd_dir_length = 3
+
+[memory_usage]
+symbol = "memory "
+disabled = true
+
+[username]
+format = "[$user]($style)"
+style_user = "purple"
+show_always = true
+
+[hostname]
+format = "[$hostname]($style)"
+style = "yellow"
+ssh_only = false
+
+# Source Control
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+# format = "([$all_status$ahead_behind]($style) )"
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "green"
+symbol = ""
+
+[hg_branch]
+symbol = "hg "
+
+# Tooling
+# From here down is mostly just the plain-text-symbols preset
+
+[aws]
+symbol = "aws "
+
+[cobol]
+symbol = "cobol "
+
+[conda]
+symbol = "conda "
+
+[crystal]
+symbol = "cr "
+
+[cmake]
+symbol = "cmake "
+
+[dart]
+symbol = "dart "
+
+[deno]
+symbol = "deno "
+
+[dotnet]
+symbol = ".NET "
+
+[docker_context]
+symbol = "docker "
+
+[elixir]
+symbol = "exs "
+
+[elm]
+symbol = "elm "
+
+[golang]
+symbol = "go "
+
+[java]
+symbol = "java "
+
+[julia]
+symbol = "jl "
+
+[kotlin]
+symbol = "kt "
+
+[lua]
+symbol = "lua "
+
+[nim]
+symbol = "nim "
+
+[nix_shell]
+symbol = "nix "
+
+[nodejs]
+symbol = "nodejs "
+
+[ocaml]
+symbol = "ml "
+
+[package]
+symbol = "pkg "
+
+[perl]
+symbol = "pl "
+
+[php]
+symbol = "php "
+
+[pulumi]
+symbol = "pulumi "
+
+[purescript]
+symbol = "purs "
+
+[python]
+symbol = "py "
+
+[ruby]
+symbol = "rb "
+
+[rust]
+symbol = "rs "
+
+[scala]
+symbol = "scala "
+
+[sudo]
+symbol = "sudo "
+
+[swift]
+symbol = "swift "
+
+[terraform]
+symbol = "tf "
