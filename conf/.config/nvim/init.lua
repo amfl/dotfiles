@@ -62,7 +62,7 @@ vim.opt.listchars = {
     extends = "»",
     nbsp = "¬",
     precedes = "«",
-    tab = ">~",
+    tab = ">-",
     trail = "-", -- Other chars: •¤
 }
 vim.o["list"] = true -- Actually show the listchars above
