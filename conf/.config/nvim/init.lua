@@ -69,6 +69,13 @@ vim.o["list"] = true -- Actually show the listchars above
 
 -- REMAPS {{{1
 
+function dict_under_cursor()
+    -- This is probably done in a really stupid way :)
+    word_under_cursor = vim.api.nvim_eval('expand("<cword>")')
+    vim.api.nvim_command('!dict '..word_under_cursor)
+end
+vim.api.nvim_set_keymap("n", "gD", ":lua dict_under_cursor()<cr>", {noremap = true})
+
 -- Use jk/kj to exit insertion mode (Writing this line was fun!)
 vim.api.nvim_set_keymap("i", "jk", "<Esc>", {noremap = true})
 vim.api.nvim_set_keymap("i", "kj", "<Esc>", {noremap = true})
