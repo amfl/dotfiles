@@ -80,96 +80,127 @@ symbol = "hg "
 
 [aws]
 symbol = "aws "
+disabled = true
 
 [cobol]
 symbol = "cobol "
+disabled = true
 
 [conda]
 symbol = "conda "
+disabled = true
 
 [crystal]
 symbol = "cr "
+disabled = true
 
 [cmake]
 symbol = "cmake "
+disabled = true
 
 [dart]
 symbol = "dart "
+disabled = true
 
 [deno]
 symbol = "deno "
+disabled = true
 
 [dotnet]
 symbol = ".NET "
+disabled = true
 
 [docker_context]
 symbol = "docker "
+disabled = true
 
 [elixir]
 symbol = "exs "
+disabled = true
 
 [elm]
 symbol = "elm "
+disabled = true
 
 [golang]
 symbol = "go "
+disabled = true
 
 [java]
 symbol = "java "
+disabled = true
 
 [julia]
 symbol = "jl "
+disabled = true
 
 [kotlin]
 symbol = "kt "
+disabled = true
 
 [lua]
 symbol = "lua "
+disabled = true
 
 [nim]
 symbol = "nim "
+disabled = true
 
 [nix_shell]
 symbol = "nix "
 
 [nodejs]
 symbol = "nodejs "
+disabled = true
 
 [ocaml]
 symbol = "ml "
+disabled = true
 
 [package]
 symbol = "pkg "
+disabled = true
 
 [perl]
 symbol = "pl "
+disabled = true
 
 [php]
 symbol = "php "
+disabled = true
 
 [pulumi]
 symbol = "pulumi "
+disabled = true
 
 [purescript]
 symbol = "purs "
+disabled = true
 
 [python]
 symbol = "py "
+disabled = true
 
 [ruby]
 symbol = "rb "
+disabled = true
 
 [rust]
 symbol = "rs "
+disabled = true
 
 [scala]
 symbol = "scala "
+disabled = true
 
 [sudo]
 symbol = "sudo "
+disabled = true
 
 [swift]
 symbol = "swift "
+disabled = true
 
 [terraform]
 symbol = "tf "
+disabled = true
