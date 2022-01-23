@@ -267,10 +267,11 @@ vim.o["showmode"] = false -- lualine plugin replaces vim mode indicator
 
 -- Plugin Settings
 
--- Assume SLIME target is the next tmux pane
 vim.g["slime_target"] = "tmux"
--- TODO: Don't crash if $TMUX isn't set
-vim.g["slime_default_config"] = {socket_name=vim.split(vim.env["TMUX"], ",")[1], target_pane=":.+"}
+if (vim.env.TMUX) then
+    -- Assume SLIME target is the next tmux pane
+    vim.g["slime_default_config"] = {socket_name=vim.split(vim.env["TMUX"], ",")[1], target_pane=":.+"}
+end
 
 vim.g["slime_cell_delimiter"] = "```"
 vim.api.nvim_set_keymap("n", "<leader>sc", "<Plug>SlimeSendCell", {noremap = false})
