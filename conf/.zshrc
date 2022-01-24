@@ -32,6 +32,8 @@ export HISTSIZE=1000000
 zstyle ':completion:*' menu select
 # Enable colors in tab complete
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+# Case-insensitive tab complete
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Ctrl + j/k to quickly go up/down (mimicks fzf controls)
 bindkey '^K' up-line-or-search
