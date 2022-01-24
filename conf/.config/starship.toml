@@ -20,6 +20,7 @@ $git_state\
 $git_metrics\
 $git_status\
 $hg_branch\
+$kuberenetes\
 $nix_shell\
 $memory_usage\
 $env_var\
@@ -91,6 +92,10 @@ symbol = ""
 symbol = "hg "
 
 # Tooling
+
+[kubernetes]
+symbol = "k8s "
+disabled = true
 
 [nix_shell]
 symbol = "nix "
