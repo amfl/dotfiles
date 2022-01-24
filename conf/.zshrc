@@ -12,7 +12,7 @@ alias '?'='search'
 alias '??'='search -e google'
 # Navigate to a repo by fzf-ing through a colored list in `source/user/repo` format
 # alias cdg='cd ${GIT_DIR} && cd $(find * -maxdepth 2 -mindepth 2 | sed "s#\([^/]\+\)/\([^/]\+\)#$(tput setaf 1)\1/$(tput setaf 6)\2$(tput sgr0)#" | fzf --ansi)'
-alias cdg='cd $(ghq root)/$(ghq list | sed "s#\([^/]\+\)/\([^/]\+\)#$(tput setaf 1)\1/$(tput setaf 6)\2$(tput sgr0)#" | fzf --ansi)'
+alias cdg='cd $(ghq root)/$(ghq list | sed --posix -E "s#([^/]+)/([^/]+)#$(tput setaf 1)\1/$(tput setaf 6)\2$(tput sgr0)#" | fzf --ansi)'
 alias mem='cd $MEMEX_DIR'
 # Open unstructured notes file at the right place to quickly jot something down
 uns() { nvim -c ':execute "normal Gza"' "${MEMEX_DIR}/unstructured/$(date +%Y-%m).md" }
