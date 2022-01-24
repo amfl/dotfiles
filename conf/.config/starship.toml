@@ -1,13 +1,206 @@
 # https://starship.rs/config/
 
-# Don't print a new line at the start of the prompt
-# add_newline = false
+# Custom theme based on zsh pygmalion.
+# Avoids fancy symbols where possible.
 
-# Disable the package module, hiding it from the prompt completely
-# [package]
-# disabled = true
+# Prompt and System
+
+# Fiddle with the format to get the right things on the right lines.
+# Key takeaway: $all contains the default modules, but it won't
+#               duplicate anything you explicitly define.
+format = """$time\
+$all\
+$line_break\
+
+$jobs\
+$battery\
+$status\
+$shell\
+$username\
+[@](cyan)\
+$hostname\
+[:](red)\
+$directory\
+$character"""
 
 [character]
-# Just a boring $ for me!
-success_symbol = "[\\$](bold green)"
-error_symbol = "[\\$](bold red)"
+success_symbol = "[\\$](yellow)"
+error_symbol = "[\\$](red)"
+vicmd_symbol = "[>](green)"
+
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "bright-black"
+
+[directory]
+style = "cyan"
+read_only = " ro"
+truncate_to_repo = true
+truncation_length = 0
+fish_style_pwd_dir_length = 3
+
+[memory_usage]
+symbol = "memory "
+disabled = true
+
+[username]
+format = "[$user]($style)"
+style_user = "purple"
+show_always = true
+
+[hostname]
+format = "[$hostname]($style)"
+style = "yellow"
+ssh_only = false
+
+# Source Control
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+# format = "([$all_status$ahead_behind]($style) )"
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "green"
+symbol = ""
+
+[hg_branch]
+symbol = "hg "
+
+# Tooling
+# From here down is mostly just the plain-text-symbols preset
+
+[aws]
+symbol = "aws "
+disabled = true
+
+[cobol]
+symbol = "cobol "
+disabled = true
+
+[conda]
+symbol = "conda "
+disabled = true
+
+[crystal]
+symbol = "cr "
+disabled = true
+
+[cmake]
+symbol = "cmake "
+disabled = true
+
+[dart]
+symbol = "dart "
+disabled = true
+
+[deno]
+symbol = "deno "
+disabled = true
+
+[dotnet]
+symbol = ".NET "
+disabled = true
+
+[docker_context]
+symbol = "docker "
+disabled = true
+
+[elixir]
+symbol = "exs "
+disabled = true
+
+[elm]
+symbol = "elm "
+disabled = true
+
+[golang]
+symbol = "go "
+disabled = true
+
+[java]
+symbol = "java "
+disabled = true
+
+[julia]
+symbol = "jl "
+disabled = true
+
+[kotlin]
+symbol = "kt "
+disabled = true
+
+[lua]
+symbol = "lua "
+disabled = true
+
+[nim]
+symbol = "nim "
+disabled = true
+
+[nix_shell]
+symbol = "nix "
+
+[nodejs]
+symbol = "nodejs "
+disabled = true
+
+[ocaml]
+symbol = "ml "
+disabled = true
+
+[package]
+symbol = "pkg "
+disabled = true
+
+[perl]
+symbol = "pl "
+disabled = true
+
+[php]
+symbol = "php "
+disabled = true
+
+[pulumi]
+symbol = "pulumi "
+disabled = true
+
+[purescript]
+symbol = "purs "
+disabled = true
+
+[python]
+symbol = "py "
+disabled = true
+
+[ruby]
+symbol = "rb "
+disabled = true
+
+[rust]
+symbol = "rs "
+disabled = true
+
+[scala]
+symbol = "scala "
+disabled = true
+
+[sudo]
+symbol = "sudo "
+disabled = true
+
+[swift]
+symbol = "swift "
+disabled = true
+
+[terraform]
+symbol = "tf "
+disabled = true
