@@ -136,6 +136,7 @@ require("packer").startup(function()
                     theme = "codedark",
                 }
             }
+            vim.o["showmode"] = false -- lualine plugin replaces vim mode indicator
         end }
 
     -- Usability
@@ -153,7 +154,18 @@ require("packer").startup(function()
 
     use {"farmergreg/vim-lastplace"}       -- Remember last place in files. Good for ebooks.
 
-    use {"jpalardy/vim-slime"}             -- Send buffer snippets to a REPL
+    use {"jpalardy/vim-slime",             -- Send buffer snippets to a REPL
+        config = function()
+            vim.g["slime_target"] = "tmux"
+            if (vim.env.TMUX) then
+                -- Assume SLIME target is the next tmux pane
+                vim.g["slime_default_config"] = {socket_name=vim.split(vim.env["TMUX"], ",")[1], target_pane=":.+"}
+            end
+
+            vim.g["slime_cell_delimiter"] = "```"
+            vim.api.nvim_set_keymap("n", "<leader>sc", "<Plug>SlimeSendCell", {noremap = false})
+            vim.api.nvim_set_keymap("n", "<leader>sn", "<Plug>SlimeConfig", {noremap = false})
+        end }
     use {"editorconfig/editorconfig-vim"}  -- Obey `.editorconfig` files (https://editorconfig.org/)
 
     -- Language Server Protocol (LSP)
@@ -228,6 +240,12 @@ require("packer").startup(function()
                     }
                 }
             }
+            vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope find_files<cr>", {noremap = true})
+            vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep<cr>", {noremap = true})
+            vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers<cr>", {noremap = true})
+            vim.api.nvim_set_keymap("n", "<leader>fh", ":Telescope help_tags<cr>", {noremap = true})
+            vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope oldfiles<cr>", {noremap = true})
+
         end
     }
     -- TODO: What is "nvim-telescope/telescope-hop"?
@@ -267,24 +285,3 @@ vim.cmd "colorscheme dim"
 -- TODO: Only apply this in TERMs without underline support
 -- It's not sufficient to say only `hi CursorLine...` and I'm not sure why
 vim.cmd "au VimEnter * hi CursorLine cterm=bold"
-
-vim.o["showmode"] = false -- lualine plugin replaces vim mode indicator
-
--- Plugin Settings
-
-vim.g["slime_target"] = "tmux"
-if (vim.env.TMUX) then
-    -- Assume SLIME target is the next tmux pane
-    vim.g["slime_default_config"] = {socket_name=vim.split(vim.env["TMUX"], ",")[1], target_pane=":.+"}
-end
-
-vim.g["slime_cell_delimiter"] = "```"
-vim.api.nvim_set_keymap("n", "<leader>sc", "<Plug>SlimeSendCell", {noremap = false})
-vim.api.nvim_set_keymap("n", "<leader>sn", "<Plug>SlimeConfig", {noremap = false})
-
-vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope find_files<cr>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep<cr>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers<cr>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>fh", ":Telescope help_tags<cr>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope oldfiles<cr>", {noremap = true})
-
