@@ -22,7 +22,6 @@
 --
 -- MISSING
 --
--- * plugin: Character alignment plugin
 -- * plugin: base16 color scheme
 -- * plugin: autocompletion/syntax highlighting
 
@@ -140,6 +139,12 @@ require("packer").startup(function()
         end }
 
     -- Usability
+    use {"junegunn/vim-easy-align",        -- Align around characters. Useful for tables.
+        config = function()
+            vim.api.nvim_set_keymap("n", "ga", "<Plug>(EasyAlign)", {noremap = false})
+            vim.api.nvim_set_keymap("v", "ga", "<Plug>(EasyAlign)", {noremap = false})
+        end }
+
     use {"tpope/vim-commentary"}           -- Allow commenting blocks of code
     use {"tpope/vim-repeat"}               -- Allow repeating supported plugins with `.`
     use {"tpope/vim-surround"}             -- For manipulating surrounding text
