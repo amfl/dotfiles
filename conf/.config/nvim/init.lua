@@ -1,7 +1,7 @@
 -- vim:fdm=marker
 
 -- CHANGELOG {{{1
--- Transition to neovim 0.5!
+-- Transition to neovim 0.5! (From `deprecated/.init.vim.02`)
 --
 -- Theme: Simplify and remove bespoke stuff.
 --
@@ -22,8 +22,10 @@
 --
 -- MISSING
 --
+-- * plugin: syntax highlighting (Pending treesitter)
+--
+-- REMOVED:
 -- * plugin: base16 color scheme
--- * plugin: autocompletion/syntax highlighting
 
 -- SETTINGS {{{1
 
