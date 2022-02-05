@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # A simple script for outputting many international clocks at once. Good if you have lots of internet friends.
 # You can specify a regular expression argument.
 # Configuration:
@@ -7,20 +7,24 @@
 #    Pacific/Auckland Bob
 # Remember the file needs a newline at the end.
 
-TS=+'%Y-%m-%d %a %H:%M'
+FORMAT="+%Y-%m-%d %a %H:%M"
 
-printline() { COMMENT=${@:2}; export TZ=$1; echo -n $(date "${TS}"); printf " - %-20s (%s)\n" "$COMMENT" $1; }
+printline() {
+    TZ="$1"; shift
+    COMMENT="$*";
+
+    printf "%s - %-20s (%s)\n" "$(TZ=$TZ date "$FORMAT")" "$COMMENT" "$TZ";
+}
 printall() {
     while read -r line
     do
         printline $line
-    done < $1
+    done < "$1"
     # Also print yourself
-    printline $(cat /etc/timezone) $(whoami)
+    printline "$(date +%Z)" "$(hostname)"
 }
 if [ "$#" -ne 0 ]; then
-    printall ~/.tzonrc | sort | grep -iE --color $@
+    printall ~/.tzonrc | sort | grep -iE --color "$@"
 else
     printall ~/.tzonrc | sort
 fi
-
