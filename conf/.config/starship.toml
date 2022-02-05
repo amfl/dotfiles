@@ -56,6 +56,9 @@ truncate_to_repo = true
 truncation_length = 0
 fish_style_pwd_dir_length = 3
 
+[jobs]
+symbol = "+"
+
 [memory_usage]
 symbol = "memory "
 disabled = true
