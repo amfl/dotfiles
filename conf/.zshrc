@@ -17,12 +17,18 @@ alias cdg='cd $(ghq root)/$(ghq list | sed --posix -E "s#([^/]+)/([^/]+)#$(tput 
 alias mem='cd $MEMEX_DIR'
 # Open unstructured notes file at the right place to quickly jot something down
 uns() { nvim -c ':execute "normal Gza"' "${MEMEX_DIR}/unstructured/$(date +%Y-%m).md" }
+alias kb='kubectl'
 
 alias grep='grep --color'
 alias lynx='lynx -cfg=~/.lynxrc'
 # To even attempt to open external browsers,
 # amfora needs to be tricked into having DISPLAY set
 alias amfora='DISPLAY=hack amfora'
+
+# Useful docker containers
+alias dkgo='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir golang:latest bash'
+alias dkrust='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir rust:latest bash'
+alias dkpy='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir python:latest bash'
 
 # ZSH {{{1
 
