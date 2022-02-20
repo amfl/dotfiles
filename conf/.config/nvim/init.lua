@@ -207,6 +207,16 @@ require("packer").startup(function()
             }
         end }
 
+    use {"ray-x/lsp_signature.nvim",       -- Show type hints for functions and vars
+        config = function()
+            local sig = require("lsp_signature")
+            sig.setup({
+                hint_prefix = "HINT ",  -- Remove fancy emoji, keep it ASCII
+                toggle_key = "<M-x>",   -- Toggle popup on/off in insert mode
+            })
+        end
+    }
+
     -- Filetype-specific
 
     -- use { "pirmd/gemini.vim" }             -- gemini syntax highlighting
