@@ -141,6 +141,8 @@ require("packer").startup(function()
             vim.o["showmode"] = false -- lualine plugin replaces vim mode indicator
         end }
 
+    use { "vim-scripts/DrawIt" }           -- ASCII diagrams
+
     -- Usability
     use {"junegunn/vim-easy-align",        -- Align around characters. Useful for tables.
         config = function()
