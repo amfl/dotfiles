@@ -35,6 +35,8 @@ setw -g mode-keys vi
 
 # Constrain only windows to smallest viewer, not entire sessions
 setw -g aggressive-resize on
+# Good for pair programming, but can be annoying when it's just you connecting to multiple machines.
+# set -g window-size smallest  # Defaults to "latest"?
 
 # change escape timeout to keep neovim happy
 # https://github.com/neovim/neovim/wiki/FAQ

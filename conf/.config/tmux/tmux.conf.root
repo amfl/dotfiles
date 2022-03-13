@@ -18,6 +18,8 @@
 #
 # I am not the first to think of this!
 # https://medium.com/free-code-camp/tmux-in-practice-series-of-posts-ae34f16cfab0
+# https://github.com/samoshkin/tmux-config#nested-tmux-sessions
+# https://github.com/aleclearmind/nested-tmux
 #
 # USAGE
 # -----
