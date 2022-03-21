@@ -220,7 +220,7 @@ require("packer").startup(function()
     -- Filetype-specific
 
     -- use { "pirmd/gemini.vim" }             -- gemini syntax highlighting
-    -- use { "LnL7/vim-nix" }                 -- nix syntax highlighting
+    use { "LnL7/vim-nix" }                 -- nix syntax highlighting
     use { "plasticboy/vim-markdown",       -- markdown syntax highlighting
         requires = "godlygeek/tabular",
         config = function()
