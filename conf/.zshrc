@@ -7,6 +7,12 @@ export GIT_PROJ_DIR=${HOME}/g
 export MEMEX_DIR=${HOME}/memex
 export EDITOR=nvim
 
+if command -v bat >/dev/null; then
+    # Use `bat` to syntax highlight man pages
+    export MANROFFOPT="-c"
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
 alias ec=$EDITOR
 alias '?'='search'
 alias '??'='search -e google'
