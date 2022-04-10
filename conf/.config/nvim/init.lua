@@ -68,6 +68,11 @@ vim.opt.listchars = {
 }
 vim.o["list"] = true -- Actually show the listchars above
 
+-- netrw preferences
+-- Remember: You can use `gn` to change to the dir under the cursor,
+--           and `i` to change style on the fly.
+vim.g["netrw_liststyle"] = 3  -- tree view by default
+
 -- REMAPS {{{1
 
 function dict_under_cursor()
