@@ -29,3 +29,7 @@ keymap - PREV
 # See also: cgi-bin
 # https://www.reddit.com/r/archlinux/comments/75sz9m/help_with_w3m_cgibin_scripts/
 keymap  ss COMMAND "TAB_GOTO http://localhost:8081/; GOTO_LINE 6; NEXT_LINK;"
+
+# https://unix.stackexchange.com/questions/565430/how-to-turn-off-images-in-w3m
+# \i to toggle image display
+keymap \\\i COMMAND "SET_OPTION display_image=toggle ; RELOAD"
