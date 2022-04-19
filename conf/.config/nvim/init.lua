@@ -147,6 +147,7 @@ require("packer").startup(function()
         end }
 
     use { "vim-scripts/DrawIt" }           -- ASCII diagrams
+    use { "powerman/vim-plugin-AnsiEsc" }  -- Enable ANSI codes with :AnsiEsc
 
     -- Usability
     use {"junegunn/vim-easy-align",        -- Align around characters. Useful for tables.
