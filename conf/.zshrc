@@ -40,6 +40,11 @@ alias dkgo='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w
 alias dkrust='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir rust:latest bash'
 alias dkpy='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir python:latest bash'
 
+# Exa - https://the.exa.website/
+# Use `exa` as `ls` if it's available
+if command -v exa &> /dev/null
+    then alias ls='exa -g'; fi
+
 # ZSH {{{1
 
 export HISTSIZE=1000000
