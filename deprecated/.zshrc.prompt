@@ -1,22 +1,22 @@
 # Based on the zsh pygmalion theme.
 # Tried to reproduce it without using plugins etc.
 
-## https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/
-## Load version control information
-#autoload -Uz vcs_info
-#precmd() { vcs_info }
+# https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/
+# Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
 
-## https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#vcs_005finfo-Variables
-## Format the vcs_info_msg_0_ variable
-#zstyle ':vcs_info:git:*' formats '%b'
+# https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#vcs_005finfo-Variables
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats '%b'
 
-## Set up the prompt (with git branch name)
-#setopt PROMPT_SUBST
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
 
-## DEFAULT PROMPT
-## export PROMPT='%B%(?..[%?] )%b%n@%U%m%u> '
-#export PROMPT='%B%(?..[%?] )%b%F{magenta}%n%F{cyan}@%F{yellow}%m%u%F{red}:%F{cyan}%~%F{red}|%F{green}${vcs_info_msg_0_}%F{yellow}%(!,#,$) %f'
-## PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
+# DEFAULT PROMPT
+# export PROMPT='%B%(?..[%?] )%b%n@%U%m%u> '
+export PROMPT='%B%(?..[%?] )%b%F{magenta}%n%F{cyan}@%F{yellow}%m%u%F{red}:%F{cyan}%~%F{red}|%F{green}${vcs_info_msg_0_}%F{yellow}%(!,#,$) %f'
+# PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 
 # Try to get the date show up before each command
 # https://stackoverflow.com/questions/13125825/zsh-update-prompt-with-current-time-when-a-command-is-started

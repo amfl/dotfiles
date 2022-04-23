@@ -2,10 +2,13 @@
 
 # EXPORTS AND ALIASES {{{1
 
-export PATH=${PATH}:${HOME}/bin
+# Various directories
 export GIT_PROJ_DIR=${HOME}/g
 export MEMEX_DIR=${HOME}/memex
+export DOTFILES_DIR=${GIT_PROJ_DIR}/github.com/amfl/dotfiles
+
 export EDITOR=nvim
+export PATH=${PATH}:${HOME}/bin
 
 if command -v bat >/dev/null; then
     # Use `bat` to syntax highlight man pages
@@ -62,8 +65,13 @@ bindkey "^V" edit-command-line
 ##################
 # PROMPT
 
-# Check conf/.config/starship.toml
-eval "$(starship init zsh)"
+if command -v starship >/dev/null; then
+    # Check conf/.config/starship.toml
+    eval "$(starship init zsh)"
+else
+    echo "Warning: Starship not detected. Using fallback prompt."
+    source "$DOTFILES_DIR/deprecated/.zshrc.prompt"
+fi
 
 # FZF {{{1
 
