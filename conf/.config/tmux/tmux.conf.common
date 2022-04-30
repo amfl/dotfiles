@@ -149,6 +149,17 @@ bind-key F run-shell 'tmux send-keys $(date +%FT%T%:z)'
 # buffer into your local tmux paste buffer.
 bind-key Y run-shell 'tmux show-buffer | osc52 > $(tmux-tty)'
 
+# Define a selected word
+bind-key -T copy-mode-vi d \
+    send-keys -X copy-selection-and-cancel \; \
+    run-shell "dict $(tmux show-buffer)"
+# Define word under cursor (without being in copy mode)
+bind-key W \
+    copy-mode \; \
+    send-keys -X select-word \; \
+    send-keys -X copy-selection-and-cancel \; \
+    run-shell "dict $(tmux show-buffer)"
+
 # Change framebuffer fontsize with script in `bin/fb-setfont.py`
 bind-key @ run-shell "echo 2 > ~/fontsize-fifo"
 bind-key ! run-shell "echo 1 > ~/fontsize-fifo"
