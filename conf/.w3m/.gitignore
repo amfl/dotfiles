@@ -2,3 +2,5 @@
 w3m*
 # Ensure no accidental history sharing
 history
+# Don't add keymap - It's generated from keymap.d
+keymap

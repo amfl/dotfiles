@@ -4,9 +4,6 @@
 #  - C-j is detected as ENTER
 #  - C-i is detected as TAB
 
-keymap C-u PREV_PAGE
-keymap C-d NEXT_PAGE
-
 # keymap C-j NEXT_LINK
 # keymap C-k PREV_LINK
 
@@ -16,20 +13,19 @@ keymap C-d NEXT_PAGE
 # keymap C-i NEXT
 
 keymap C-o PREV
+keymap o   OPTIONS
+
 # keymap H PREV
-keymap L NEXT
-keymap b   PREV_WORD
+# keymap L NEXT
 
-keymap C-w CLOSE_TAB
+keymap = INFO
 
+# Go back in history instead of scrolling up a page
 keymap - PREV
 
 # Automatic search stuff
 # https://unix.stackexchange.com/questions/183048/
 # See also: cgi-bin
 # https://www.reddit.com/r/archlinux/comments/75sz9m/help_with_w3m_cgibin_scripts/
-keymap  ss COMMAND "TAB_GOTO http://localhost:8081/; GOTO_LINE 6; NEXT_LINK;"
-
-# https://unix.stackexchange.com/questions/565430/how-to-turn-off-images-in-w3m
-# \i to toggle image display
-keymap \\\i COMMAND "SET_OPTION display_image=toggle ; RELOAD"
+# keymap  ss COMMAND "TAB_GOTO http://localhost:8081/; GOTO_LINE 6; NEXT_LINK;"
+keymap M-/ COMMAND  "GOTO http://localhost:8081/; GOTO_LINE 2; NEXT_LINK; GOTO_LINK"
