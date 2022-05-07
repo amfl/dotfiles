@@ -1,9 +1,16 @@
 #!/bin/sh
-# Starts up the latest searx container.
+# Starts up the latest searx container if it's not already running.
 # Searx is quite usable in terminal browsers.
 
-SEARX_DIR=${HOME}/.searx
-HOST_PORT=8081
-docker pull searx/searx
-docker run --rm -d -v ${SEARX_DIR}:/etc/searx -p ${HOST_PORT}:8080 -e BASE_URL=http://localhost:${HOST_PORT}/ --name searx searx/searx
-echo "Listening on port $HOST_PORT"
+docker ps --format '{{ .Names }}' | grep '^searx$' >/dev/null
+searx_running=$?
+if [ $searx_running -eq 0 ]; then
+    >&2 echo "Searx is already running."
+    exit 1
+else
+    SEARX_DIR="${HOME}/.searx"
+    HOST_PORT=8081
+    docker pull searx/searx
+    docker run --rm -d -v "${SEARX_DIR}:/etc/searx" -p ${HOST_PORT}:8080 -e BASE_URL=http://localhost:${HOST_PORT}/ --name searx searx/searx
+    echo "Listening on port $HOST_PORT"
+fi
