@@ -85,4 +85,10 @@ if [[ -d $FZF_REPO ]]; then
     [[ $- == *i* ]] && source "$FZF_REPO/shell/completion.zsh" 2> /dev/null
     # Key bindings
     source "$FZF_REPO/shell/key-bindings.zsh"
+
+    # Use `fd` to respect .gitignore if available
+    if command -v fd >/dev/null; then
+        export FZF_DEFAULT_COMMAND='fd --type f'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
 fi
