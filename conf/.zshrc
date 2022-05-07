@@ -8,6 +8,7 @@ export MEMEX_DIR=${HOME}/memex
 export DOTFILES_DIR=${GIT_PROJ_DIR}/github.com/amfl/dotfiles
 
 export EDITOR=nvim
+export GCALPATH=${MEMEX_DIR}
 export PATH=${PATH}:${HOME}/bin
 
 if command -v bat >/dev/null; then
