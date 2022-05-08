@@ -18,7 +18,7 @@ if command -v bat >/dev/null; then
 fi
 
 alias ec=$EDITOR
-alias '?'='searx 2>/dev/null ; search searx_local'
+alias '?'='searx 2>/dev/null ; search --engine searx_local'
 alias '??'='search -e google'
 alias '?~'='w3m $(tail -n 1 ~/.w3m/history)' # Open the last w3m page
 # Navigate to a repo by fzf-ing through a colored list in `source/user/repo` format
