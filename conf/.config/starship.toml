@@ -44,6 +44,19 @@ success_symbol = "[\\$](yellow)"
 error_symbol = "[\\$](red)"
 vicmd_symbol = "[>](green)"
 
+[battery]
+charging_symbol = "+"
+discharging_symbol = "-"
+empty_symbol = "_"
+full_symbol = ""
+unknown_symbol = ""
+
+## This can be left as default
+## Just here so I remember how "threshold" works
+# [[battery.display]]
+# threshold = 10
+# style = "bold red"
+
 [time]
 disabled = false
 format = "[$time]($style) "
