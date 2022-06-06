@@ -105,7 +105,7 @@ if [[ -d $FZF_REPO ]]; then
 
     # Use `fd` to respect .gitignore if available
     if command -v fd >/dev/null; then
-        export FZF_DEFAULT_COMMAND='fd --type f'
+        export FZF_DEFAULT_COMMAND='fd --type f --type l'
         export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     fi
 fi
