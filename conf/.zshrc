@@ -27,7 +27,7 @@ alias cdg='cd $(ghq root)/$(ghq list | sed --posix -E "s#([^/]+)/([^/]+)#$(tput 
 alias mem='cd $MEMEX_DIR'
 # Open unstructured notes file at the right place to quickly jot something down
 uns() { nvim -c ':execute "normal Gza"' "${MEMEX_DIR}/unstructured/$(date +%Y-%m).md" }
-alias kb='kubectl'
+alias k='kubectl'
 
 alias grep='grep --color'
 alias lynx='lynx -cfg=~/.lynxrc'
