@@ -39,6 +39,7 @@ alias amfora='DISPLAY=hack amfora'
 alias dkgo='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir golang:latest bash'
 alias dkrust='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir rust:latest bash'
 alias dkpy='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir python:latest bash'
+alias dknode='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir node:18-alpine sh'
 
 # Exa - https://the.exa.website/
 # Use `exa` as `ls` if it's available
