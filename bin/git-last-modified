@@ -1,0 +1,10 @@
+#!/bin/sh
+# Prints a Github-style table of last-modified times for files in this dir
+# Usage: `git last-modified`
+
+# Adapted from
+# https://serverfault.com/questions/401437/how-to-retrieve-the-last-modification-date-of-all-files-in-a-git-repository
+
+git ls-tree -r --name-only HEAD | while read filename; do
+  echo "$(git log -1 --format="%ai %h" -- $filename) $filename"
+done
