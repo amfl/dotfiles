@@ -22,6 +22,19 @@
 (require 'use-package)
 (setq use-package-always-ensure t)  ;; Fetch packages dynamically if required
 
+;; Fuzzy find through everything
+;; See also: helm
+(use-package ivy
+    :bind (:map ivy-minibuffer-map
+           ("C-j" . ivy-next-line)
+           ("C-k" . ivy-previous-line)
+           :map ivy-switch-buffer-map
+           ("C-j" . ivy-next-line)
+           ("C-k" . ivy-previous-line))
+    :init (ivy-mode 1))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; (custom-set-variables
 ;  ;; custom-set-variables was added by Custom.
 ;  ;; If you edit it by hand, you could mess it up, so be careful.
