@@ -1,4 +1,11 @@
 ;; Inspiration: https://github.com/daviwil/emacs-from-scratch/blob/master/Emacs.org
+;; Design Principles
+;; - Use third party packages
+;; - Try to avoid excessive custom config to reduce maintenance burden
+;; TODO
+;; - Helpful
+;; - ivy-rich
+;; - Swiper for searching
 
 ;; PACKAGE SYSTEM
 
