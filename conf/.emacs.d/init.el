@@ -22,6 +22,13 @@
 (require 'use-package)
 (setq use-package-always-ensure t)  ;; Fetch packages dynamically if required
 
+;; Hotkey prompts
+;; Useful when still learning editor
+(use-package which-key
+    :init     (which-key-mode)
+    :diminish which-key-mode
+    :config   (setq which-key-idle-mode-delay 1))
+
 ;; Fuzzy find through everything
 ;; See also: helm
 (use-package ivy
