@@ -60,6 +60,9 @@
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
   (load-theme 'doom-one t))
+;(use-package srcery-theme
+;  :config
+;  (load-theme 'srcery t))
 
 ;; mouse
 ;; enable mouse reporting for terminal emulators
