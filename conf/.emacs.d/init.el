@@ -40,6 +40,11 @@
            ("C-k" . ivy-previous-line))
     :init (ivy-mode 1))
 
+;; Rainbow parens
+(use-package rainbow-delimiters
+  ;; Turn on for any programming mode
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; (load-theme 'wombat)
