@@ -49,6 +49,11 @@
 
 ; (load-theme 'wombat)
 
+(column-number-mode t)
+(global-display-line-numbers-mode t)
+;; Can turn off line numbers in particular modes like shell mode...
+;; But let's add that if we need it
+
 ; (custom-set-variables
 ;  ;; custom-set-variables was added by Custom.
 ;  ;; If you edit it by hand, you could mess it up, so be careful.
