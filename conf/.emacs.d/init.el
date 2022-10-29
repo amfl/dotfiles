@@ -54,6 +54,19 @@
         doom-themes-enable-italic t)
   (load-theme 'doom-one t))
 
+;; mouse
+;; enable mouse reporting for terminal emulators
+;; NOTE: Nobody seems to know how to use the mouse for the menus, lol.
+;; https://emacs.stackexchange.com/questions/32490/how-to-use-menu-bar-at-the-top-via-mouse
+(unless window-system
+  (xterm-mouse-mode 1)
+  (global-set-key [mouse-4] (lambda ()
+                  (interactive)
+		  (scroll-down 3)))
+  (global-set-key [mouse-5] (lambda ()
+                  (interactive)
+                  (scroll-up 3))))
+
 (column-number-mode t)
 (global-display-line-numbers-mode t)
 ;; Can turn off line numbers in particular modes like shell mode...
