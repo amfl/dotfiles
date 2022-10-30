@@ -52,6 +52,19 @@
   ;; Turn on for any programming mode
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package projectile
+  :diminish
+  :config
+  (projectile-mode)
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-project-search-path '(("/storage/prv/g" . 3)))
+  ;; Path to search when switching project. Number indicates depth to search.
+  :bind-keymap
+  ("C-c p" . projectile-command-map))
+;; Useful binds, after hitting the projectile prefix above:
+;; p: Switch project
+;; f: Switch file
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; (load-theme 'wombat)
