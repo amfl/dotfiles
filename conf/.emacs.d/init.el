@@ -124,3 +124,9 @@
   (evil-escape-mode)
   (setq evil-escape-unordered-key-sequence 1)
   (setq evil-escape-key-sequence "jk"))
+
+;; Display cursor as bar in insert mode when running in terminal
+(unless (display-graphic-p)
+  (use-package evil-terminal-cursor-changer
+    :config
+    (evil-terminal-cursor-changer-activate)))
