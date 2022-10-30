@@ -115,3 +115,12 @@
   :after evil
   :config
   (evil-collection-init))
+
+;; Chord jk to escape insert mode
+;; TODO: Can I replace this with a more generic solution using key-chord?
+(use-package evil-escape
+  :diminish
+  :config
+  (evil-escape-mode)
+  (setq evil-escape-unordered-key-sequence 1)
+  (setq evil-escape-key-sequence "jk"))
