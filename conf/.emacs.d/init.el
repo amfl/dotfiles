@@ -3,9 +3,20 @@
 ;; - Use third party packages
 ;; - Try to avoid excessive custom config to reduce maintenance burden
 ;; TODO
+;; - Swiper (searching)
 ;; - Helpful
 ;; - ivy-rich
 ;; - Swiper for searching
+;; - Show tab characters
+;; - Chorded evil
+;; - Change buffer leader key bindings (projectile?)
+;; - emacsclient
+;; - Auto-follow symlinks
+;; - Change C-z?
+;; - Diminish (Remove superfluous modes from modeline)
+;; - Better modeline
+;; - Remember location in filename
+;; - Tidy up - Don't scatter temp files everywhere
 
 ;; PACKAGE SYSTEM
 
@@ -28,17 +39,19 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)  ;; Fetch packages dynamically if required
+;; See also: https://jwiegley.github.io/use-package/keywords/
 
 ;; Hotkey prompts
 ;; Useful when still learning editor
 (use-package which-key
     :init     (which-key-mode)
-    :diminish which-key-mode
+    :diminish
     :config   (setq which-key-idle-mode-delay 1))
 
 ;; Fuzzy find through everything
 ;; See also: helm
 (use-package ivy
+    :diminish
     :bind (:map ivy-minibuffer-map
            ("C-j" . ivy-next-line)
            ("C-k" . ivy-previous-line)
@@ -46,6 +59,12 @@
            ("C-j" . ivy-next-line)
            ("C-k" . ivy-previous-line))
     :init (ivy-mode 1))
+;; Adds docstrings and keybinds to M-x searching
+;; See also: counsel
+;(use-package ivy-rich
+;  :after ivy
+;  :init (ivy-rich-mode 1))
+
 
 ;; Rainbow parens
 (use-package rainbow-delimiters
@@ -130,3 +149,7 @@
   (use-package evil-terminal-cursor-changer
     :config
     (evil-terminal-cursor-changer-activate)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package sly)
