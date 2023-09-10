@@ -1,7 +1,11 @@
 -- vim:fdm=marker
 
 -- CHANGELOG {{{1
--- Transition to neovim 0.5! (From `deprecated/.init.vim.02`)
+-- ## 2023-09-10 Transition to neovim 0.9.1
+--
+-- * Uncontentious syntax changes for various plugins
+--
+-- ## Transition to neovim 0.5! (From `deprecated/.init.vim.02`)
 --
 -- Theme: Simplify and remove bespoke stuff.
 --
