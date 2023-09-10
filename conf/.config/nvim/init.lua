@@ -309,8 +309,7 @@ end)
 -- LSP config {{{
 -- Now that cmp_nvim_lsp is installed, we should tell the language servers that
 -- we support more capabilities than plain old neovim would otherwise.
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-require("cmp_nvim_lsp").update_capabilities(capabilities)
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- List of LSP servers you want nvim to be aware of
 -- For all possibilities, see:
