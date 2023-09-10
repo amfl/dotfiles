@@ -227,7 +227,7 @@ require("packer").startup(function()
 
     -- use { "pirmd/gemini.vim" }             -- gemini syntax highlighting
     use { "LnL7/vim-nix" }                 -- nix syntax highlighting
-    use { "plasticboy/vim-markdown",       -- markdown syntax highlighting
+    use { "preservim/vim-markdown",       -- markdown syntax highlighting
         requires = "godlygeek/tabular",
         config = function()
             -- Fold markdown on the same line as the title, not the line after
