@@ -18,6 +18,7 @@
 ;; - Remember location in filename
 ;; - Tidy up - Don't scatter temp files everywhere
 
+;; ----------------------------------------------------------------------------
 ;; PACKAGE SYSTEM
 
 ;; `package` is an emacs built-in.
@@ -33,6 +34,16 @@
 
 ;; Confusingly, we use a third-party package called "use-package" to do
 ;; our package management, rather than the emacs built-in "package".
+;; 
+;; use-package:
+;;   * Third-party package on MELPA
+;;   * Macro that calls `require`
+;; package:
+;;   * Core package in emacs
+;; require:
+;;   * Core function in emacs
+;;   * Loads elisp files that already exist on your system
+;;
 ;; ...Let's fetch "use-package" by using "package"!
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
@@ -40,6 +51,9 @@
 (require 'use-package)
 (setq use-package-always-ensure t)  ;; Fetch packages dynamically if required
 ;; See also: https://jwiegley.github.io/use-package/keywords/
+
+;; ----------------------------------------------------------------------------
+;; GETTING AROUND
 
 ;; Hotkey prompts
 ;; Useful when still learning editor
@@ -65,12 +79,8 @@
 ;  :after ivy
 ;  :init (ivy-rich-mode 1))
 
-
-;; Rainbow parens
-(use-package rainbow-delimiters
-  ;; Turn on for any programming mode
-  :hook (prog-mode . rainbow-delimiters-mode))
-
+;; Project interaction.
+;; Exposes functionality such as jumping between projects, grepping in project...
 (use-package projectile
   :diminish
   :config
@@ -84,7 +94,12 @@
 ;; p: Switch project
 ;; f: Switch file
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ----------------------------------------------------------------------------
+;; AESTHETICS
+
+(use-package rainbow-delimiters
+  ;; Turn on for any programming mode
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 ; (load-theme 'wombat)
 (use-package doom-themes
@@ -113,6 +128,9 @@
 (global-display-line-numbers-mode t)
 ;; Can turn off line numbers in particular modes like shell mode...
 ;; But let's add that if we need it
+
+;; ----------------------------------------------------------------------------
+;; EVIL (VI EMULATION)
 
 (use-package evil
   :init
@@ -150,6 +168,7 @@
     :config
     (evil-terminal-cursor-changer-activate)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ----------------------------------------------------------------------------
+;; LISP
 
 (use-package sly)
