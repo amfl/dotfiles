@@ -95,20 +95,9 @@ fi
 
 # FZF {{{1
 
-# I manage fzf manually.
-FZF_REPO=${GIT_PROJ_DIR}/github.com/junegunn/fzf
-if [[ -d $FZF_REPO ]]; then
+if command -v fzf >/dev/null; then
     # Always use 16 color theme. I find it easier to read.
     export FZF_DEFAULT_OPTS='--color 16'
-
-    # Auto-completion
-    [[ $- == *i* ]] && source "$FZF_REPO/shell/completion.zsh" 2> /dev/null
-    # Key bindings
-    source "$FZF_REPO/shell/key-bindings.zsh"
-
-    # Use `fd` to respect .gitignore if available
-    if command -v fd >/dev/null; then
-        export FZF_DEFAULT_COMMAND='fd --type f --type l'
-        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    fi
+    # Requires fzf 0.48.0 or later
+    source <(fzf --zsh)
 fi
