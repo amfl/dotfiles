@@ -41,6 +41,10 @@ alias dkrust='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir 
 alias dkpy='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir python:latest bash'
 alias dknode='docker run --rm -it -u "$(id -u):$(id -g)" -v $(pwd):/tmp/workdir -w /tmp/workdir node:18-alpine sh'
 
+# fd - Debian names the binary weird
+if command -v fdfind &> /dev/null
+    then alias fd=fdfind; fi
+
 # Exa - https://the.exa.website/
 # Use `exa` as `ls` if it's available
 if command -v exa &> /dev/null
