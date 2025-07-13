@@ -22,8 +22,11 @@ alias '?'='searx 2>/dev/null ; search --engine searx_local'
 alias '??'='search -e google'
 alias '?~'='w3m $(tail -n 1 ~/.w3m/history)' # Open the last w3m page
 # Navigate to a repo by fzf-ing through a colored list in `source/user/repo` format
-# alias cdg='cd ${GIT_DIR} && cd $(find * -maxdepth 2 -mindepth 2 | sed "s#\([^/]\+\)/\([^/]\+\)#$(tput setaf 1)\1/$(tput setaf 6)\2$(tput sgr0)#" | fzf --ansi)'
-alias cdg='cd $(ghq root)/$(ghq list | sed --posix -E "s#([^/]+)/([^/]+)#$(tput setaf 1)\1/$(tput setaf 6)\2$(tput sgr0)#" | fzf --ansi)'
+if command -v ghq &> /dev/null; then
+    alias cdg='cd $(ghq root)/$(ghq list | sed --posix -E "s#([^/]+)/([^/]+)#$(tput setaf 1)\1/$(tput setaf 6)\2$(tput sgr0)#" | fzf --ansi)'
+else
+    alias cdg='cd ${GIT_PROJ_DIR} && cd $(find * -maxdepth 2 -mindepth 2 | sed "s#\([^/]\+\)/\([^/]\+\)#$(tput setaf 1)\1/$(tput setaf 6)\2$(tput sgr0)#" | fzf --ansi)'
+fi
 alias mem='cd $MEMEX_DIR'
 # Open unstructured notes file at the right place to quickly jot something down
 uns() { nvim -c ':execute "normal Gza"' "${MEMEX_DIR}/unstructured/$(date +%Y-%m).md" }
