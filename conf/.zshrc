@@ -50,8 +50,11 @@ if command -v fdfind &> /dev/null
 
 # Exa - https://the.exa.website/
 # Use `exa` as `ls` if it's available
-if command -v exa &> /dev/null
-    then alias ls='exa -g'; fi
+if command -v exa &> /dev/null; then
+    alias ls='exa -g'
+else
+    alias ls='ls --color=auto'
+fi
 
 # ZSH {{{1
 
