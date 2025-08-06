@@ -50,8 +50,8 @@ if command -v fdfind &> /dev/null
 
 # Exa - https://the.exa.website/
 # Use `exa` as `ls` if it's available
-if command -v exa &> /dev/null; then
-    alias ls='exa -g'
+if command -v eza &> /dev/null; then
+    alias ls='eza -g'
 else
     alias ls='ls --color=auto'
 fi
